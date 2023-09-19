@@ -2,8 +2,8 @@ package govpage
 
 import (
 	"context"
-	"github.com/Kebalepile/job_board/spiders"
 	"github.com/Kebalepile/job_board/pipeline"
+	"github.com/Kebalepile/job_board/spiders"
 	"github.com/chromedp/cdproto/cdp"
 	"github.com/chromedp/chromedp"
 	"log"
@@ -22,7 +22,7 @@ func (s *Spider) Launch() {
 	log.Println(s.Name, " spider has Lunched ", s.Date())
 
 	opts := append(chromedp.DefaultExecAllocatorOptions[:],
-		chromedp.Flag("headless", false), // set headless false
+		chromedp.Flag("headless", true), // set headless false
 		chromedp.UserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"),
 		chromedp.WindowSize(768, 1024), // Tablet size
 	)
@@ -99,8 +99,8 @@ func (s *Spider) vacancies(ctx context.Context, selector string) {
 		title := strings.ToLower(text)
 		if match := strings.Contains(title, strings.ToLower(s.Date())); match {
 			govpageLinks := spiders.Links{
-				Title: title,
-				Links:make(map[string]string),
+				Title: strings.Trim(title, " "),
+				Links: map[string]string{},
 			}
 			href := n.AttributeValue("href")
 			url := "https://" + href[2:]
@@ -138,21 +138,26 @@ func (s *Spider) links(ctx context.Context, url string, govpageLinks spiders.Lin
 			var text string
 			href := n.AttributeValue("href")
 
-			
-
 			err = chromedp.Run(ctx,
 				chromedp.TextContent(n.FullXPath(), &text))
 			s.Error(err)
 
-			govpageLinks.Links[text] = href
+			k := len(text)
+			v := len(href)
+
+			if k > 0 && v > 0 {
+				k := strings.Trim(strings.ReplaceAll(text, "\n", ""), " ")
+				govpageLinks.Links[k] = href
+			}
+
 		}
 
 		err = pipeline.SaveJsonFile(govpageLinks)
 		if err != nil {
-          s.Error(err)
+			s.Error(err)
 		}
 		s.Close()
-		
+
 	}
 }
 func (s *Spider) Date() string {
@@ -162,7 +167,6 @@ func (s *Spider) Date() string {
 func (s *Spider) Close() {
 	log.Println(s.Name, "is done.")
 	s.Shutdown()
-
 }
 func (s *Spider) Error(err error) {
 	if err != nil {
