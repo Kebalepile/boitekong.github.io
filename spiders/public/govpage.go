@@ -43,7 +43,7 @@ func (s *Spider) Launch() {
 	s.error(err)
 	// loop over the anchor elements
 	for _, n := range nodes {
-		// var textContent string
+	
 		log.Println("------------------TOP---------------")
 		log.Println(&n)
 		log.Println(n)
