@@ -2,20 +2,24 @@ package public
 
 import (
 	"context"
-	// "fmt"
+	"github.com/Kebalepile/job_board/spiders"
 	"github.com/chromedp/cdproto/cdp"
 	"github.com/chromedp/chromedp"
 	"log"
 	"strings"
+	"time"
 )
 
 type Spider struct {
 	Name           string
 	AllowedDomains []string
+	Shutdown       context.CancelFunc
 }
 
 func (s *Spider) Launch() {
-	log.Println(s.Name, " spider has Lunched !")
+
+	log.Println(s.Name, " spider has Lunched ", s.Date())
+
 	opts := append(chromedp.DefaultExecAllocatorOptions[:],
 		chromedp.Flag("headless", false), // set headless false
 		chromedp.UserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"),
@@ -27,102 +31,131 @@ func (s *Spider) Launch() {
 
 	ctx, cancel = chromedp.NewContext(ctx)
 
+	s.Shutdown = cancel
+
 	err := chromedp.Run(ctx,
 		chromedp.Navigate(s.AllowedDomains[0]),
 	)
-	s.error(err)
+	s.Error(err)
 
 	var nodes []*cdp.Node
 
 	err = chromedp.Run(ctx,
-
-		// chromedp.WaitReady(`body`),
-
 		chromedp.Click(`*[aria-label='Menu']`),
-
 		chromedp.Nodes(`ul li.wsite-menu-item-wrap a.wsite-menu-item`, &nodes, chromedp.ByQueryAll))
-	s.error(err)
+	s.Error(err)
+
 	// loop over the anchor elements
 	for _, n := range nodes {
 		var (
-			text   string
-			urlstr string
+			text string
+			url  string
 		)
-		err = chromedp.Run(ctx, chromedp.TextContent(n.FullXPath(), &text), chromedp.Location(&urlstr))
-		s.error(err)
+		err = chromedp.Run(ctx,
+			chromedp.TextContent(n.FullXPath(), &text),
+			chromedp.Location(&url))
+		s.Error(err)
 		if match := strings.Contains(strings.ToLower(text), "govpage"); match {
 			href := n.AttributeValue("href")
-			// remove first '/' from href as urlstr ends with '/'
-			govUpdates := urlstr + href[1:]
-			selector := `.blog-title-link`
-			err = chromedp.Run(ctx,
-					chromedp.Navigate(govUpdates),
-					chromedp.WaitEnabled(selector),
-					chromedp.ScrollIntoView(selector),
-					chromedp.Location(&urlstr))
+			// remove first '/' from href as url ends with '/'
+			govUpdates := url + href[1:]
 
-			s.error(err)
-			log.Println(urlstr)
+			selector := `.blog-title-link`
+
+			log.Println("Loading government updates page")
+
+			err = chromedp.Run(ctx,
+				chromedp.Navigate(govUpdates),
+				chromedp.WaitEnabled(selector),
+				chromedp.ScrollIntoView(selector),
+				chromedp.Location(&url))
+
+			s.Error(err)
+			if n := strings.Compare(url, s.AllowedDomains[1]); n == 0 {
+				s.vacancies(ctx, selector)
+			}
+			break
 		}
 
 	}
-	s.done()
+	s.Close()
 }
 
-func (s *Spider) vacancies(ctx context.Context) {
+func (s *Spider) vacancies(ctx context.Context, selector string) {
 	log.Println("Searching for latest government vacancies.")
-	// check if url include s.AllowedDomains[1]
-	// get current date in day month year format
-	// wait for .blog-title-link to load
-	// get elements ".blog-title-link"
-	// run this code
-	/**
-		   const targetHandle = await elements.reduce(
-	            async (targetHandle, elementHandle) => {
-	              const textContent = await page.evaluate(
-	                (elem) => elem.textContent,
-	                elementHandle
-	              );
-	              if (textContent.includes(currentDate)) {
-	                targetHandle = elementHandle;
-	                return targetHandle;
-	              }
-	              return targetHandle;
-	            },
-	            null
-	          );
 
-	          if (targetHandle) {
-	            await targetHandle?.click();
+	var nodes []*cdp.Node
 
-	            await this.#advertLinks(page);
-	          }else {
-	            fs.writeFile(
-	              this.#databasePath(this.#date("date")),
-	              JSON.stringify(
-	                {
-	                  text: "No job posts for today",
-	                  date: this.#date("date"),
-	                },
-	                null,
-	                4
-	              ),
-	              (error) =>
-	                error
-	                  ? console.log(error.message)
-	                  : console.log(`${this.#date("date")}.json save to database`)
-	            );
-	            await this.#terminate();
-	*/
+	err := chromedp.Run(ctx,
+		chromedp.Nodes(selector, &nodes, chromedp.ByQueryAll))
+	s.Error(err)
+
+	for _, n := range nodes {
+		var text string
+		err = chromedp.Run(ctx,
+			chromedp.TextContent(n.FullXPath(), &text))
+		s.Error(err)
+		title := strings.ToLower(text)
+		if match := strings.Contains(title, strings.ToLower(s.Date())); match {
+			govpageLinks := spiders.Links{
+				Title: title,
+			}
+			href := n.AttributeValue("href")
+			url := "https://" + href[2:]
+
+			s.links(ctx, url, govpageLinks)
+
+		} else {
+			log.Println("Sorry, No Government Job Posts for today")
+		}
+	}
 
 }
-func (s *Spider) links(ctx context.Context) {
+func (s *Spider) links(ctx context.Context, url string, govpageLinks spiders.Links) {
 
+	log.Println("Searching For Advert Post Links")
+
+	selector := `[id^='blog-post-'] a`
+
+	var nodes []*cdp.Node
+
+	err := chromedp.Run(ctx,
+		chromedp.Navigate(url),
+		chromedp.WaitEnabled(selector, chromedp.ByQueryAll),
+		chromedp.ScrollIntoView(selector),
+		chromedp.Nodes(selector, &nodes, chromedp.ByQueryAll))
+
+	s.Error(err)
+
+	log.Println("Found some posts, number of posts deteched is: ", len(nodes))
+
+	if posts := len(nodes); posts > 0 {
+
+		for _, n := range nodes {
+
+			var text string
+			href := n.AttributeValue("href")
+
+			govpageLinks.Links[text] = href
+
+			err = chromedp.Run(ctx,
+				chromedp.TextContent(n.FullXPath(), &text))
+			s.Error(err)
+		}
+		log.Println(govpageLinks)
+		
+	}
 }
-func (s *Spider) done() {
+func (s *Spider) Date() string {
+	t := time.Now()
+	return t.Format("02 January 2006")
+}
+func (s *Spider) Close() {
 	log.Println(s.Name, "is done.")
+	s.Shutdown()
+
 }
-func (s *Spider) error(err error) {
+func (s *Spider) Error(err error) {
 	if err != nil {
 		log.Fatal(err)
 	}
