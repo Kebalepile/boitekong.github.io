@@ -1,4 +1,4 @@
-package public
+package govpage
 
 import (
 	"context"
@@ -99,6 +99,7 @@ func (s *Spider) vacancies(ctx context.Context, selector string) {
 		if match := strings.Contains(title, strings.ToLower(s.Date())); match {
 			govpageLinks := spiders.Links{
 				Title: title,
+				Links:make(map[string]string),
 			}
 			href := n.AttributeValue("href")
 			url := "https://" + href[2:]
