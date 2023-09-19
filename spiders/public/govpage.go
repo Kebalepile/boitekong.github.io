@@ -2,10 +2,11 @@ package public
 
 import (
 	"context"
+	// "fmt"
 	"github.com/chromedp/cdproto/cdp"
 	"github.com/chromedp/chromedp"
 	"log"
-	// "strings"
+	"strings"
 )
 
 type Spider struct {
@@ -35,7 +36,7 @@ func (s *Spider) Launch() {
 
 	err = chromedp.Run(ctx,
 
-		chromedp.WaitReady(`body`),
+		// chromedp.WaitReady(`body`),
 
 		chromedp.Click(`*[aria-label='Menu']`),
 
@@ -43,18 +44,32 @@ func (s *Spider) Launch() {
 	s.error(err)
 	// loop over the anchor elements
 	for _, n := range nodes {
-	
-		log.Println("------------------TOP---------------")
-		log.Println(&n)
-		log.Println(n)
-		log.Println("------------------BOTTOM---------------")
-	
-		
+		var (
+			text   string
+			urlstr string
+		)
+		err = chromedp.Run(ctx, chromedp.TextContent(n.FullXPath(), &text), chromedp.Location(&urlstr))
+		s.error(err)
+		if match := strings.Contains(strings.ToLower(text), "govpage"); match {
+			href := n.AttributeValue("href")
+			// remove first '/' from href as urlstr ends with '/'
+			govUpdates := urlstr + href[1:]
+			selector := `.blog-title-link`
+			err = chromedp.Run(ctx,
+					chromedp.Navigate(govUpdates),
+					chromedp.WaitEnabled(selector),
+					chromedp.ScrollIntoView(selector),
+					chromedp.Location(&urlstr))
+
+			s.error(err)
+			log.Println(urlstr)
+		}
+
 	}
 	s.done()
 }
 
-func (s *Spider) vacancies(ctx context.Context){
+func (s *Spider) vacancies(ctx context.Context) {
 	log.Println("Searching for latest government vacancies.")
 	// check if url include s.AllowedDomains[1]
 	// get current date in day month year format
@@ -62,46 +77,46 @@ func (s *Spider) vacancies(ctx context.Context){
 	// get elements ".blog-title-link"
 	// run this code
 	/**
-	   const targetHandle = await elements.reduce(
-            async (targetHandle, elementHandle) => {
-              const textContent = await page.evaluate(
-                (elem) => elem.textContent,
-                elementHandle
-              );
-              if (textContent.includes(currentDate)) {
-                targetHandle = elementHandle;
-                return targetHandle;
-              }
-              return targetHandle;
-            },
-            null
-          );
+		   const targetHandle = await elements.reduce(
+	            async (targetHandle, elementHandle) => {
+	              const textContent = await page.evaluate(
+	                (elem) => elem.textContent,
+	                elementHandle
+	              );
+	              if (textContent.includes(currentDate)) {
+	                targetHandle = elementHandle;
+	                return targetHandle;
+	              }
+	              return targetHandle;
+	            },
+	            null
+	          );
 
-          if (targetHandle) {
-            await targetHandle?.click();
+	          if (targetHandle) {
+	            await targetHandle?.click();
 
-            await this.#advertLinks(page);
-          }else {
-            fs.writeFile(
-              this.#databasePath(this.#date("date")),
-              JSON.stringify(
-                {
-                  text: "No job posts for today",
-                  date: this.#date("date"),
-                },
-                null,
-                4
-              ),
-              (error) =>
-                error
-                  ? console.log(error.message)
-                  : console.log(`${this.#date("date")}.json save to database`)
-            );
-            await this.#terminate();
-		  */
+	            await this.#advertLinks(page);
+	          }else {
+	            fs.writeFile(
+	              this.#databasePath(this.#date("date")),
+	              JSON.stringify(
+	                {
+	                  text: "No job posts for today",
+	                  date: this.#date("date"),
+	                },
+	                null,
+	                4
+	              ),
+	              (error) =>
+	                error
+	                  ? console.log(error.message)
+	                  : console.log(`${this.#date("date")}.json save to database`)
+	            );
+	            await this.#terminate();
+	*/
 
 }
-func (s *Spider ) links(ctx context.Context){
+func (s *Spider) links(ctx context.Context) {
 
 }
 func (s *Spider) done() {
