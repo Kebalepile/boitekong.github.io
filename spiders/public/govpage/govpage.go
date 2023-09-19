@@ -3,6 +3,7 @@ package govpage
 import (
 	"context"
 	"github.com/Kebalepile/job_board/spiders"
+	"github.com/Kebalepile/job_board/pipeline"
 	"github.com/chromedp/cdproto/cdp"
 	"github.com/chromedp/chromedp"
 	"log"
@@ -137,13 +138,20 @@ func (s *Spider) links(ctx context.Context, url string, govpageLinks spiders.Lin
 			var text string
 			href := n.AttributeValue("href")
 
-			govpageLinks.Links[text] = href
+			
 
 			err = chromedp.Run(ctx,
 				chromedp.TextContent(n.FullXPath(), &text))
 			s.Error(err)
+
+			govpageLinks.Links[text] = href
 		}
-		log.Println(govpageLinks)
+
+		err = pipeline.SaveJsonFile(govpageLinks)
+		if err != nil {
+          s.Error(err)
+		}
+		s.Close()
 		
 	}
 }
