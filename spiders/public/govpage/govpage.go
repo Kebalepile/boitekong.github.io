@@ -119,14 +119,19 @@ func (s *Spider) links(ctx context.Context, url string, govpageLinks spiders.Lin
 
 	selector := `[id^='blog-post-'] a`
 
-	var nodes []*cdp.Node
+	
 
 	err := chromedp.Run(ctx,
 		chromedp.Navigate(url),
 		chromedp.WaitEnabled(selector, chromedp.ByQueryAll),
-		chromedp.ScrollIntoView(selector),
-		chromedp.Nodes(selector, &nodes, chromedp.ByQueryAll))
+		chromedp.ScrollIntoView(selector))
+	s.Error(err)
 
+	time.Sleep(20 * time.Second) // pause for 20 seconds
+
+	var nodes []*cdp.Node
+	err = chromedp.Run(ctx,
+		chromedp.Nodes(selector, &nodes, chromedp.ByQueryAll))
 	s.Error(err)
 
 	log.Println("Found some posts, number of posts deteched is: ", len(nodes))
