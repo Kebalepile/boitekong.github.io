@@ -1,8 +1,9 @@
 package govpage
+
 import (
 	"context"
 	"github.com/Kebalepile/job_board/pipeline"
-	"github.com/Kebalepile/job_board/spiders"
+	"github.com/Kebalepile/job_board/spiders/types"
 	"github.com/chromedp/cdproto/cdp"
 	"github.com/chromedp/chromedp"
 	"log"
@@ -97,7 +98,7 @@ func (s *Spider) vacancies(ctx context.Context, selector string) {
 		s.Error(err)
 		title := strings.ToLower(text)
 		if match := strings.Contains(title, strings.ToLower(s.Date())); match {
-			govpageLinks := spiders.Links{
+			govpageLinks := types.Links{
 				Title: strings.Trim(title, " "),
 				Links: map[string]string{},
 			}
@@ -112,13 +113,11 @@ func (s *Spider) vacancies(ctx context.Context, selector string) {
 	}
 
 }
-func (s *Spider) links(ctx context.Context, url string, govpageLinks spiders.Links) {
+func (s *Spider) links(ctx context.Context, url string, govpageLinks types.Links) {
 
 	log.Println("Searching For Advert Post Links")
 
 	selector := `[id^='blog-post-'] a`
-
-	
 
 	err := chromedp.Run(ctx,
 		chromedp.Navigate(url),

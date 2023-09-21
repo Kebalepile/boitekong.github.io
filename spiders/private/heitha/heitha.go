@@ -1,5 +1,14 @@
 package heitha
 
+import(
+	"context"
+	// "github.com/Kebalepile/job_board/spiders"
+	// "github.com/chromedp/cdproto/cdp"
+	"github.com/chromedp/chromedp"
+	"log"
+	// "strings"
+	// "time"
+)
 // phase 1
 // 1. go to http://www.heitha.co.za/
 // 2 . click button with class .all-button and textContent
