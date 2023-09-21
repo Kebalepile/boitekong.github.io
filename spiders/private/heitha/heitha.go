@@ -1,22 +1,24 @@
 package heitha
 
-import(
+import (
 	"context"
 	// "github.com/Kebalepile/job_board/spiders/types"
+	"github.com/Kebalepile/job_board/pipeline"
 	// "github.com/chromedp/cdproto/cdp"
 	"github.com/chromedp/chromedp"
 	"log"
-	// "strings"
-	"time"
+	"strings"
 	"sync"
+	"time"
 )
+
 type Spider struct {
 	Name           string
 	AllowedDomains []string
 	Shutdown       context.CancelFunc
 }
 
-func (s *Spider) Launch(wg *sync.WaitGroup){
+func (s *Spider) Launch(wg *sync.WaitGroup) {
 	defer wg.Done()
 
 	log.Println(s.Name, " spider has Lunched ", s.Date())
@@ -34,12 +36,45 @@ func (s *Spider) Launch(wg *sync.WaitGroup){
 
 	s.Shutdown = cancel
 
+	log.Println("Loading ", s.Name)
+
+	selector := `.col-xs-2.all-jobs-btn`
 	err := chromedp.Run(ctx,
 		chromedp.Navigate(s.AllowedDomains[0]),
-	)
+		chromedp.WaitVisible(selector),
+		chromedp.ScrollIntoView(selector),
+		chromedp.Click(selector))
 	s.Error(err)
 
+	// pause for 10s
+	time.Sleep(10 * time.Second)
 
+	s.jobs(ctx)
+}
+func (s *Spider) jobs(ctx context.Context) {
+
+	log.Println("Searching for latest private vacancies")
+
+	selector := `.col-sm-9.items`
+	var url string
+	err := chromedp.Run(ctx,
+		chromedp.ScrollIntoView(selector),
+		chromedp.Location(&url))
+	s.Error(err)
+	if n := strings.Compare(url, s.AllowedDomains[1]); n == 0 {
+		
+		
+		var html string
+
+		err = chromedp.Run(ctx,
+		chromedp.InnerHTML(selector, &html))
+		s.Error(err)
+
+		parser := pipeline.HtmlParser{Html:strings.Trim(html," ")}
+		parser.Init()
+
+
+	}
 
 }
 func (s *Spider) Date() string {
@@ -55,6 +90,7 @@ func (s *Spider) Error(err error) {
 		log.Fatal(err)
 	}
 }
+
 // phase 1
 // 1. go to http://www.heitha.co.za/
 // 2 . click button with class .all-button and textContent
