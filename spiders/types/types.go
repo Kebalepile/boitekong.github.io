@@ -1,12 +1,13 @@
 package types
 
-type Spider struct {
-	Name           string
-	AllowedDomains []string
-	Shutdown       context.CancelFunc
-}
-
+import (
+	"sync"
+)
 type Links struct {
 	Title string            `json:"title"`
 	Links map[string]string `json:"links"`
+}
+
+type Crawler interface {
+	Launch(wg *sync.WaitGroup)
 }
