@@ -9,6 +9,7 @@ import (
 	"log"
 	"strings"
 	"time"
+	"sync"
 )
 
 type Spider struct {
@@ -17,12 +18,13 @@ type Spider struct {
 	Shutdown       context.CancelFunc
 }
 
-func (s *Spider) Launch() {
+func (s *Spider) Launch(wg *sync.WaitGroup) {
+	defer wg.Done()
 
 	log.Println(s.Name, " spider has Lunched ", s.Date())
 
 	opts := append(chromedp.DefaultExecAllocatorOptions[:],
-		chromedp.Flag("headless", true), // set headless false
+		chromedp.Flag("headless", true), // set headless to true for production
 		chromedp.UserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"),
 		chromedp.WindowSize(768, 1024), // Tablet size
 	)

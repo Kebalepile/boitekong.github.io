@@ -2,13 +2,59 @@ package heitha
 
 import(
 	"context"
-	// "github.com/Kebalepile/job_board/spiders"
+	// "github.com/Kebalepile/job_board/spiders/types"
 	// "github.com/chromedp/cdproto/cdp"
 	"github.com/chromedp/chromedp"
 	"log"
 	// "strings"
-	// "time"
+	"time"
+	"sync"
 )
+type Spider struct {
+	Name           string
+	AllowedDomains []string
+	Shutdown       context.CancelFunc
+}
+
+func (s *Spider) Launch(wg *sync.WaitGroup){
+	defer wg.Done()
+
+	log.Println(s.Name, " spider has Lunched ", s.Date())
+
+	opts := append(chromedp.DefaultExecAllocatorOptions[:],
+		chromedp.Flag("headless", false), // set headless to true for production
+		chromedp.UserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"),
+		chromedp.WindowSize(768, 1024), // Tablet size
+	)
+
+	ctx, cancel := chromedp.NewExecAllocator(context.Background(), opts...)
+	defer cancel()
+
+	ctx, cancel = chromedp.NewContext(ctx)
+
+	s.Shutdown = cancel
+
+	err := chromedp.Run(ctx,
+		chromedp.Navigate(s.AllowedDomains[0]),
+	)
+	s.Error(err)
+
+
+
+}
+func (s *Spider) Date() string {
+	t := time.Now()
+	return t.Format("02 January 2006")
+}
+func (s *Spider) Close() {
+	log.Println(s.Name, "is done.")
+	s.Shutdown()
+}
+func (s *Spider) Error(err error) {
+	if err != nil {
+		log.Fatal(err)
+	}
+}
 // phase 1
 // 1. go to http://www.heitha.co.za/
 // 2 . click button with class .all-button and textContent
