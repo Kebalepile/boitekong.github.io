@@ -3,13 +3,13 @@ package pipeline
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Kebalepile/job_board/spiders"
+	"github.com/Kebalepile/job_board/spiders/types"
 	"log"
 	"os"
 	"path/filepath"
 )
 
-func SaveJsonFile(data spiders.Links) error {
+func SaveJsonFile(data types.Links) error {
 	contentBytes, err := json.Marshal(data)
 	if err != nil {
 		return err
