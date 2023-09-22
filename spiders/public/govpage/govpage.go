@@ -8,16 +8,20 @@ import (
 	"github.com/chromedp/chromedp"
 	"log"
 	"strings"
-	"time"
 	"sync"
+	"time"
 )
 
+// Govpage package spider type
 type Spider struct {
 	Name           string
 	AllowedDomains []string
 	Shutdown       context.CancelFunc
 }
 
+// initiate the Spider instant
+// Configers chromedp options such as headless flag userAgent & window size
+// Creates Navigates to the allowed domain to crawl
 func (s *Spider) Launch(wg *sync.WaitGroup) {
 	defer wg.Done()
 
@@ -48,7 +52,6 @@ func (s *Spider) Launch(wg *sync.WaitGroup) {
 		chromedp.Nodes(`ul li.wsite-menu-item-wrap a.wsite-menu-item`, &nodes, chromedp.ByQueryAll))
 	s.Error(err)
 
-	// loop over the anchor elements
 	for _, n := range nodes {
 		var (
 			text string
@@ -84,6 +87,7 @@ func (s *Spider) Launch(wg *sync.WaitGroup) {
 	s.Close()
 }
 
+// crawels for availabe job posts on loaded page url
 func (s *Spider) vacancies(ctx context.Context, selector string) {
 	log.Println("Searching for latest government vacancies.")
 
@@ -115,6 +119,10 @@ func (s *Spider) vacancies(ctx context.Context, selector string) {
 	}
 
 }
+
+// Scrapes job post links for the current day
+// adds them to govpageLinks.Links map
+// once done save the information to a *.json file
 func (s *Spider) links(ctx context.Context, url string, govpageLinks types.Links) {
 
 	log.Println("Searching For Advert Post Links")
@@ -127,7 +135,7 @@ func (s *Spider) links(ctx context.Context, url string, govpageLinks types.Links
 		chromedp.ScrollIntoView(selector))
 	s.Error(err)
 
-	time.Sleep(20 * time.Second) // pause for 20 seconds
+	s.Robala(20) // pause for 20 seconds
 
 	var nodes []*cdp.Node
 	err = chromedp.Run(ctx,
@@ -157,7 +165,7 @@ func (s *Spider) links(ctx context.Context, url string, govpageLinks types.Links
 
 		}
 
-		err = pipeline.SaveJsonFile(govpageLinks)
+		err = pipeline.GovPageFile(govpageLinks)
 		if err != nil {
 			s.Error(err)
 		}
@@ -169,6 +177,8 @@ func (s *Spider) Date() string {
 	t := time.Now()
 	return t.Format("02 January 2006")
 }
+
+// closes chromedp broswer instance
 func (s *Spider) Close() {
 	log.Println(s.Name, "is done.")
 	s.Shutdown()
@@ -177,4 +187,9 @@ func (s *Spider) Error(err error) {
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+// pauses spider for given duration
+func (s *Spider) Robala(second int) {
+	time.Sleep(time.Duration(second) * time.Second)
 }
