@@ -2,23 +2,21 @@ package main
 
 import (
 	"github.com/Kebalepile/job_board/spiders/private/heitha"
-	// "github.com/Kebalepile/job_board/spiders/public/govpage"
+	"github.com/Kebalepile/job_board/spiders/public/govpage"
 	"github.com/Kebalepile/job_board/spiders/types"
 	"log"
 	"sync"
 )
 
-
-
 func main() {
 	log.Println("Job Board Scrapper Initiated ")
-	// govpageSpider := govpage.Spider{
-	// 	Name: "gov-page",
-	// 	AllowedDomains: []string{
-	// 		"https://www.govpage.co.za/",
-	// 		"https://www.govpage.co.za/latest-govpage-updates",
-	// 	},
-	// }
+	govpageSpider := govpage.Spider{
+		Name: "gov-page",
+		AllowedDomains: []string{
+			"https://www.govpage.co.za/",
+			"https://www.govpage.co.za/latest-govpage-updates",
+		},
+	}
 
 	heithaSpider := heitha.Spider{
 		Name: "heitha-page",
@@ -29,7 +27,7 @@ func main() {
 	}
 
 	goFuncs := []types.Crawler{
-		// &govpageSpider,
+		&govpageSpider,
 		&heithaSpider,
 	}
 
