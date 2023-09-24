@@ -11,8 +11,8 @@ import (
 )
 
 // saves scraped data into a json file in database public folder
-func GovPageFile(data types.Links) error {
-	contentBytes, err := json.MarshalIndent(data, "", " ")
+func GovPageFile(data *types.Links) error {
+	contentBytes, err := json.MarshalIndent(*data, "", " ")
 	if err != nil {
 		return err
 	}
@@ -28,8 +28,8 @@ func GovPageFile(data types.Links) error {
 }
 
 // saves scraped data into a json file in database private folder
-func HeithaFile(data types.HeithaJobs) error {
-	contentBytes, err := json.MarshalIndent(data, "", " ")
+func HeithaFile(data *types.HeithaJobs) error {
+	contentBytes, err := json.MarshalIndent(*data, "", " ")
 	if err != nil {
 		return err
 	}

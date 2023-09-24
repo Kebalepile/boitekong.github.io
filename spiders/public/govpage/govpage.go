@@ -111,7 +111,7 @@ func (s *Spider) vacancies(ctx context.Context, selector string) {
 			href := n.AttributeValue("href")
 			url := "https://" + href[2:]
 
-			s.links(ctx, url, govpageLinks)
+			s.links(ctx, url, &govpageLinks)
 
 		} else {
 			log.Println("Sorry, No Government Job Posts for today")
@@ -121,7 +121,7 @@ func (s *Spider) vacancies(ctx context.Context, selector string) {
 }
 
 // Scrapes job post links for the current day
-func (s *Spider) links(ctx context.Context, url string, govpageLinks types.Links) {
+func (s *Spider) links(ctx context.Context, url string, govpageLinks *types.Links) {
 
 	log.Println("Searching For Advert Post Links")
 

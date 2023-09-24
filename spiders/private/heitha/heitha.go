@@ -17,7 +17,7 @@ type Spider struct {
 	Name           string
 	AllowedDomains []string
 	Shutdown       context.CancelFunc
-	Posts          types.HeithaJobs
+	Posts          *types.HeithaJobs
 }
 
 // initiate the Spider instant
