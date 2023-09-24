@@ -17,7 +17,7 @@ type Spider struct {
 	Name           string
 	AllowedDomains []string
 	Shutdown       context.CancelFunc
-	Posts          *types.HeithaJobs
+	Posts          types.HeithaJobs
 }
 
 // initiate the Spider instant
@@ -101,7 +101,7 @@ func (s *Spider) jobs(ctx context.Context, url ...string) {
 	}
 
 	if n >= 10 {
-		err := pipeline.HeithaFile(s.Posts)
+		err := pipeline.HeithaFile(&s.Posts)
 		if err != nil {
 			s.Error(err)
 		}
