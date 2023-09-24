@@ -7,7 +7,16 @@ import (
 // Used in Govpage spider
 type Links struct {
 	Title string            `json:"title"`
-	Links map[string]string `json:"links"`
+	BlogPosts []BlogPost `json:"blogPosts"`
+}
+
+// Used in Govpage spider
+type BlogPost struct {
+	Href          string `json:"href"`
+	Title      string `json:"title"`
+	Content []string `json:"content"`
+	PostedDate    string `json:"date"`
+	Iframe string `json:"iframe"`
 }
 
 // Used in package main main.go
