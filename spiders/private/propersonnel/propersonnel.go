@@ -44,20 +44,16 @@ func (s *Spider) Launch(wg *sync.WaitGroup) {
 
 	log.Println("Loading ", s.Name)
 
-	err := chromedp.Run(
-		ctx,
-		chromedp.Navigate(s.AllowedDomains[0]))
-	s.Error(err)
-
-	s.Robala(5)
-
 	menuSelector := `.mmenu-trigger`
 	var nodes []*cdp.Node
 
-	err = chromedp.Run(
+	err := chromedp.Run(
 		ctx,
+		chromedp.Navigate(s.AllowedDomains[0]),
+		chromedp.Sleep(5*time.Second),
 		chromedp.WaitVisible(menuSelector),
 		chromedp.Click(menuSelector),
+		chromedp.Sleep(5*time.Second),
 		chromedp.WaitVisible(`#mobile-nav`),
 		chromedp.Nodes(`#mobile-nav a`, &nodes, chromedp.ByQueryAll))
 	s.Error(err)
@@ -70,7 +66,6 @@ func (s *Spider) Launch(wg *sync.WaitGroup) {
 				break
 			}
 		}
-		s.Robala(5)
 		s.vacancies(href, ctx)
 	}
 }
@@ -85,17 +80,21 @@ func (s *Spider) vacancies(url string, ctx context.Context) {
 	var t string
 	err := chromedp.Run(ctx,
 		chromedp.Navigate(url),
+		chromedp.Sleep(5*time.Second),
 		chromedp.Title(&t))
 
 	s.Error(err)
-	s.Robala(10)
 
 	if yes := strings.Contains(strings.ToLower(t), "vacancies"); yes {
-		selector := `#advert_list`
+		// selector := `#advert_list`
+		// /html/body/div/div[2]
+		xpath := `/html/body/div/div[2]`
+
 		err = chromedp.Run(ctx,
-			chromedp.WaitEnabled(selector),
-			chromedp.ScrollIntoView(selector))
+			chromedp.ScrollIntoView(xpath, chromedp.BySearch),
+			chromedp.Sleep(5*time.Second))
 		s.Error(err)
+
 	}
 }
 
