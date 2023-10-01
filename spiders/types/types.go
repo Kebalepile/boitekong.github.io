@@ -42,3 +42,13 @@ type HeithaJobs struct {
 	Title string    `json:"title"`
 	Links []JobPost `json:"links"`
 }
+
+// Used in ProPersonnel spider
+type ProJobPost struct {
+	
+}
+// Used in ProPersonnel spider
+type ProPersonnelJobs struct {
+	Title string `json:"title"`
+    Links [] ProJobPost `json:"links"`
+}
