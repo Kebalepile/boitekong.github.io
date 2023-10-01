@@ -3,26 +3,33 @@ package govpage
 import (
 	"context"
 	"github.com/Kebalepile/job_board/pipeline"
-	"github.com/Kebalepile/job_board/spiders"
+	"github.com/Kebalepile/job_board/spiders/types"
 	"github.com/chromedp/cdproto/cdp"
 	"github.com/chromedp/chromedp"
 	"log"
 	"strings"
+	"sync"
 	"time"
+	"errors"
 )
 
+// Govpage package spider type
 type Spider struct {
 	Name           string
 	AllowedDomains []string
 	Shutdown       context.CancelFunc
 }
 
-func (s *Spider) Launch() {
+// initiate the Spider instant
+// Configers chromedp options such as headless flag userAgent & window size
+// Creates Navigates to the allowed domain to crawl
+func (s *Spider) Launch(wg *sync.WaitGroup) {
+	defer wg.Done()
 
 	log.Println(s.Name, " spider has Lunched ", s.Date())
 
 	opts := append(chromedp.DefaultExecAllocatorOptions[:],
-		chromedp.Flag("headless", true), // set headless false
+		chromedp.Flag("headless", true), // set headless to true for production
 		chromedp.UserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"),
 		chromedp.WindowSize(768, 1024), // Tablet size
 	)
@@ -46,7 +53,6 @@ func (s *Spider) Launch() {
 		chromedp.Nodes(`ul li.wsite-menu-item-wrap a.wsite-menu-item`, &nodes, chromedp.ByQueryAll))
 	s.Error(err)
 
-	// loop over the anchor elements
 	for _, n := range nodes {
 		var (
 			text string
@@ -82,6 +88,7 @@ func (s *Spider) Launch() {
 	s.Close()
 }
 
+// crawels for availabe job posts on loaded page url
 func (s *Spider) vacancies(ctx context.Context, selector string) {
 	log.Println("Searching for latest government vacancies.")
 
@@ -97,15 +104,14 @@ func (s *Spider) vacancies(ctx context.Context, selector string) {
 			chromedp.TextContent(n.FullXPath(), &text))
 		s.Error(err)
 		title := strings.ToLower(text)
-		if match := strings.Contains(title, strings.ToLower(s.Date())); match {
-			govpageLinks := spiders.Links{
-				Title: strings.Trim(title, " "),
-				Links: map[string]string{},
-			}
+		if yes := strings.Contains(title, strings.ToLower(s.Date())); yes {
+
+			govpageLinks := types.Links{Title: strings.Trim(title, " ")}
+
 			href := n.AttributeValue("href")
 			url := "https://" + href[2:]
 
-			s.links(ctx, url, govpageLinks)
+			s.links(ctx, url, &govpageLinks)
 
 		} else {
 			log.Println("Sorry, No Government Job Posts for today")
@@ -113,13 +119,13 @@ func (s *Spider) vacancies(ctx context.Context, selector string) {
 	}
 
 }
-func (s *Spider) links(ctx context.Context, url string, govpageLinks spiders.Links) {
+
+// Scrapes job post links for the current day
+func (s *Spider) links(ctx context.Context, url string, govpageLinks *types.Links) {
 
 	log.Println("Searching For Advert Post Links")
 
 	selector := `[id^='blog-post-'] a`
-
-	
 
 	err := chromedp.Run(ctx,
 		chromedp.Navigate(url),
@@ -127,7 +133,7 @@ func (s *Spider) links(ctx context.Context, url string, govpageLinks spiders.Lin
 		chromedp.ScrollIntoView(selector))
 	s.Error(err)
 
-	time.Sleep(20 * time.Second) // pause for 20 seconds
+	s.Robala(20) // pause for 20 seconds
 
 	var nodes []*cdp.Node
 	err = chromedp.Run(ctx,
@@ -136,7 +142,7 @@ func (s *Spider) links(ctx context.Context, url string, govpageLinks spiders.Lin
 
 	log.Println("Found some posts, number of posts deteched is: ", len(nodes))
 
-	if posts := len(nodes); posts > 0 {
+	if count := len(nodes); count > 0 {
 
 		for _, n := range nodes {
 
@@ -148,16 +154,24 @@ func (s *Spider) links(ctx context.Context, url string, govpageLinks spiders.Lin
 			s.Error(err)
 
 			k := len(text)
-			v := len(href)
+			l := len(href)
 
-			if k > 0 && v > 0 {
-				k := strings.Trim(strings.ReplaceAll(text, "\n", ""), " ")
-				govpageLinks.Links[k] = href
+			if k > 0 && l > 0 {
+
+				m := strings.ToLower(strings.Trim(strings.ReplaceAll(text, "\n", ""), " "))
+				n := strings.Contains(m, strings.ToLower(s.Date()))
+				o := strings.Contains(m, strings.ToLower("PRIVATE SECTOR OPPORTUNITIES"))
+
+				if !n && !o {
+					pointer, err := s.postContent(ctx, href)
+					s.Error(err)
+					govpageLinks.BlogPosts = append(govpageLinks.BlogPosts, *pointer)
+				}
 			}
 
 		}
-
-		err = pipeline.SaveJsonFile(govpageLinks)
+		
+		err = pipeline.GovPageFile(govpageLinks)
 		if err != nil {
 			s.Error(err)
 		}
@@ -165,10 +179,89 @@ func (s *Spider) links(ctx context.Context, url string, govpageLinks spiders.Lin
 
 	}
 }
+
+// Get the content of the given url
+func (s *Spider) postContent(ctx context.Context, url string)( *types.BlogPost,  error){
+
+	selector := `.blog-post`
+
+	var nodes []*cdp.Node
+
+	err := chromedp.Run(ctx,
+		chromedp.Navigate(url),
+		chromedp.WaitEnabled(selector, chromedp.ByQueryAll),
+		chromedp.ScrollIntoView(selector),
+		chromedp.Nodes(`.blog-title-link.blog-link`, &nodes))
+
+	s.Error(err)
+
+	if count := len(nodes); count > 0 {
+
+		n := nodes[0]
+
+		var title, date string
+		href := n.AttributeValue("href")
+
+		err = chromedp.Run(ctx,
+			chromedp.TextContent(n.FullXPath(), &title),
+			chromedp.TextContent(`.blog-date > .date-text`, &date))
+		s.Error(err)
+
+		blogPost := types.BlogPost{
+			Href:       href,
+			Title:      title,
+			PostedDate: date,
+		}
+
+		err = chromedp.Run(ctx,
+			chromedp.Nodes(`.blog-content > .paragraph`, &nodes))
+		s.Error(err)
+
+		if count := len(nodes); count > 0 {
+
+			paragraphs := make([]string, 0)
+
+			for _, n := range nodes {
+
+				var text string
+
+				err := chromedp.Run(ctx,
+					chromedp.TextContent(n.FullXPath(), &text))
+				s.Error(err)
+
+				paragraphs = append(paragraphs, text)
+			}
+
+			blogPost.Content = paragraphs
+
+		} else {
+
+			err := chromedp.Run(ctx,
+				chromedp.Nodes(`.iframe`, &nodes))
+
+			s.Error(err)
+			if count := len(nodes); count > 0 {
+				for _, n := range nodes {
+					src := n.AttributeValue("src")
+					if yes := strings.Contains(src, "drive.google"); yes {
+						blogPost.Iframe = src
+						break
+					}
+				}
+			}
+		}
+
+		return &blogPost, nil
+
+	}
+	return nil, errors.New("no blog post found")
+}
 func (s *Spider) Date() string {
 	t := time.Now()
 	return t.Format("02 January 2006")
 }
+
+// closes chromedp broswer instance
 func (s *Spider) Close() {
 	log.Println(s.Name, "is done.")
 	s.Shutdown()
@@ -177,4 +270,9 @@ func (s *Spider) Error(err error) {
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+// pauses spider for given duration
+func (s *Spider) Robala(second int) {
+	time.Sleep(time.Duration(second) * time.Second)
 }
