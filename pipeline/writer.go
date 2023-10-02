@@ -43,6 +43,22 @@ func HeithaFile(data *types.HeithaJobs) error {
 	log.Print(data.Title, " Saved at ", filePath)
 	return nil
 }
+// saves scraped data into a json file in database private folder
+func ProPersonnelFile(data *types.ProPersonnelJobs) error {
+	contentBytes, err := json.MarshalIndent(*data, "", " ")
+	if err != nil {
+		return err
+	}
+	title := cleanStr(data.Title)
+	filePath := filepath.Join("database", "private", fmt.Sprintf("%s.json", title))
+
+	err = os.WriteFile(filePath, contentBytes, 0644)
+	if err != nil {
+		return err
+	}
+	log.Print(data.Title, " Saved at ", filePath)
+	return nil
+}
 
 // replaces all `,` and spaces in s with `-`
 func cleanStr(s string) string {

@@ -45,7 +45,7 @@ type HeithaJobs struct {
 
 // Used in ProPersonnel spider
 type ProJobPost struct {
-	
+	Html string `json:"html"`
 }
 // Used in ProPersonnel spider
 type ProPersonnelJobs struct {

@@ -12,6 +12,7 @@ import (
 	"sync"
 	"time"
 )
+
 // Heitha package spider type
 type Spider struct {
 	Name           string
@@ -108,11 +109,11 @@ func (s *Spider) jobs(ctx context.Context, url ...string) {
 		s.Close()
 	} else {
 
-		javaScript := fmt.Sprintf(`document.querySelector(".active").nextElementSibling.querySelector("a").getAttribute("href")`)
+		expression := fmt.Sprintf(`document.querySelector(".active").nextElementSibling.querySelector("a").getAttribute("href")`)
 		var nextPage string
 
 		err = chromedp.Run(ctx,
-			chromedp.Evaluate(javaScript, &nextPage))
+			chromedp.Evaluate(expression, &nextPage))
 		s.Error(err)
 		// pause for 10s
 		s.Robala(6)
@@ -125,7 +126,7 @@ func (s *Spider) jobs(ctx context.Context, url ...string) {
 // and url to application page for each job post
 func (s *Spider) posts(ctx context.Context) (posts []types.JobPost) {
 
-	javaScript := fmt.Sprintf(` Array.from(document.querySelectorAll(".col-sm-9.items > a")).map(a => {
+	expression := fmt.Sprintf(` Array.from(document.querySelectorAll(".col-sm-9.items > a")).map(a => {
 		const jobPost ={};
 		jobPost.href = location.href.replace("jobs","") + a.getAttribute("href");
 		jobPost.industryTitle = a.querySelector(".industry-title").textContent;
@@ -137,7 +138,7 @@ func (s *Spider) posts(ctx context.Context) (posts []types.JobPost) {
 		return jobPost })`)
 
 	err := chromedp.Run(ctx,
-		chromedp.Evaluate(javaScript, &posts))
+		chromedp.Evaluate(expression, &posts))
 	s.Error(err)
 
 	return posts

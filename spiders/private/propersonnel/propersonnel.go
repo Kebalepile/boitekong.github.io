@@ -3,6 +3,7 @@ package propersonnel
 import (
 	"context"
 	"fmt"
+	"github.com/Kebalepile/job_board/pipeline"
 	"github.com/Kebalepile/job_board/spiders/types"
 	"github.com/chromedp/cdproto/cdp"
 	"github.com/chromedp/chromedp"
@@ -30,7 +31,7 @@ func (s *Spider) Launch(wg *sync.WaitGroup) {
 	s.Posts.Title = fmt.Sprintf("propersonnel-jobs%s", s.Date())
 
 	opts := append(chromedp.DefaultExecAllocatorOptions[:],
-		chromedp.Flag("headless", false), // set headless to true for production
+		chromedp.Flag("headless", true), // set headless to true for production
 		chromedp.UserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"),
 		chromedp.WindowSize(768, 1024), // Tablet size
 	)
@@ -86,14 +87,74 @@ func (s *Spider) vacancies(url string, ctx context.Context) {
 	s.Error(err)
 
 	if yes := strings.Contains(strings.ToLower(t), "vacancies"); yes {
-		// selector := `#advert_list`
-		// /html/body/div/div[2]
-		xpath := `/html/body/div/div[2]`
+
+		iframe := `#advanced_iframe`
+
+		var (
+			nodes []*cdp.Node
+			url   string
+		)
 
 		err = chromedp.Run(ctx,
-			chromedp.ScrollIntoView(xpath, chromedp.BySearch),
-			chromedp.Sleep(5*time.Second))
+			chromedp.Nodes(iframe, &nodes, chromedp.ByQuery))
 		s.Error(err)
+
+		if len(nodes) > 0 {
+
+			url = nodes[0].AttributeValue("src")
+			selector := `#advert_list`
+
+			err = chromedp.Run(ctx,
+				chromedp.Navigate(url),
+				chromedp.Sleep(5*time.Second),
+				chromedp.WaitVisible(selector, chromedp.ByQuery),
+				chromedp.ScrollIntoView(selector),
+				chromedp.Nodes(`.job-spec`, &nodes, chromedp.ByQueryAll))
+			s.Error(err)
+			log.Println(len(nodes), " job posts found on ", s.Name)
+			if len(nodes) > 0 {
+				for _, n := range nodes {
+					id := n.AttributeValue("id")
+					expression := fmt.Sprintf(`
+						(() => {
+							let innerHTML = document.querySelector('#%s').innerHTML;
+							let p = new DOMParser();
+							let doc = p.parseFromString(innerHTML,'text/html');
+							let aTags = doc.getElementsByTagName('a');
+							Array.from(aTags).forEach(aTag => {
+								if(aTag.textContent.includes("show more")){
+									aTag.parentNode.removeChild(aTag);
+								}else{
+									let pTag = doc.createElement('p');
+									pTag.textContent = aTag.textContent;
+
+									aTag.parentNode.replaceChild(pTag,aTag);
+								}
+							});
+				
+							return {	
+								html: doc.body.innerHTML
+							};
+						})()`, id)
+
+					var JobPost types.ProJobPost
+					err = chromedp.Run(ctx,
+						chromedp.Evaluate(expression, &JobPost))
+					s.Error(err)
+
+					s.Posts.Links = append(s.Posts.Links, JobPost)
+
+				}
+
+				err = pipeline.ProPersonnelFile(&s.Posts)
+				if err != nil {
+					s.Error(err)
+				}
+				s.Close()
+			} else {
+				s.Close()
+			}
+		}
 
 	}
 }
