@@ -1,6 +1,7 @@
 package pipeline
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"github.com/Kebalepile/job_board/spiders/types"
@@ -12,14 +13,22 @@ import (
 
 // saves scraped data into a json file in database public folder
 func GovPageFile(data *types.Links) error {
-	contentBytes, err := json.MarshalIndent(*data, "", " ")
+
+	buffer := &bytes.Buffer{}
+	encoder := json.NewEncoder(buffer)
+
+	encoder.SetEscapeHTML(false)
+	encoder.SetIndent("", "  ")
+
+	err := encoder.Encode(*data)
+
 	if err != nil {
 		return err
 	}
 	title := cleanStr(data.Title)
 	filePath := filepath.Join("database", "public", fmt.Sprintf("%s.json", title))
 
-	err = os.WriteFile(filePath, contentBytes, 0644)
+	err = os.WriteFile(filePath, buffer.Bytes(), 0644)
 	if err != nil {
 		return err
 	}
@@ -29,30 +38,45 @@ func GovPageFile(data *types.Links) error {
 
 // saves scraped data into a json file in database private folder
 func HeithaFile(data *types.HeithaJobs) error {
-	contentBytes, err := json.MarshalIndent(*data, "", " ")
+
+	buffer := &bytes.Buffer{}
+	encoder := json.NewEncoder(buffer)
+
+	encoder.SetEscapeHTML(false)
+	encoder.SetIndent("", "  ")
+
+	err := encoder.Encode(*data)
 	if err != nil {
 		return err
 	}
 	title := cleanStr(data.Title)
 	filePath := filepath.Join("database", "private", fmt.Sprintf("%s.json", title))
 
-	err = os.WriteFile(filePath, contentBytes, 0644)
+	err = os.WriteFile(filePath, buffer.Bytes(), 0644)
 	if err != nil {
 		return err
 	}
 	log.Print(data.Title, " Saved at ", filePath)
 	return nil
 }
+
 // saves scraped data into a json file in database private folder
 func ProPersonnelFile(data *types.ProPersonnelJobs) error {
-	contentBytes, err := json.MarshalIndent(*data, "", " ")
+
+	buffer := &bytes.Buffer{}
+	encoder := json.NewEncoder(buffer)
+
+	encoder.SetEscapeHTML(false)
+	encoder.SetIndent("", "  ")
+
+	err := encoder.Encode(*data)
 	if err != nil {
 		return err
 	}
 	title := cleanStr(data.Title)
 	filePath := filepath.Join("database", "private", fmt.Sprintf("%s.json", title))
 
-	err = os.WriteFile(filePath, contentBytes, 0644)
+	err = os.WriteFile(filePath, buffer.Bytes(), 0644)
 	if err != nil {
 		return err
 	}
