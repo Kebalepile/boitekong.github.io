@@ -127,15 +127,25 @@ func (s *Spider) jobs(ctx context.Context, url ...string) {
 func (s *Spider) posts(ctx context.Context) (posts []types.JobPost) {
 
 	expression := fmt.Sprintf(` Array.from(document.querySelectorAll(".col-sm-9.items > a")).map(a => {
-		const jobPost ={};
-		jobPost.href = location.href.replace("jobs","") + a.getAttribute("href");
-		jobPost.industryTitle = a.querySelector(".industry-title").textContent;
-		jobPost.jobTitle = a.querySelector(".job-title").textContent;
-		jobPost.bullets = a.querySelector(".bullets").textContent;
+		
+		const apply = location.href.replace("jobs","") + a.getAttribute("href");
+		const jobTitle = a.querySelector(".job-title").textContent;
+		const jobSpecFields = a.querySelector(".industry-title").textContent;
+		const details = a.querySelector(".bullets").textContent.replace(/\n/g, '').trim(" ");
+		
 		const exp = a.querySelectorAll(".expiry-date");
-		jobPost.expiryDate = exp[0].textContent;
-		jobPost.province = exp[1].textContent;
-		return jobPost })`)
+		const province = exp[1].textContent;
+		const expiryDate = exp[0].textContent;
+		
+
+		return {
+			apply,
+			jobTitle,
+			jobSpecFields,
+			details,
+			province,
+			expiryDate
+		} })`)
 
 	err := chromedp.Run(ctx,
 		chromedp.Evaluate(expression, &posts))
