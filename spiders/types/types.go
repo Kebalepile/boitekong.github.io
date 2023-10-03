@@ -6,17 +6,17 @@ import (
 
 // Used in Govpage spider
 type Links struct {
-	Title string            `json:"title"`
+	Title     string     `json:"title"`
 	BlogPosts []BlogPost `json:"blogPosts"`
 }
 
 // Used in Govpage spider
 type BlogPost struct {
-	Href          string `json:"href"`
-	Title      string `json:"title"`
-	Content []string `json:"content"`
-	PostedDate    string `json:"date"`
-	Iframe string `json:"iframe"`
+	Href       string   `json:"href"`
+	Title      string   `json:"title"`
+	Content    []string `json:"content"`
+	PostedDate string   `json:"date"`
+	Iframe     string   `json:"iframe"`
 }
 
 // Used in package main main.go
@@ -29,10 +29,10 @@ type Crawler interface {
 
 // Used in Heitha spider
 type JobPost struct {
-	Href          string `json:"href"`
+	Apply         string `json:"apply"`
 	JobTitle      string `json:"jobTitle"`
-	IndustryTitle string `json:"industryTitle"`
-	Bullets       string `json:"bullets"`
+	JobSpecFields string `json:"jobSpecFields"`
+	Details       string `json:"details"`
 	Province      string `json:"province"`
 	ExpiryDate    string `json:"expiryDate"`
 }
@@ -45,10 +45,18 @@ type HeithaJobs struct {
 
 // Used in ProPersonnel spider
 type ProJobPost struct {
-	Html string `json:"html"`
+	JobTitle      string            `json:"jobTitle"`
+	StartDate     string            `json:"startDate"`
+	VacancyType   string            `json:"vacancyType"`
+	JobSpecFields string            `json:"jobSpecFields"`
+	Location      map[string]string `json:"location"`
+	Details       string            `json:"details"`
+	Contact       string            `json:"contact"`
+	Apply         string            `json:"apply"`
 }
+
 // Used in ProPersonnel spider
 type ProPersonnelJobs struct {
-	Title string `json:"title"`
-    Links [] ProJobPost `json:"links"`
+	Title string       `json:"title"`
+	Links []ProJobPost `json:"links"`
 }

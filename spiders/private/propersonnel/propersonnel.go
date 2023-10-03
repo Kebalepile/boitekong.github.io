@@ -111,34 +111,74 @@ func (s *Spider) vacancies(url string, ctx context.Context) {
 				chromedp.ScrollIntoView(selector),
 				chromedp.Nodes(`.job-spec`, &nodes, chromedp.ByQueryAll))
 			s.Error(err)
+
 			log.Println(len(nodes), " job posts found on ", s.Name)
+
 			if len(nodes) > 0 {
 				for _, n := range nodes {
 					id := n.AttributeValue("id")
-					expression := fmt.Sprintf(`
-						(() => {
-							let innerHTML = document.querySelector('#%s').innerHTML;
-							let p = new DOMParser();
-							let doc = p.parseFromString(innerHTML,'text/html');
-							let aTags = doc.getElementsByTagName('a');
-							Array.from(aTags).forEach(aTag => {
-								if(aTag.textContent.includes("show more")){
-									aTag.parentNode.removeChild(aTag);
-								}else{
-									let pTag = doc.createElement('p');
-									pTag.textContent = aTag.textContent;
+					expression := fmt.Sprintf(`(() => {    
 
-									aTag.parentNode.replaceChild(pTag,aTag);
-								}
-							});
-				
-							return {	
-								html: doc.body.innerHTML
+							const html = document.querySelector("#%s").innerHTML;
+
+							let regexPattern = /<div\s+class="job-spec-value">(.*?)<\/div>/;
+							let match = html.match(regexPattern);
+							const jobTitle = match ? match[1].trim() : "";
+
+							regexPattern = /<div[^>]*id="start_date"[^>]*>([\s\S]*?<div\s+class="job-spec-value">(.*?)<\/div>[\s\S]*?)<\/div>/;
+							match = html.match(regexPattern);
+							const startDate = match ? match[2].trim() : "";
+
+							regexPattern = /<div[^>]*id="job_spec_type"[^>]*>([\s\S]*?<div[^>]*class="[^"]*\bjob-spec-value\b[^"]*"[^>]*>([^<]*)<\/div>[\s\S]*?)<\/div>/;
+							match = html.match(regexPattern);
+							const vacancyType = match ? match[2].trim() : "";
+
+							regexPattern = /<div[^>]*id="sectors_list"[^>]*>([\s\S]*?<div[^>]*class="[^"]*\bbadge-ribbon\b[^"]*"[^>]*><i[^>]*><\/i>\s*([^<]*)<\/div>[\s\S]*?)<\/div>/;
+							match = html.match(regexPattern);
+							const jobSpecFields = match ? match[2].trim() : "";
+					
+							regexPattern = /<span\s+id="region_label">(.*?)<\/span>/; // Use the regex pattern to match and extract the date content
+							match = html.match(regexPattern);
+							const location = {
+							region: match ? match[1].trim() : "",
 							};
-						})()`, id)
+					
+							regexPattern = /<span\s+id="location_label">(.*?)<\/span>/; // Use the regex pattern to match and extract the date content
+							match = html.match(regexPattern);
+					
+							location.city = match ? match[1].trim() : "";
+					
+							regexPattern = /<div[^>]*id="contact"[^>]*>([\s\S]*?<div[^>]*class="[^"]*\bjob-spec-value\b[^"]*"[^>]*>([^<]*)<\/div>[\s\S]*?)<\/div>/; // Use the regex pattern to match and extract the date content
+							match = html.match(regexPattern);
+							const contact = match ? match[2].trim() : "";
+					
+							regexPattern =
+							/<div[^>]*id="description"[^>]*>([\s\S]*?<div[^>]*class="[^"]*\bjob-spec-value\b[^"]*"[^>]*>([\s\S]*?)<\/div>[\s\S]*?)<\/div>/;
+							match = html.match(regexPattern);
+							const details = match ? match[2].trim().replace(/<[^>]*>/g, "") : "";
+						
+							regexPattern =
+							/<div[^>]*id="apply_button"[^>]*>([\s\S]*?<a[^>]*href="([^"]*)"[^>]*>[\s\S]*?<\/a>[\s\S]*?)<\/div>/;
+							match = html.match(regexPattern);
+							const apply = window.location.origin + (match ? match[2].trim() : "");
+					
+							return {
+								jobTitle,
+								startDate,
+								vacancyType,
+								jobSpecFields,
+								location,
+								details,
+								contact,
+								apply,
+							};
+					})()`, id)
 
-					var JobPost types.ProJobPost
+					var (
+						JobPost types.ProJobPost
+					)
 					err = chromedp.Run(ctx,
+						chromedp.ScrollIntoView(id),
 						chromedp.Evaluate(expression, &JobPost))
 					s.Error(err)
 

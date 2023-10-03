@@ -2,8 +2,8 @@ package main
 
 import (
 	"github.com/Kebalepile/job_board/spiders/private/heitha"
-	"github.com/Kebalepile/job_board/spiders/public/govpage"
 	"github.com/Kebalepile/job_board/spiders/private/propersonnel"
+	"github.com/Kebalepile/job_board/spiders/public/govpage"
 	"github.com/Kebalepile/job_board/spiders/types"
 	"log"
 	"sync"
@@ -28,7 +28,7 @@ func main() {
 	}
 
 	propersonnelSpider := propersonnel.Spider{
-		Name:"Pro-Personnel",
+		Name: "Pro-Personnel",
 		AllowedDomains: []string{
 			"https://www.pro-personnel.co.za/",
 			"https://www.pro-personnel.co.za/vacancies/",

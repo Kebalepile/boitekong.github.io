@@ -189,7 +189,7 @@ func (s *Spider) postContent(ctx context.Context, url string)( *types.BlogPost, 
 
 	err := chromedp.Run(ctx,
 		chromedp.Navigate(url),
-		chromedp.WaitEnabled(selector, chromedp.ByQueryAll),
+		chromedp.WaitVisible(selector, chromedp.ByQueryAll),
 		chromedp.ScrollIntoView(selector),
 		chromedp.Nodes(`.blog-title-link.blog-link`, &nodes))
 
