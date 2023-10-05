@@ -76,7 +76,7 @@ func (s *Spider) Launch(wg *sync.WaitGroup) {
 // once done save the information to a *.json file
 func (s *Spider) vacancies(url string, ctx context.Context) {
 
-	log.Println("Loading vacancies page")
+	log.Println("Searching for latest vacancies")
 
 	var t string
 	err := chromedp.Run(ctx,

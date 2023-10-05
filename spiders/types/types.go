@@ -6,8 +6,9 @@ import (
 
 // Used in Govpage spider
 type Links struct {
-	Title     string     `json:"title"`
-	BlogPosts []BlogPost `json:"blogPosts"`
+	Title       string            `json:"title"`
+	BlogPosts   []BlogPost        `json:"blogPosts"`
+	Departments map[string]string `json:"departments"`
 }
 
 // Used in Govpage spider

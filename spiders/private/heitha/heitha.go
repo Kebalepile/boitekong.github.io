@@ -64,7 +64,7 @@ func (s *Spider) Launch(wg *sync.WaitGroup) {
 	s.Error(err)
 
 	if n := strings.Compare(url, s.AllowedDomains[1]); n == 0 {
-		log.Println("Searching for latest private vacancies")
+		log.Println("Searching for latest vacancies")
 
 		s.jobs(ctx)
 	}
@@ -76,7 +76,7 @@ func (s *Spider) Launch(wg *sync.WaitGroup) {
 // once done save the information to a *.json file
 func (s *Spider) jobs(ctx context.Context, url ...string) {
 
-	log.Println("Crawling site")
+	// log.Println("Crawling site")
 
 	if len(url) > 0 {
 		err := chromedp.Run(ctx,
