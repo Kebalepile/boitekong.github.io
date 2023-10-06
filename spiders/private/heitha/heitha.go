@@ -167,7 +167,10 @@ func (s *Spider) Close() {
 }
 func (s *Spider) Error(err error) {
 	if err != nil {
+		log.Println("*************************************")
+		log.Println("Error from: ", s.Name, " spider")
 		log.Fatal(err)
+		log.Println("*************************************")
 	}
 }
 

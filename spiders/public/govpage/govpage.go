@@ -238,29 +238,31 @@ func (s *Spider) postContent(ctx context.Context, url string) (*types.BlogPost, 
 
 			}
 
-		} else {
-			expression := `
-			(() => {
-				const src = Array.from(document.getElementsByTagName('iframe')).filter(f =>{
-    
-					if (f.src.includes("drive.google")){
-						return f
-					}
-					
-				}).map(f => f.src);
-				return src[0];
-			})()`
-
-			var src string
-			err := chromedp.Run(ctx,
-				chromedp.Evaluate(expression, &src))
-
-			s.Error(err)
-			if len(src) > 0 {
-				blogPost.Iframe = src
-			}
-
 		}
+		//  else {
+		// 	expression := `
+		// 	(() => {
+		// 		const src = Array.from(document.getElementsByTagName('iframe')).filter(f =>{
+    
+		// 			if (f.src.includes("drive.google")){
+		// 				return f
+		// 			}
+					
+		// 		}).map(f => f.src);
+		// 		return src[0];
+		// 	})()`
+
+		// 	var src string
+		// 	err := chromedp.Run(ctx,
+		// 		chromedp.Evaluate(expression, &src))
+
+		// 	s.Error(err)
+		// 	log.Println(src)
+		// 	if len(src) > 0 {
+		// 		blogPost.Iframe = src
+		// 	}
+
+		// }
 
 		return &blogPost, nil
 
@@ -268,9 +270,9 @@ func (s *Spider) postContent(ctx context.Context, url string) (*types.BlogPost, 
 	return nil, errors.New("no blog post found")
 }
 func (s *Spider) Date() string {
-	t := time.Now()
-
-	return t.Format("02 January 2006")
+	// t := time.Now()
+	// return t.Format("02 January 2006")
+	return time.Now().AddDate(0,0,-1).Format("02 January 2006")
 }
 
 // closes chromedp broswer instance
@@ -280,7 +282,10 @@ func (s *Spider) Close() {
 }
 func (s *Spider) Error(err error) {
 	if err != nil {
+		log.Println("*************************************")
+		log.Println("Error from: ", s.Name, " spider")
 		log.Fatal(err)
+		log.Println("*************************************")
 	}
 }
 
