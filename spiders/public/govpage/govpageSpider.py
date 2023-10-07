@@ -11,6 +11,12 @@ from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.action_chains import ActionChains as AC
 
+Links: dict = {
+    "Title":"",
+    "BlogPosts":[],
+    "Departments":{}
+
+}
 
 class Spider:
     Name = "gov-page"
@@ -78,6 +84,7 @@ class Spider:
                 text: str = l.text.lower()
 
                 if "06 october 2023" in text:
+                    Links["Title"] = text
                     vacanciesLink = l.get_attribute("href")
                     break
 
@@ -105,8 +112,8 @@ class Spider:
 
                 text: str = e.text
                 href: str = e.get_attribute("href")
-
-                log.info(f"{text} \n {href}")
+                Links["Departments"][text] = href
+            log.info(Links)  
 
     def Date(self) -> str:
         # current date
