@@ -20,12 +20,7 @@ type Spider struct {
 	Shutdown       context.CancelFunc
 	Posts          types.ProPersonnelJobs
 }
-var globalWg *sync.WaitGroup
 
-func (s *Spider) reStart(){
-	fmt.Sprintf(`Restarting %s spider`, s.Name)
-	s.Launch(globalWg)
-}
 // initiate the Spider instant
 // Configers chromedp options such as headless flag userAgent & window size
 // Creates Navigates to the allowed domain to crawl
@@ -82,7 +77,7 @@ func (s *Spider) Launch(wg *sync.WaitGroup) {
 // once done save the information to a *.json file
 func (s *Spider) vacancies(url string, ctx context.Context) {
 
-	log.Println("Searching for latest vacancies")
+	log.Println("Searching for latest vacancies ", s.Name)
 
 	var t string
 	err := chromedp.Run(ctx,
@@ -215,18 +210,16 @@ func (s *Spider) Close() {
 	log.Println(s.Name, "is done.")
 	s.Shutdown()
 }
+
 func (s *Spider) Error(err error) {
 	if err != nil {
 		log.Println("*************************************")
 		log.Println("Error from: ", s.Name, " spider")
-		websocketTimeout := "websocket url timeout reached"
-		
-		switch err.Error() {
-		case websocketTimeout:
-			s.reStart()
-		default:
+		log.Println(err.Error())
+		log.Println("Please restart scrapper")
+		log.Println("*************************************")
 			log.Fatal(err)
-		}
+		
 	}
 }
 

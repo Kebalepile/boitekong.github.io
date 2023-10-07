@@ -21,13 +21,6 @@ type Spider struct {
 	Posts          types.HeithaJobs
 }
 
-var globalWg *sync.WaitGroup
-
-func (s *Spider) reStart() {
-	log.Println(fmt.Sprintf(`Restarting %s spider`, s.Name))
-	s.Launch(globalWg)
-}
-
 // initiate the Spider instant
 // Configers chromedp options such as headless flag userAgent & window size
 // Creates Navigates to the allowed domain to crawl
@@ -71,7 +64,7 @@ func (s *Spider) Launch(wg *sync.WaitGroup) {
 	s.Error(err)
 
 	if n := strings.Compare(url, s.AllowedDomains[1]); n == 0 {
-		log.Println("Searching for latest vacancies")
+		log.Println("Searching for latest vacancies ", s.Name)
 
 		s.jobs(ctx)
 	}
@@ -133,7 +126,7 @@ func (s *Spider) jobs(ctx context.Context, url ...string) {
 // and url to application page for each job post
 func (s *Spider) posts(ctx context.Context) (posts []types.JobPost) {
 
-	expression := fmt.Sprintf(` Array.from(document.querySelectorAll(".col-sm-9.items > a")).map(a => {
+	expression := fmt.Sprintf(`Array.from(document.querySelectorAll(".col-sm-9.items > a")).map(a => {
 		
 		const apply = location.href.replace("jobs","") + a.getAttribute("href");
 		const jobTitle = a.querySelector(".job-title").textContent;
@@ -172,19 +165,16 @@ func (s *Spider) Close() {
 	log.Println(s.Name, "is done.")
 	s.Shutdown()
 }
+
 func (s *Spider) Error(err error) {
 	if err != nil {
 		log.Println("*************************************")
 		log.Println("Error from: ", s.Name, " spider")
 		log.Println(err.Error())
-		// websocketTimeout := "websocket url timeout reached"
-
-		switch err.Error() {
-		// case websocketTimeout:
-		// 	s.reStart()
-		default:
+		log.Println("Please restart scrapper")
+		log.Println("*************************************")
 			log.Fatal(err)
-		}
+		
 	}
 }
 
