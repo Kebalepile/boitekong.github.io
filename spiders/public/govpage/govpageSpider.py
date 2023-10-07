@@ -112,7 +112,14 @@ class Spider:
 
                 text: str = e.text
                 href: str = e.get_attribute("href")
-                Links["Departments"][text] = href
+            #     isPrivateSectorOpportunities := strings.Contains(strings.ToLower(text), strings.ToLower("PRIVATE SECTOR OPPORTUNITIES"))
+			# isCurrentDate := strings.Contains(strings.ToLower(strings.Trim(strings.ReplaceAll(text, "\n", ""), " ")), strings.ToLower(s.Date()))
+			# if !isPrivateSectorOpportunities && !isCurrentDate {
+			# 	govpageLinks.Departments[text] = href
+			# } 
+                isTitle: bool = self.Date().lower() in text
+                if isTitle is False:
+                    Links["Departments"][text] = href
             log.info(Links)  
 
     def Date(self) -> str:
