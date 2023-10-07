@@ -79,7 +79,7 @@ class Spider:
             for e in elems:
 
                 text: str = e.text.lower()
-
+                # replace date str below with self.Date().lower()
                 if "06 october 2023" in text:
                     govPageLinks["Title"] = text
                     vacanciesLink = e.get_attribute("href")
