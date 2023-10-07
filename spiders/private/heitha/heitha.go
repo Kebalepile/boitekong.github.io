@@ -21,6 +21,13 @@ type Spider struct {
 	Posts          types.HeithaJobs
 }
 
+var globalWg *sync.WaitGroup
+
+func (s *Spider) reStart() {
+	log.Println(fmt.Sprintf(`Restarting %s spider`, s.Name))
+	s.Launch(globalWg)
+}
+
 // initiate the Spider instant
 // Configers chromedp options such as headless flag userAgent & window size
 // Creates Navigates to the allowed domain to crawl
@@ -169,8 +176,15 @@ func (s *Spider) Error(err error) {
 	if err != nil {
 		log.Println("*************************************")
 		log.Println("Error from: ", s.Name, " spider")
-		log.Fatal(err)
-		log.Println("*************************************")
+		log.Println(err.Error())
+		// websocketTimeout := "websocket url timeout reached"
+
+		switch err.Error() {
+		// case websocketTimeout:
+		// 	s.reStart()
+		default:
+			log.Fatal(err)
+		}
 	}
 }
 
