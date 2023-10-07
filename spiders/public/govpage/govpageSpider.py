@@ -25,9 +25,9 @@ class Spider:
             "https://www.govpage.co.za/latest-govpage-updates"
         ]
         # webdriver options
-        opt = webdriver.ChromeOptions()
+        opt = webdriver.FirefoxOptions()
         # opt.add_argument("--headless") # enable headless for production
-        self.driver = webdriver.Chrome(options=opt)
+        self.driver = webdriver.Firefox(options=opt)
         # Set the window size to 768x1024 (tablet size)
         self.driver.set_window_size(768, 1024)
 
@@ -108,19 +108,22 @@ class Spider:
 
             for e in elems:
 
-                text: str = e.text
+                text: str = e.text.lower()
                 href: str = e.get_attribute("href")
+                # 
+                # self.Date().lower() replace in prodction
+                notTitle: bool = "06 october 2023" not in text
+                notPrivateSectorOpportunities: bool = "PRIVATE SECTOR OPPORTUNITIES".lower() not in text
 
-                isTitle: bool = self.Date().lower() in text
-                isPrivateSectorOpportunities: bool = "PRIVATE SECTOR OPPORTUNITIES".lower() in text
-
-                if not isTitle and not isPrivateSectorOpportunities:
+                if notTitle and notPrivateSectorOpportunities:
                     govPageLinks["Departments"][text] = href
 
             log.info(govPageLinks)
             for k in govPageLinks["Departments"]:
+                
                 blogpost = self.postContent(govPageLinks["Departments"][k])
                 govPageLinks["BlogPosts"].append(blogpost)
+
             log.info(govPageLinks)
 
     def postContent(self, url: str):
