@@ -1,22 +1,19 @@
 import sys
 import time
-from typing import List
-from datetime import datetime, timedelta
 import logging
+from typing import List
+from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.support import expected_conditions as EC
+# from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.common.action_chains import ActionChains as AC
+from spiders.types.types import Links, BlogPost
 
-Links: dict = {
-    "Title":"",
-    "BlogPosts":[],
-    "Departments":{}
+govPageLinks: dict = Links()
 
-}
 
 class Spider:
     Name = "gov-page"
@@ -67,60 +64,113 @@ class Spider:
             self.Emma(10)
 
             wait: WebDriverWait = WebDriverWait(self.driver, 10)
-            links: List[WebElement] = wait.until(
+            elems: List[WebElement] = wait.until(
                 EC.presence_of_all_elements_located(
                     (By.CSS_SELECTOR, selector))
             )
 
-            AC(self.driver).scroll_to_element(links[0])
+            AC(self.driver).scroll_to_element(elems[0])
 
-            links: List[WebElement] = self.driver.find_elements(
+            elems: List[WebElement] = self.driver.find_elements(
                 By.CSS_SELECTOR, selector)
 
             vacanciesLink: (str | None)
 
-            for l in links:
+            for e in elems:
 
-                text: str = l.text.lower()
+                text: str = e.text.lower()
 
                 if "06 october 2023" in text:
-                    Links["Title"] = text
-                    vacanciesLink = l.get_attribute("href")
+                    govPageLinks["Title"] = text
+                    vacanciesLink = e.get_attribute("href")
                     break
 
             if vacanciesLink is not None:
                 self.departments(vacanciesLink)
             else:
-                log.info(f"{self.Name}, Sorry, No Government Job Posts for today")
+                log.info(
+                    f"{self.Name}, Sorry, No Government Job Posts for today")
                 self.driver.close()
 
-        
     def departments(self, url: str):
 
         log.info(f"{self.Name}, searching for latest government vacancies.")
-       
+
         selector: str = "[id^='blog-post-'] a"
-       
+
         self.driver.get(url)
         self.Emma(15)
-        
-        elems: List[WebElement] = self.driver.find_elements(By.CSS_SELECTOR,selector)
-       
-        if len(elems) > 0 :
+
+        elems: List[WebElement] = self.driver.find_elements(
+            By.CSS_SELECTOR, selector)
+
+        if len(elems) > 0:
 
             for e in elems:
 
                 text: str = e.text
                 href: str = e.get_attribute("href")
-            #     isPrivateSectorOpportunities := strings.Contains(strings.ToLower(text), strings.ToLower("PRIVATE SECTOR OPPORTUNITIES"))
-			# isCurrentDate := strings.Contains(strings.ToLower(strings.Trim(strings.ReplaceAll(text, "\n", ""), " ")), strings.ToLower(s.Date()))
-			# if !isPrivateSectorOpportunities && !isCurrentDate {
-			# 	govpageLinks.Departments[text] = href
-			# } 
+
                 isTitle: bool = self.Date().lower() in text
-                if isTitle is False:
-                    Links["Departments"][text] = href
-            log.info(Links)  
+                isPrivateSectorOpportunities: bool = "PRIVATE SECTOR OPPORTUNITIES".lower() in text
+
+                if not isTitle and not isPrivateSectorOpportunities:
+                    govPageLinks["Departments"][text] = href
+
+            log.info(govPageLinks)
+            for k in govPageLinks["Departments"]:
+                blogpost = self.postContent(govPageLinks["Departments"][k])
+                govPageLinks["BlogPosts"].append(blogpost)
+            log.info(govPageLinks)
+
+    def postContent(self, url: str):
+        self.driver.get(url)
+        self.Emma(15)
+
+        WebDriverWait(self.driver, 10).until(
+            EC.presence_of_all_elements_located(
+                (By.CSS_SELECTOR, ".blog-post"))
+        )
+
+        selector: str = ".blog-title-link.blog-link"
+
+        elems: List[WebElement] = self.driver.find_elements(
+            By.CSS_SELECTOR, selector)
+        if len(elems) > 0:
+            e = elems[0]
+            text = e.text
+            href = e.get_attribute("href")
+
+            date = self.driver.find_element(
+                By.CSS_SELECTOR, ".blog-date > .date-text").text
+
+            blogPost = BlogPost()
+            blogPost["Title"] = text
+            blogPost["Href"] = href
+            blogPost["PostedDate"] = date
+
+            elems = self.driver.find_elements(
+                By.CSS_SELECTOR, ".blog-content > .paragraph")
+            if len(elems):
+                for e in elems:
+                    text = e.text
+                    content = blogPost["Content"]
+                    content.append(text)
+                    blogPost["Content"] = content
+            else:
+                src = self.driver.execute_script("""
+                        const src = Array.from(document.getElementsByTagName('iframe')).filter(f =>{
+                        
+                            if (f.src.includes("drive.google")){
+                                return f
+                            }
+                                        
+                        }).map(f => f.src);
+                        return src[0]; 
+                    """)
+                blogPost["Iframe"] = src
+            return blogPost
+        return "no blog post found"
 
     def Date(self) -> str:
         # current date
