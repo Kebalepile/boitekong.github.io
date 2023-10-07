@@ -26,7 +26,6 @@ type Spider struct {
 // Creates Navigates to the allowed domain to crawl
 func (s *Spider) Launch(wg *sync.WaitGroup) {
 	defer wg.Done()
-	globalWg = wg
 
 	log.Println(s.Name, " spider has Lunched ", s.Date())
 	s.Posts.Title = fmt.Sprintf("propersonnel-jobs%s", s.Date())
