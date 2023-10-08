@@ -1,3 +1,4 @@
+import re
 import sys
 import time
 import logging
@@ -10,7 +11,9 @@ from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
 # from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.common.action_chains import ActionChains as AC
+from pipeline.writer import GovPageFile
 from spiders.types.types import Links, BlogPost
+
 
 govPageLinks: dict = Links()
 
@@ -80,7 +83,7 @@ class Spider:
 
                 text: str = e.text.lower()
                 # replace date str below with self.Date().lower()
-                if "06 october 2023" in text:
+                if "05 october 2023" in text:
                     govPageLinks["Title"] = text
                     vacanciesLink = e.get_attribute("href")
                     break
@@ -88,7 +91,7 @@ class Spider:
             if vacanciesLink is not None:
                 self.departments(vacanciesLink)
             else:
-                log.info(
+                log.waring(
                     f"{self.Name}, Sorry, No Government Job Posts for today")
                 self.driver.close()
 
@@ -108,13 +111,15 @@ class Spider:
 
             for e in elems:
 
-                text: str = e.text.lower()
+                text: str = e.text.lower().lstrip()
                 href: str = e.get_attribute("href")
                 
                 a = len(text) > 0
                 # self.Date().lower() replace in prodction
-                b: bool = "06 october 2023" in text
-                c: bool = "PRIVATE SECTOR OPPORTUNITIES".lower() in text
+                b: bool = "05 october 2023" in text
+                
+                pattern = r"private property opportunities|private sector opportunities"
+                c: bool = re.search(pattern, text, re.IGNORECASE)
                 
                 if   a and  not b and not c:
                     log.info(text)
@@ -127,16 +132,19 @@ class Spider:
                 govPageLinks["BlogPosts"].append(blogpost)
 
             log.info(govPageLinks)
+            GovPageFile(govPageLinks)
+            self.driver.close()
+            log.info(f"{self.Name} done")
 
     def postContent(self, url: str):
         self.driver.get(url)
         self.Emma(15)
 
-        WebDriverWait(self.driver, 10).until(
+        posts = WebDriverWait(self.driver, 10).until(
             EC.presence_of_all_elements_located(
                 (By.CSS_SELECTOR, ".blog-post"))
         )
-
+        AC(self.driver).scroll_to_element(posts[0])
         selector: str = ".blog-title-link.blog-link"
 
         elems: List[WebElement] = self.driver.find_elements(
