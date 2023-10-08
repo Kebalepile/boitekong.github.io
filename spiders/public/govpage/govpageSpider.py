@@ -110,12 +110,14 @@ class Spider:
 
                 text: str = e.text.lower()
                 href: str = e.get_attribute("href")
-                # 
+                
+                a = len(text) > 0
                 # self.Date().lower() replace in prodction
-                notTitle: bool = "06 october 2023" not in text
-                notPrivateSectorOpportunities: bool = "PRIVATE SECTOR OPPORTUNITIES".lower() not in text
-
-                if notTitle and notPrivateSectorOpportunities:
+                b: bool = "06 october 2023" in text
+                c: bool = "PRIVATE SECTOR OPPORTUNITIES".lower() in text
+                
+                if   a and  not b and not c:
+                    log.info(text)
                     govPageLinks["Departments"][text] = href
 
             log.info(govPageLinks)
