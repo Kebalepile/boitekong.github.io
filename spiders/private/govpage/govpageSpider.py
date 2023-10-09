@@ -86,7 +86,7 @@ class Spider:
 
                 text: str = e.text.lower()
                 # replace date str below with self.Date().lower()
-                if self.Date.lower() in text:
+                if self.Date().lower() in text:
                     govPageLinks["Title"] = text
                     vacanciesLink = e.get_attribute("href")
                     break
@@ -119,7 +119,7 @@ class Spider:
                 
                 a = len(text) > 0
                 # self.Date().lower() replace in prodction
-                # b: bool = self.Date.lower() in text
+                # b: bool = self.Date().lower() in text
                 
                 pattern = r"private property opportunities|private sector opportunities"
                 b: bool = re.search(pattern, text, re.IGNORECASE)
