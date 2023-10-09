@@ -5,13 +5,13 @@ import logging
 from typing import List
 from datetime import datetime
 from selenium import webdriver
+from pipeline.writer import GovPageFile
 from selenium.webdriver.common.by import By
+from spiders.types.types import Links, BlogPost
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.action_chains import ActionChains as AC
-from pipeline.writer import GovPageFile
-from spiders.types.types import Links, BlogPost
+
 
 
 govPageLinks: dict = Links()
@@ -71,7 +71,10 @@ class Spider:
                     (By.CSS_SELECTOR, selector))
             )
 
-            AC(self.driver).scroll_to_element(elems[0])
+            self.driver.execute_script("""
+                const elem = document.querySelector('.blog-title-link');
+                elem.scrollIntoView({behavior: 'smooth'})                      
+            """)
 
             elems: List[WebElement] = self.driver.find_elements(
                 By.CSS_SELECTOR, selector)
@@ -81,7 +84,7 @@ class Spider:
             for e in elems:
 
                 text: str = e.text.lower()
-                # replace date str below with self.Date().lower()
+                
                 if self.Date().lower() in text:
                     govPageLinks["Title"] = text
                     vacanciesLink = e.get_attribute("href")
@@ -103,6 +106,11 @@ class Spider:
         self.driver.get(url)
         self.Emma(15)
 
+        self.driver.execute_script("""
+            const elem = document.querySelector("[id^='blog-post-'] a");
+            elem.scrollIntoView({behavior: 'smooth'})                      
+        """)
+        
         elems: List[WebElement] = self.driver.find_elements(
             By.CSS_SELECTOR, selector)
 
@@ -114,18 +122,18 @@ class Spider:
                 href: str = e.get_attribute("href")
                 
                 a = len(text) > 0
-                # self.Date().lower() replace in prodction
+                
                 b: bool = self.Date().lower() in text
                 
                 pattern = r"private property opportunities|private sector opportunities"
                 c: bool = re.search(pattern, text, re.IGNORECASE)
                 
                 if   a and  not b and not c:
-                    # log.info(text)
+                   
                     numOfDepartments += 1
                     govPageLinks["Departments"][text] = href
 
-            # log.info(govPageLinks)
+            
             log.info(f"{self.Name}, scrapping deparment posts of {numOfDepartments} departments.")
 
             for k in govPageLinks["Departments"]:
@@ -133,8 +141,7 @@ class Spider:
                 blogpost = self.postContent(govPageLinks["Departments"][k])
                 govPageLinks["BlogPosts"].append(blogpost)
 
-            # log.info(govPageLinks)
-            GovPageFile(govPageLinks)
+            GovPageFile(govPageLinks, f'database/public/{govPageLinks["Title"]}.json')
             self.driver.close()
             log.info(f"{self.Name} done")
 
@@ -142,11 +149,15 @@ class Spider:
         self.driver.get(url)
         self.Emma(15)
 
-        posts = WebDriverWait(self.driver, 10).until(
+        WebDriverWait(self.driver, 10).until(
             EC.presence_of_all_elements_located(
                 (By.CSS_SELECTOR, ".blog-post"))
         )
-        AC(self.driver).scroll_to_element(posts[0])
+        
+        self.driver.execute_script("""
+            const elem = document.querySelector('.blog-post');
+            elem.scrollIntoView({behavior: 'smooth'})                      
+        """)
         selector: str = ".blog-title-link.blog-link"
 
         elems: List[WebElement] = self.driver.find_elements(
@@ -160,7 +171,7 @@ class Spider:
                 By.CSS_SELECTOR, ".blog-date > .date-text").text
 
             blogPost = BlogPost()
-            blogPost["Title"] = text
+            blogPost["Title"] =  f"{self.Name}: {text}"
             blogPost["Href"] = href
             blogPost["PostedDate"] = date
 
@@ -188,7 +199,7 @@ class Spider:
         return "no blog post found"
 
     def Date(self) -> str:
-        # current date
+        
         date = datetime.now()
         return date.strftime("%d %B %Y")
 

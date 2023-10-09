@@ -5,20 +5,20 @@ import logging
 from typing import List
 from datetime import datetime
 from selenium import webdriver
+from pipeline.writer import GovPageFile
 from selenium.webdriver.common.by import By
+from spiders.types.types import Links, BlogPost
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.action_chains import ActionChains as AC
-from pipeline.writer import GovPageFile
-from spiders.types.types import Links, BlogPost
+
 
 
 govPageLinks: dict = Links()
 
 
 class Spider:
-    Name = "gov-page"
+    Name = "gov-page-private-sector"
 
     def __init__(self):
 
@@ -71,7 +71,6 @@ class Spider:
                     (By.CSS_SELECTOR, selector))
             )
 
-            # AC(self.driver).scroll_to_element(elems[0])
             self.driver.execute_script("""
                 const elem = document.querySelector('.blog-title-link');
                 elem.scrollIntoView({behavior: 'smooth'})                      
@@ -85,7 +84,7 @@ class Spider:
             for e in elems:
 
                 text: str = e.text.lower()
-                # replace date str below with self.Date().lower()
+                
                 if self.Date().lower() in text:
                     govPageLinks["Title"] = text
                     vacanciesLink = e.get_attribute("href")
@@ -107,38 +106,61 @@ class Spider:
         self.driver.get(url)
         self.Emma(15)
 
+        self.driver.execute_script("""
+            const elem = document.querySelector("[id^='blog-post-'] a");
+            elem.scrollIntoView({behavior: 'smooth'})                      
+        """)
+
         elems: List[WebElement] = self.driver.find_elements(
             By.CSS_SELECTOR, selector)
+       
 
         if len(elems) > 0:
-
+            privateSectorURL: str
             for e in elems:
 
                 text: str = e.text.lower().lstrip()
                 href: str = e.get_attribute("href")
+
+                pattern = r"private property opportunities|private sector opportunities"
                 
                 a = len(text) > 0
-                # self.Date().lower() replace in prodction
-                # b: bool = self.Date().lower() in text
-                
-                pattern = r"private property opportunities|private sector opportunities"
                 b: bool = re.search(pattern, text, re.IGNORECASE)
                 
                 if  a and  b:
+                   
+                    privateSectorURL = href
+
+            log.info(govPageLinks)
+           
+            self.driver.get(privateSectorURL)
+            self.Emma(15)
+            # private sector a tag web elements 
+            pvtElems: List[WebElement] = self.driver.find_elements(
+            By.CSS_SELECTOR, selector)
+
+            if len(pvtElems) > 0:
+
+                for e in elems:
+
+                    text: str = e.text.lower().lstrip()
+                    href: str = e.get_attribute("href")
+
                     log.info(text)
                     log.info(href)
-                    # govPageLinks["Departments"][text] = href
+
+                    a = len(text) > 0
+                    if  a :
+                        govPageLinks["Departments"][text] = href
+                    
+                for k in govPageLinks["Departments"]:
+                    blogpost = self.postContent(govPageLinks["Departments"][k])
+                    govPageLinks["BlogPosts"].append(blogpost)
 
             # log.info(govPageLinks)
-            # for k in govPageLinks["Departments"]:
-                
-            #     blogpost = self.postContent(govPageLinks["Departments"][k])
-            #     govPageLinks["BlogPosts"].append(blogpost)
-
-            # log.info(govPageLinks)
-            # GovPageFile(govPageLinks)
-            # self.driver.close()
-            # log.info(f"{self.Name} done")
+            GovPageFile(govPageLinks, f'database/public/{govPageLinks["Title"]}.json')
+            self.driver.close()
+            log.info(f"{self.Name} done")
 
     def postContent(self, url: str):
         self.driver.get(url)
@@ -148,7 +170,7 @@ class Spider:
             EC.presence_of_all_elements_located(
                 (By.CSS_SELECTOR, ".blog-post"))
         )
-        # AC(self.driver).scroll_to_element(posts[0])
+        
         self.driver.execute_script("""
             const elem = document.querySelector('.blog-post');
             elem.scrollIntoView({behavior: 'smooth'})                      
@@ -167,7 +189,7 @@ class Spider:
                 By.CSS_SELECTOR, ".blog-date > .date-text").text
 
             blogPost = BlogPost()
-            blogPost["Title"] = text
+            blogPost["Title"] = f"{self.Name}: {text}"
             blogPost["Href"] = href
             blogPost["PostedDate"] = date
 
@@ -195,7 +217,7 @@ class Spider:
         return "no blog post found"
 
     def Date(self) -> str:
-        # current date
+       
         date = datetime.now()
         return date.strftime("%d %B %Y")
 

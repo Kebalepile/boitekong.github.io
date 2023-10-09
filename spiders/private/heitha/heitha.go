@@ -28,7 +28,7 @@ func (s *Spider) Launch(wg *sync.WaitGroup) {
 	defer wg.Done()
 
 	log.Println(s.Name, " spider has Lunched ", s.Date())
-	s.Posts.Title = fmt.Sprintf("heitha-jobs%s", s.Date())
+	s.Posts.Title = fmt.Sprintf("heitha-jobs: %s", s.Date())
 
 	opts := append(chromedp.DefaultExecAllocatorOptions[:],
 		chromedp.Flag("headless", true), // set headless to true for production
