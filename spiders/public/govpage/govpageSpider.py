@@ -9,7 +9,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
-# from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.common.action_chains import ActionChains as AC
 from pipeline.writer import GovPageFile
 from spiders.types.types import Links, BlogPost
@@ -83,7 +82,7 @@ class Spider:
 
                 text: str = e.text.lower()
                 # replace date str below with self.Date().lower()
-                if "05 october 2023" in text:
+                if self.Date().lower() in text:
                     govPageLinks["Title"] = text
                     vacanciesLink = e.get_attribute("href")
                     break
@@ -108,7 +107,7 @@ class Spider:
             By.CSS_SELECTOR, selector)
 
         if len(elems) > 0:
-
+            numOfDepartments:int = 0
             for e in elems:
 
                 text: str = e.text.lower().lstrip()
@@ -116,22 +115,25 @@ class Spider:
                 
                 a = len(text) > 0
                 # self.Date().lower() replace in prodction
-                b: bool = "05 october 2023" in text
+                b: bool = self.Date().lower() in text
                 
                 pattern = r"private property opportunities|private sector opportunities"
                 c: bool = re.search(pattern, text, re.IGNORECASE)
                 
                 if   a and  not b and not c:
-                    log.info(text)
+                    # log.info(text)
+                    numOfDepartments += 1
                     govPageLinks["Departments"][text] = href
 
-            log.info(govPageLinks)
+            # log.info(govPageLinks)
+            log.info(f"{self.Name}, scrapping deparment posts of {numOfDepartments} departments.")
+
             for k in govPageLinks["Departments"]:
                 
                 blogpost = self.postContent(govPageLinks["Departments"][k])
                 govPageLinks["BlogPosts"].append(blogpost)
 
-            log.info(govPageLinks)
+            # log.info(govPageLinks)
             GovPageFile(govPageLinks)
             self.driver.close()
             log.info(f"{self.Name} done")
