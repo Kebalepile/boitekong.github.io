@@ -28,7 +28,7 @@ class Spider:
         ]
         # webdriver options
         opt = webdriver.FirefoxOptions()
-        # opt.add_argument("--headless") # enable headless for production
+        opt.add_argument("--headless") # enable headless for production
         self.driver = webdriver.Firefox(options=opt)
         # Set the window size to 768x1024 (tablet size)
         self.driver.set_window_size(768, 1024)
