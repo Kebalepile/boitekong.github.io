@@ -13,7 +13,6 @@ from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
 
 
-
 govPageLinks: dict = Links()
 
 
@@ -63,8 +62,6 @@ class Spider:
 
             self.driver.get(url)
 
-            self.Emma(10)
-
             wait: WebDriverWait = WebDriverWait(self.driver, 10)
             elems: List[WebElement] = wait.until(
                 EC.presence_of_all_elements_located(
@@ -84,9 +81,9 @@ class Spider:
             for e in elems:
 
                 text: str = e.text.lower()
-                
+
                 if self.Date().lower() in text:
-                    govPageLinks["Title"] = text
+                    govPageLinks["Title"] = self.Name
                     vacanciesLink = e.get_attribute("href")
                     break
 
@@ -110,56 +107,55 @@ class Spider:
             const elem = document.querySelector("[id^='blog-post-'] a");
             elem.scrollIntoView({behavior: 'smooth'})                      
         """)
-        
+
         elems: List[WebElement] = self.driver.find_elements(
             By.CSS_SELECTOR, selector)
 
         if len(elems) > 0:
-            numOfDepartments:int = 0
+            numOfDepartments: int = 0
             for e in elems:
 
                 text: str = e.text.lower().lstrip()
                 href: str = e.get_attribute("href")
-                
+
                 a = len(text) > 0
-                
+
                 b: bool = self.Date().lower() in text
-                
+
                 pattern = r"private property opportunities|private sector opportunities"
                 c: bool = re.search(pattern, text, re.IGNORECASE)
-                
-                if   a and  not b and not c:
-                   
+
+                if a and not b and not c:
+
                     numOfDepartments += 1
                     govPageLinks["Departments"][text] = href
 
-            
-            log.info(f"{self.Name}, scrapping deparment posts of {numOfDepartments} departments.")
+            log.info(
+                f"{self.Name}, scrapping deparment posts of {numOfDepartments} departments.")
 
             for k in govPageLinks["Departments"]:
-                
+
                 blogpost = self.postContent(govPageLinks["Departments"][k])
                 govPageLinks["BlogPosts"].append(blogpost)
 
-            GovPageFile(govPageLinks, f'database/public/{govPageLinks["Title"]}.json')
+            GovPageFile(govPageLinks)
             self.driver.close()
             log.info(f"{self.Name} done")
 
     def postContent(self, url: str):
         self.driver.get(url)
-        self.Emma(15)
 
         WebDriverWait(self.driver, 10).until(
             EC.presence_of_all_elements_located(
                 (By.CSS_SELECTOR, ".blog-post"))
         )
-        
+
         self.driver.execute_script("""
             const elem = document.querySelector('.blog-post');
             elem.scrollIntoView({behavior: 'smooth'})                      
         """)
-        selector: str = ".blog-title-link.blog-link"
 
+        selector: str = ".blog-title-link.blog-link"
         elems: List[WebElement] = self.driver.find_elements(
             By.CSS_SELECTOR, selector)
         if len(elems) > 0:
@@ -171,7 +167,11 @@ class Spider:
                 By.CSS_SELECTOR, ".blog-date > .date-text").text
 
             blogPost = BlogPost()
-            blogPost["Title"] =  f"{self.Name}: {text}"
+            
+            blogPost["ImgSrc"] = self.driver.execute_script("""
+                    return location.origin + document.querySelector("*[alt='Picture']").getAttribute("src")
+            """)
+            blogPost["Title"] = f"{self.Name}: {text}"
             blogPost["Href"] = href
             blogPost["PostedDate"] = date
 
@@ -199,7 +199,7 @@ class Spider:
         return "no blog post found"
 
     def Date(self) -> str:
-        
+
         date = datetime.now()
         return date.strftime("%d %B %Y")
 

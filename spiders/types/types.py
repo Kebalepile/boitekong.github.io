@@ -12,6 +12,7 @@ def Links():
 
 def BlogPost():
     return {
+        "ImgSrc":"",
         "Href": "",
         "Title": "",
         "Content": [],
