@@ -20,7 +20,7 @@ func main() {
 	// }
 
 	heithaSpider := heitha.Spider{
-		Name: "heitha-page",
+		Name: "heitha-stuffing-group",
 		AllowedDomains: []string{
 			"http://www.heitha.co.za/",
 			"http://www.heitha.co.za/jobs",
@@ -28,7 +28,7 @@ func main() {
 	}
 
 	propersonnelSpider := propersonnel.Spider{
-		Name: "Pro-Personnel",
+		Name: "pro-personnel",
 		AllowedDomains: []string{
 			"https://www.pro-personnel.co.za/",
 			"https://www.pro-personnel.co.za/vacancies/",
