@@ -1,7 +1,8 @@
+# import os
 import json
 
-def GovPageFile(data: dict, path):
-    
+def GovPageFile(data: dict):
+    path = f'database/public/{data["Title"]}.json'
     with open(path,"w") as f:
         json.dump(data,f, indent=4)
         print(f"data saved to: {path}")
