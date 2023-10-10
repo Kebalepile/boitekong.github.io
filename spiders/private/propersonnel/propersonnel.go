@@ -52,6 +52,7 @@ func (s *Spider) Launch(wg *sync.WaitGroup) {
 		ctx,
 		chromedp.Navigate(s.AllowedDomains[0]),
 		chromedp.Sleep(5*time.Second),
+		chromedp.Evaluate(`document.querySelector("link[rel='icon']").getAttribute('href')`, &s.Posts.IconLink),
 		chromedp.WaitVisible(menuSelector),
 		chromedp.Click(menuSelector),
 		chromedp.Sleep(5*time.Second),
@@ -217,8 +218,8 @@ func (s *Spider) Error(err error) {
 		log.Println(err.Error())
 		log.Println("Please restart scrapper")
 		log.Println("*************************************")
-			log.Fatal(err)
-		
+		log.Fatal(err)
+
 	}
 }
 
