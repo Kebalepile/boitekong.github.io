@@ -42,7 +42,7 @@ type JobPost struct {
 type HeithaJobs struct {
 	IconLink string `json:"iconLink"`
 	Title string    `json:"title"`
-	Links []JobPost `json:"links"`
+	BlogPosts[]JobPost `json:"blogPosts"`
 }
 
 // Used in ProPersonnel spider
@@ -61,5 +61,5 @@ type ProJobPost struct {
 type ProPersonnelJobs struct {
 	IconLink string `json:"iconLink"`
 	Title string       `json:"title"`
-	Links []ProJobPost `json:"links"`
+	BlogPosts []ProJobPost `json:"blogPosts"`
 }

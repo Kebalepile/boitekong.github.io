@@ -2,9 +2,9 @@
 # Used in Govpage spider
 def Links():
     return {
-        "Title": "",
-        "BlogPosts": [],
-        "Departments": {}
+        "title": "",
+        "blogPosts": [],
+        "departments": {}
 
     }
 # Used in Govpage spider
@@ -12,10 +12,10 @@ def Links():
 
 def BlogPost():
     return {
-        "ImgSrc":"",
-        "Href": "",
-        "Title": "",
-        "Content": [],
-        "PostedDate": "",
-        "Iframe": "",
+        "imgSrc":"",
+        "href": "",
+        "title": "",
+        "content": [],
+        "postedDate": "",
+        "iframe": "",
     }

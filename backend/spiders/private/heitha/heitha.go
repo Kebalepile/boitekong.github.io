@@ -73,7 +73,7 @@ func (s *Spider) Launch(wg *sync.WaitGroup) {
 }
 
 // scrapes availabe job posts on loaded page url
-// adds them to Posts.Links slice
+// adds them to Posts.BlogPosts slice
 // once done save the information to a *.json file
 func (s *Spider) jobs(ctx context.Context, url ...string) {
 
@@ -86,7 +86,7 @@ func (s *Spider) jobs(ctx context.Context, url ...string) {
 	}
 
 	posts := s.posts(ctx)
-	s.Posts.Links = append(s.Posts.Links, posts...)
+	s.Posts.BlogPosts = append(s.Posts.BlogPosts, posts...)
 
 	var pageNum string
 

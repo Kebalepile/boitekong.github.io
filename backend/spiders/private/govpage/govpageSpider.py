@@ -14,11 +14,11 @@ from selenium.webdriver.support import expected_conditions as EC
 
 govPageLinks: dict = Links()
 # rename Deparmetns to Businesses
-govPageLinks["Businesses"] = govPageLinks.pop("Departments")
+govPageLinks["businesses"] = govPageLinks.pop("departments")
 
 
 class Spider:
-    Name = "gov-page-private-sector"
+    Name = "govpage-private-sector"
 
     def __init__(self):
 
@@ -84,7 +84,7 @@ class Spider:
                 text: str = e.text.lower()
 
                 if self.Date().lower() in text:
-                    govPageLinks["Title"] = self.Name
+                    govPageLinks["title"] = self.Name
                     vacanciesLink = e.get_attribute("href")
                     break
 
@@ -154,14 +154,14 @@ class Spider:
                             r"read more", text, re.IGNORECASE)
 
                         if not readMore:
-                            govPageLinks["Businesses"][text] = href
+                            govPageLinks["businesses"][text] = href
                             numOfBusinesses += 1
 
                 log.info(
                 f"{self.Name}, found {numOfBusinesses} private sector posts to scrape.")
 
-                for k in govPageLinks["Businesses"]:
-                    blogpost = self.postContent(govPageLinks["Businesses"][k])
+                for k in govPageLinks["businesses"]:
+                    blogpost = self.postContent(govPageLinks["businesses"][k])
                     govPageLinks["BlogPosts"].append(blogpost)
 
             # log.info(govPageLinks)
@@ -196,21 +196,21 @@ class Spider:
 
             blogPost = BlogPost()
 
-            blogPost["ImgSrc"] = self.driver.execute_script("""
+            blogPost["imgSrc"] = self.driver.execute_script("""
                     return location.origin + document.querySelector("*[alt='Picture']").getAttribute("src")
             """)
-            blogPost["Title"] = f"{self.Name}: {text}"
-            blogPost["Href"] = href
-            blogPost["PostedDate"] = date
+            blogPost["title"] = f"{self.Name}: {text}"
+            blogPost["href"] = href
+            blogPost["postedDate"] = date
 
             elems = self.driver.find_elements(
                 By.CSS_SELECTOR, ".blog-content > .paragraph")
             if len(elems):
                 for e in elems:
                     text = e.text
-                    content = blogPost["Content"]
+                    content = blogPost["content"]
                     content.append(text)
-                    blogPost["Content"] = content
+                    blogPost["content"] = content
             else:
                 src = self.driver.execute_script("""
                         const src = Array.from(document.getElementsByTagName('iframe')).filter(f =>{
@@ -222,7 +222,7 @@ class Spider:
                         }).map(f => f.src);
                         return src[0]; 
                     """)
-                blogPost["Iframe"] = src
+                blogPost["iframe"] = src
             return blogPost
         return "no blog post found"
 

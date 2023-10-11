@@ -73,7 +73,7 @@ func (s *Spider) Launch(wg *sync.WaitGroup) {
 }
 
 // scrapes availabe job posts on loaded page url
-// adds them to Posts.Links slice
+// adds them to Posts.BlogPosts slice
 // once done save the information to a *.json file
 func (s *Spider) vacancies(url string, ctx context.Context) {
 
@@ -183,7 +183,7 @@ func (s *Spider) vacancies(url string, ctx context.Context) {
 						chromedp.Evaluate(expression, &JobPost))
 					s.Error(err)
 
-					s.Posts.Links = append(s.Posts.Links, JobPost)
+					s.Posts.BlogPosts = append(s.Posts.BlogPosts, JobPost)
 
 				}
 
