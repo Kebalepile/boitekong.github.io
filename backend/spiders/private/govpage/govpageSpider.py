@@ -103,7 +103,7 @@ class Spider:
         selector: str = "[id^='blog-post-'] a"
 
         self.driver.get(url)
-        self.Emma(15)
+        self.Emma(10)
 
         self.driver.execute_script("""
             const elem = document.querySelector("[id^='blog-post-'] a");
@@ -137,7 +137,7 @@ class Spider:
                 elem.scrollIntoView({behavior: 'smooth'})                      
             """)
 
-            self.Emma(15)
+            self.Emma(10)
             # private sector a tag web elements
             pvtElems: List[WebElement] = self.driver.find_elements(
                 By.CSS_SELECTOR, selector)
@@ -162,7 +162,7 @@ class Spider:
 
                 for k in govPageLinks["businesses"]:
                     blogpost = self.postContent(govPageLinks["businesses"][k])
-                    govPageLinks["BlogPosts"].append(blogpost)
+                    govPageLinks["blogPosts"].append(blogpost)
 
             # log.info(govPageLinks)
             GovPageFile(govPageLinks)
@@ -199,7 +199,7 @@ class Spider:
             blogPost["imgSrc"] = self.driver.execute_script("""
                     return location.origin + document.querySelector("*[alt='Picture']").getAttribute("src")
             """)
-            blogPost["title"] = f"{self.Name}: {text}"
+            blogPost["title"] = text
             blogPost["href"] = href
             blogPost["postedDate"] = date
 

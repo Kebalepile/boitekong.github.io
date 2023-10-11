@@ -101,7 +101,7 @@ class Spider:
         selector: str = "[id^='blog-post-'] a"
 
         self.driver.get(url)
-        self.Emma(15)
+        self.Emma(10)
 
         self.driver.execute_script("""
             const elem = document.querySelector("[id^='blog-post-'] a");
@@ -171,7 +171,7 @@ class Spider:
             blogPost["imgSrc"] = self.driver.execute_script("""
                     return location.origin + document.querySelector("*[alt='Picture']").getAttribute("src")
             """)
-            blogPost["title"] = f"{self.Name}: {text}"
+            blogPost["title"] = text
             blogPost["href"] = href
             blogPost["postedDate"] = date
 
