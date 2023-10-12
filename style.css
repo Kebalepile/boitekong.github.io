@@ -12,9 +12,26 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  --c2: #1c242c;
 }
 * {
   color: white;
+}
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  height: 4px;
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--c3);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--c2);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--c7);
 }
 a {
   font-weight: 500;
@@ -107,8 +124,8 @@ li {
   align-items: center;
   justify-content: space-evenly;
   flex-flow: row wrap;
-  width: 450px;
-  height: 500px;
+  width: 90dvw;
+  height: 50dvh;
   overflow-y: scroll;
 }
 .job-post {
@@ -117,18 +134,21 @@ li {
   align-items: center;
   justify-content: center;
   width: 200px;
-  max-height: 200px;
-  text-overflow: ellipsis;
+  height: 200px;
   border-radius: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 3px;
   background-color: #191919;
   padding-top: 10px;
+
+  
+  
 }
 .title {
+  text-align: center;
+  width:80%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  text-align: center;
 }
 .company-logo {
   width: 150px;

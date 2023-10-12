@@ -1,4 +1,4 @@
-import "./style.css";
+
 
 import { setupHeadline } from "./components/headline.js";
 import {setupPrivateCompanies} from "./components/boards/privateCompanies.js";
