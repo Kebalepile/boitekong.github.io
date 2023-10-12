@@ -130,7 +130,12 @@ li {
   object-fit: contain;
   background-color: white;
 }
-
+.job-post-private{
+  text-align: justify;
+  background-color:#303030;
+  padding:50px;
+  margin-bottom: 5px;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

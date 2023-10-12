@@ -11,6 +11,9 @@ export function privateJobs() {
   return privateSectorData;
 }
 
+export function otherPrivateJobs() {
+  return [...propersonnelData.blogPosts, ...heithaData.blogPosts];
+}
 export function propersonnelJobs() {
   return propersonnelData;
 }
