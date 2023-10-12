@@ -1,5 +1,11 @@
 import { privateJobs } from "../data.js";
+
 export function setupPrivateCompanies(element) {
+  const h = document.createElement("h3");
+  h.textContent = "Private Companies hiring";
+
+  element.appendChild(h);
+
   const elems = privateJobs()["blogPosts"].map((p) => {
     const div = document.createElement("div");
     div.classList.add("job-post");
@@ -13,7 +19,15 @@ export function setupPrivateCompanies(element) {
     return div;
   });
 
+  const privateSectorBoard = document.createElement("section");
+  privateSectorBoard.classList.add("board");
+  privateSectorBoard.appendChild(h);
+
+  const posts = document.createElement("section");
+  posts.classList.add("posts");
   for (const e of elems) {
-    element.appendChild(e);
+    posts.appendChild(e);
   }
+  privateSectorBoard.appendChild(posts);
+  element.appendChild(privateSectorBoard);
 }

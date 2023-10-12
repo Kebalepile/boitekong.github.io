@@ -11,7 +11,7 @@ document.querySelector("#app").innerHTML = `
        <h3>Looking for a job in the South African Market</h3>
        <br/>
        <h4>Start Here</h4>
-       <p>Currently There Are :</p>
+       <h2>Currently There Are :</h2>
         <ul id="headline-job-info"></ul> 
     </div>
   </div>
