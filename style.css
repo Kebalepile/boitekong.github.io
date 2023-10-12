@@ -13,7 +13,9 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-
+* {
+  color: white;
+}
 a {
   font-weight: 500;
   color: #646cff;
@@ -29,6 +31,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #1c1c1c;
 }
 
 h1 {
@@ -99,6 +102,47 @@ li {
   border-radius: 5px;
   height: 120px;
 }
+#job-board {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-flow: row wrap;
+  width: 450px;
+  height: 500px;
+  overflow-y: scroll;
+}
+.job-post {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  max-height: 200px;
+  text-overflow: ellipsis;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #191919;
+  padding-top: 10px;
+}
+.title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+.company-logo {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 5%;
+}
+.company-logo > img {
+  width: inherit;
+  height: inherit;
+  object-fit: contain;
+  background-color: white;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
