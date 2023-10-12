@@ -7,15 +7,22 @@ export function setupPrivateCompanies(element) {
   element.appendChild(h);
 
   const elems = privateJobs()["blogPosts"].map((p) => {
-    const div = document.createElement("div");
+    const title = p["title"].replace(/is hiring/gi, ""),
+      div = document.createElement("div");
+
     div.classList.add("job-post");
+    div.setAttribute("title", title);
+
     div.innerHTML = `
         <div class="company-logo">
             <img src=${p["imgSrc"]} alt="company logo" />
         </div>
-        <p class="title">${p["title"].replace(/is hiring/gi, "")}</p>
+        <p class="title">${title}</p>
         `;
 
+    div.addEventListener("click", (e) => {
+      console.log(p.title, "clicked");
+    });
     return div;
   });
 

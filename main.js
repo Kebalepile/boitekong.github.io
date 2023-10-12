@@ -1,8 +1,6 @@
-
-
 import { setupHeadline } from "./components/headline.js";
-import {setupPrivateCompanies} from "./components/boards/privateCompanies.js";
-
+import { setupPrivateCompanies } from "./components/boards/privateCompanies.js";
+import { setupPubliDepartments } from "./components/boards/publicSector.js";
 document.querySelector("#app").innerHTML = `
   <header></header>
   <div id="headline">
@@ -20,4 +18,5 @@ document.querySelector("#app").innerHTML = `
 `;
 
 setupHeadline(document.querySelector("#headline-job-info"));
-setupPrivateCompanies(document.querySelector("#job-board"))
+setupPubliDepartments(document.querySelector("#job-board"));
+setupPrivateCompanies(document.querySelector("#job-board"));

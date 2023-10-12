@@ -109,9 +109,7 @@ li {
   margin-bottom: 3px;
   background-color: #191919;
   padding-top: 10px;
-
-  
-  
+  cursor:pointer;
 }
 .title {
   text-align: center;
