@@ -81,12 +81,18 @@ class Spider:
             for e in elems:
 
                 text: str = e.text.lower()
+                fullDate = self.Date().lower()
+                dayMonth = fullDate[:10]
+                weekday = self.weekday()
 
-                if self.Date().lower() in text:
+                pattern = rf"{fullDate}|{dayMonth}|{weekday}"
+                yes:bool = re.search(pattern, text, re.IGNORECASE)
+
+                if yes:
                     govPageLinks["title"] = self.Name
                     vacanciesLink = e.get_attribute("href")
                     break
-
+              
             if vacanciesLink is not None:
                 self.departments(vacanciesLink)
             else:

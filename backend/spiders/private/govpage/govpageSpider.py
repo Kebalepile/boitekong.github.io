@@ -77,13 +77,19 @@ class Spider:
             elems: List[WebElement] = self.driver.find_elements(
                 By.CSS_SELECTOR, selector)
 
-            vacanciesLink: (str | None)
+            vacanciesLink: (str | None) = None
 
             for e in elems:
 
                 text: str = e.text.lower()
+                fullDate = self.Date().lower()
+                dayMonth = fullDate[:10]
+                weekday = self.weekday()
 
-                if self.Date().lower() in text:
+                pattern = rf"{fullDate}|{dayMonth}|{weekday}"
+                yes:bool = re.search(pattern, text, re.IGNORECASE)
+
+                if yes:
                     govPageLinks["title"] = self.Name
                     vacanciesLink = e.get_attribute("href")
                     break
@@ -91,7 +97,7 @@ class Spider:
             if vacanciesLink is not None:
                 self.privateSector(vacanciesLink)
             else:
-                log.waring(
+                log.warning(
                     f"{self.Name}, Sorry, No Government Job Posts for today")
                 self.driver.close()
 
@@ -230,6 +236,15 @@ class Spider:
 
         date = datetime.now()
         return date.strftime("%d %B %Y")
+    
+    def weekday(self):
+
+        date = datetime.date.today()
+        weekday = date.strftime("%A")
+
+        return weekday.lower()
+
+
 
     def Emma(self, seconds: float):
 
