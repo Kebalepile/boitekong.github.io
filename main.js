@@ -16,10 +16,11 @@ document.querySelector("#app").innerHTML = `
     </div>
   </div>
   <div id="job-board"></div>
+  <div id="pvt-job-board"></div>
   <footer></footer>
 `;
 
 setupHeadline(document.querySelector("#headline-job-info"));
 setupPubliDepartments(document.querySelector("#job-board"));
 setupPrivateCompanies(document.querySelector("#job-board"));
-setupPrivateSector(document.querySelector("#job-board"));
+setupPrivateSector(document.querySelector("#pvt-job-board"));

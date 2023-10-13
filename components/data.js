@@ -20,6 +20,10 @@ export function propersonnelJobs() {
 export function heithaJobs() {
   return heithaData;
 }
+export const agencyIcons = [
+  { src: propersonnelData["iconLink"], title: propersonnelData["title"] },
+  { src: heithaData["iconLink"], title: heithaData["title"] }
+];
 
 export const stats = {
   govDep: publicSectorData.blogPosts.length,

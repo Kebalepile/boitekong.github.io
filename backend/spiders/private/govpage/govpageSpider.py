@@ -84,7 +84,7 @@ class Spider:
                 text: str = e.text.lower()
                 fullDate = self.Date().lower()
                 dayMonth = fullDate[:10]
-                weekday = self.weekday()
+                weekday = self.Weekday()
 
                 pattern = rf"{fullDate}|{dayMonth}|{weekday}"
                 yes:bool = re.search(pattern, text, re.IGNORECASE)
@@ -232,17 +232,14 @@ class Spider:
             return blogPost
         return "no blog post found"
 
-    def Date(self) -> str:
+    def Weekday(self) -> str:
+        current_date = datetime.now()
+        day_of_week_name = current_date.strftime("%A")
+        return day_of_week_name.lower()
 
+    def Date(self) -> str:
         date = datetime.now()
         return date.strftime("%d %B %Y")
-    
-    def weekday(self):
-
-        date = datetime.date.today()
-        weekday = date.strftime("%A")
-
-        return weekday.lower()
 
 
 
