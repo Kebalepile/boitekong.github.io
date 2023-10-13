@@ -17,7 +17,7 @@ document.querySelector("#app").innerHTML = `
   </div>
   <div id="job-board"></div>
   <div id="pvt-job-board"></div>
-  <footer></footer>
+  <footer>© 2023 K.T MOTSHOANA</footer>
 `;
 
 setupHeadline(document.querySelector("#headline-job-info"));

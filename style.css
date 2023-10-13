@@ -34,7 +34,6 @@
   background-color: var(--c7);
 }
 
-
 body {
   margin: 0;
   display: flex;
@@ -56,11 +55,9 @@ h1 {
   text-align: center;
 }
 
-
 .card {
   padding: 2em;
 }
-
 
 p,
 li {
@@ -80,12 +77,11 @@ li {
   height: 120px;
 }
 #job-board {
- 
   width: 90dvw;
   height: 50dvh;
   overflow-y: scroll;
 }
-.posts{
+.posts {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -102,16 +98,16 @@ li {
   margin-bottom: 3px;
   background-color: #191919;
   padding-top: 10px;
-  cursor:pointer;
+  cursor: pointer;
 }
 .board > h3 {
   background-color: #2e2d2d6c;
-  padding:5px;
+  padding: 5px;
   border-radius: 2px;
 }
 .title {
   text-align: center;
-  width:80%;
+  width: 80%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -128,86 +124,92 @@ li {
   object-fit: contain;
   background-color: white;
 }
-.job-post-private{
+.job-post-private {
   text-align: justify;
-  background-color:#303030;
-  padding:50px;
+  background-color: #303030;
+  padding: 50px;
   margin-bottom: 20px;
-  border-radius:5px;
+  border-radius: 5px;
   border-top: 20px solid #1ae757;
-  width:50%;
+  /* remove  this with for certain smaller screens */
+  width: 50%;
 }
 .job-post-private > h3 {
-  background-color:#0d76ee;
+  background-color: #0d76ee;
   text-align: center;
   border-radius: 2px;
 }
 .details {
-  background:rgb(71, 70, 70);
-  padding:20px;
-  border-radius:5px;
-  cursor:pointer;
-  
+  background: rgb(71, 70, 70);
+  padding: 20px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.apply{
-  margin-left:45%;
-  height:40px;
-  width:100px;
-  border:none;
-  border-radius:5px;
+.apply {
+  margin-left: 45%;
+  height: 40px;
+  width: 100px;
+  border: none;
+  border-radius: 5px;
   font-size: large;
   background-color: #127c32;
-  cursor:pointer;
+  cursor: pointer;
 }
-.other-agencies{
+.other-agencies {
   display: flex;
   flex-flow: column nowrap;
 }
-.agency-icon{
-  width:40px;
-  height:40px;
+.agency-icon {
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  margin-right:5px;
-  margin-top:8px;
+  margin-right: 5px;
+  margin-top: 8px;
 }
-.job-field{
+.job-field {
   background-color: #ec3838;
   border-radius: 3px;
   text-align: center;
 }
-.location{
+.location {
   background-color: #0bd164;
   border-radius: 3px;
   text-align: center;
 }
-.start-date{
-  background-color: #ff4500;;
+.start-date {
+  background-color: #ff4500;
   border-radius: 3px;
   text-align: center;
 }
-.expiry-date{
-  background-color:#ff4500;
+.expiry-date {
+  background-color: #ff4500;
   border-radius: 3px;
   text-align: center;
 }
-.province{
-  background-color:rgb(17, 165, 25);
+.province {
+  background-color: rgb(17, 165, 25);
   border-radius: 3px;
   text-align: center;
 }
-.job-type{
-  background-color:rgb(219, 3, 86);
+.job-type {
+  background-color: rgb(219, 3, 86);
   border-radius: 3px;
   text-align: center;
 }
 
-#pvt-job-board > section  div{
-
-margin:auto;
-
+#pvt-job-board > section div {
+  margin: auto;
 }
 
-footer{
-  background:pink;
+footer {
+  background-color: #2e2d2d6c;
+  margin-top: 20px;
+  border-radius: 3px;
+  text-align: center;
+  font-size: 12px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
