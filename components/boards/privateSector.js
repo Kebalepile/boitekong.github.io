@@ -29,34 +29,32 @@ export function setupPrivateSector(element) {
     div.setAttribute("title", title);
 
     div.innerHTML = `
-       <h3 style="width:${title.length}ch; padding:3px;">${title}</h3>
+       <h3 style="padding:3px;">${title}</h3>
+       <br/>
+       <hr/>
 
        <br/>
 
-       <p><strong class="job-field" style="width:${
-         p["jobSpecFields"]?.length
-       }ch; padding:3px;" >${p["jobSpecFields"]}</strong></p>
+       <p><strong class="job-field" style="padding:3px;" >${p["jobSpecFields"]}</strong></p>
 
        ${
          p.province
-           ? `<p class="province" style="width:${p.province?.length}ch; padding:5px;">${p.province}</p>`
+           ? `<span><p class="province" style="padding:5px;">${p.province}</p></span>`
            : ""
        }
 
        ${
          p.location
            ? `<span >
-              <p class="location" style="width:${
-                p.location["region"].length
-              }ch; padding:3px;">${p.location["region"].replace(",", "")}</p>
-              <p class="location" style="width:${
-                p.location["city"].length
-              }ch; padding:3px;">${p.location["city"].replace(",", "")}</p>
+              <p class="location" style="padding:3px;">${p.location["region"].replace(",", "")}</p>
+              <p class="location" style="padding:3px;">${p.location["city"].replace(",", "")}</p>
            </span>`
            : ""
        }
-
-       ${
+       <button class="more">more</button>
+       `;
+       /**
+        *   ${
          p.expiryDate
            ? `<p class="expiry-date" style="width:${p.expiryDate.length}ch; padding:3px;">${p.expiryDate}</p>`
            : ""
@@ -78,8 +76,7 @@ export function setupPrivateSector(element) {
              }ch; padding:3px;" >Vacancy type: ${p.vacancyType}</p>`
            : ""
        }
-      
-       <br/>
+        *   <br/>
 
        <section class="details">${p.details.replace(
          /\. /gi,
@@ -92,7 +89,7 @@ export function setupPrivateSector(element) {
           apply
         </button>
        </a>
-       `;
+        * **/
 
     return div;
   });

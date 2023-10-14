@@ -16,6 +16,8 @@
 }
 * {
   color: white;
+  margin:0;
+  font-size: calc(16px + (24 - 16) * ((100vw - 320px)/(1920-320)));
 }
 /* Scrollbar Styles */
 ::-webkit-scrollbar {
@@ -124,20 +126,40 @@ li {
   object-fit: contain;
   background-color: white;
 }
+
+
 .job-post-private {
   text-align: justify;
   background-color: #303030;
-  padding: 50px;
-  margin-bottom: 20px;
+  padding: 10px;
+  margin: 5px;
   border-radius: 5px;
-  border-top: 20px solid #1ae757;
+  border-top: 10px outset #4fb4f7;
+
   /* remove  this with for certain smaller screens */
-  width: 50%;
+  width: 300px;
+  height:205px;
+  display: flex;
+  flex-flow:column wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.job-post-private > * {
+  margin-top:5px;
+}
+.job-post-private > hr {
+  width: 90%;
+  height:1px;
+  border-radius: 6px;
+  background-color:#0000008a;
+  border:none;
 }
 .job-post-private > h3 {
-  background-color: #0d76ee;
+
   text-align: center;
-  border-radius: 2px;
+  border-radius: 10px;
+  border: groove #00b7ff67 1px;
+  
 }
 .details {
   background: rgb(71, 70, 70);
@@ -168,15 +190,29 @@ li {
   margin-top: 8px;
 }
 .job-field {
+ 
   background-color: #ec3838;
   border-radius: 3px;
   text-align: center;
 }
+.more {
+  margin:auto;
+  width: 80px;
+  height: 30px;
+  border: none;
+  border-radius: 6px;
+  background-color: gold;
+  cursor: pointer;
+}
 .location {
+  
+  float:right;
   background-color: #0bd164;
   border-radius: 3px;
   text-align: center;
+  margin-right:4px;
 }
+
 .start-date {
   background-color: #ff4500;
   border-radius: 3px;
@@ -188,6 +224,8 @@ li {
   text-align: center;
 }
 .province {
+ float:right;
+
   background-color: rgb(17, 165, 25);
   border-radius: 3px;
   text-align: center;
@@ -198,10 +236,15 @@ li {
   text-align: center;
 }
 
-#pvt-job-board > section div {
-  margin: auto;
+#pvt-job-board  {
+  margin-top:50px;
 }
-
+#pvt-job-board > .board > section {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
 footer {
   background-color: #2e2d2d6c;
   margin-top: 20px;
