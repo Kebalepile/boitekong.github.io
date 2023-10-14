@@ -4,7 +4,9 @@ import { setupPubliDepartments } from "./components/boards/publicSector.js";
 import { setupPrivateSector } from "./components/boards/privateSector.js";
 
 document.querySelector("#app").innerHTML = `
-  <header></header>
+  <header>
+  <h3>navaigation section </h3>
+  </header>
   <div id="headline">
     <h1>Hello Mereko</h1>
     <div id="headline-message" class="card">
@@ -17,6 +19,13 @@ document.querySelector("#app").innerHTML = `
   </div>
   <div id="job-board"></div>
   <div id="pvt-job-board"></div>
+
+  <dialog id="dialog">
+      <article id="data">
+      </article>
+      <button id="close-dialog">Close</button>
+  </dialog>
+
   <footer>© 2023 K.T MOTSHOANA</footer>
 `;
 

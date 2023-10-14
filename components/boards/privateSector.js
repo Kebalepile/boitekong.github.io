@@ -35,7 +35,9 @@ export function setupPrivateSector(element) {
 
        <br/>
 
-       <p><strong class="job-field" style="padding:3px;" >${p["jobSpecFields"]}</strong></p>
+       <p><strong class="job-field" style="padding:3px;" >${
+         p["jobSpecFields"]
+       }</strong></p>
 
        ${
          p.province
@@ -46,14 +48,18 @@ export function setupPrivateSector(element) {
        ${
          p.location
            ? `<span >
-              <p class="location" style="padding:3px;">${p.location["region"].replace(",", "")}</p>
-              <p class="location" style="padding:3px;">${p.location["city"].replace(",", "")}</p>
+              <p class="location" style="padding:3px;">${p.location[
+                "region"
+              ].replace(",", "")}</p>
+              <p class="location" style="padding:3px;">${p.location[
+                "city"
+              ].replace(",", "")}</p>
            </span>`
            : ""
        }
        <button class="more">more</button>
        `;
-       /**
+    /**
         *   ${
          p.expiryDate
            ? `<p class="expiry-date" style="width:${p.expiryDate.length}ch; padding:3px;">${p.expiryDate}</p>`
@@ -98,9 +104,20 @@ export function setupPrivateSector(element) {
   privateSectorBoard.classList.add("board");
   privateSectorBoard.appendChild(h);
 
+  const closeButton = document.getElementById("close-dialog");
+
+  closeButton.addEventListener("click", () => {
+    dialog.close();
+  });
+
+  const dialog = document.getElementById("dialog");
   const posts = document.createElement("section");
 
   for (const e of elems) {
+    const btn = e.querySelector(".more");
+    btn.addEventListener("click", () => {
+      dialog.showModal();
+    });
     posts.appendChild(e);
   }
   privateSectorBoard.appendChild(posts);
