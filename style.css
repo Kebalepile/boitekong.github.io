@@ -19,6 +19,10 @@
   margin:0;
   font-size: calc(16px + (24 - 16) * ((100vw - 320px)/(1920-320)));
 }
+button {
+  cursor: pointer;
+  border:none;
+}
 /* Scrollbar Styles */
 ::-webkit-scrollbar {
   height: 4px;
@@ -182,11 +186,9 @@ li {
   margin-left: 45%;
   height: 40px;
   width: 100px;
-  border: none;
   border-radius: 5px;
   font-size: large;
   background-color: #127c32;
-  cursor: pointer;
 }
 .other-agencies {
   display: flex;
@@ -209,10 +211,8 @@ li {
   margin:auto;
   width: 80px;
   height: 30px;
-  border: none;
   border-radius: 6px;
   background-color: gold;
-  cursor: pointer;
 }
 .location {
   
@@ -266,3 +266,15 @@ footer {
   justify-content: center;
   align-items: center;
 }
+ #dialog{
+  background-color: #000000e0;
+  border:none;
+  width:70dvw;
+  margin:auto;
+ }
+ #close-dialog{
+  background-color:#ff3c00;
+  border-radius: 5px;
+  width: 100px;
+  height: 30px;
+ }

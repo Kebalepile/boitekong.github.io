@@ -20,8 +20,9 @@ export function setupPrivateCompanies(element) {
         <p class="title">${title}</p>
         `;
 
+    const dialog = document.getElementById("dialog");
     div.addEventListener("click", (e) => {
-      console.log(p.title, "clicked");
+      dialog.showModal();
     });
     return div;
   });

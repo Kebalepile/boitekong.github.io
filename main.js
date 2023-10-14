@@ -21,13 +21,19 @@ document.querySelector("#app").innerHTML = `
   <div id="pvt-job-board"></div>
 
   <dialog id="dialog">
-      <article id="data">
+      <article id="info">
       </article>
       <button id="close-dialog">Close</button>
   </dialog>
 
   <footer>© 2023 K.T MOTSHOANA</footer>
 `;
+
+const closeButton = document.getElementById("close-dialog");
+
+closeButton.addEventListener("click", () => {
+  dialog.close();
+});
 
 setupHeadline(document.querySelector("#headline-job-info"));
 setupPubliDepartments(document.querySelector("#job-board"));
