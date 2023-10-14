@@ -159,8 +159,18 @@ li {
   text-align: center;
   border-radius: 10px;
   border: groove #00b7ff67 1px;
+  padding:5px;
+  
   
 }
+.ellipsis-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 280px; /* Adjust the max-width as needed */
+  cursor: pointer;
+}
+
 .details {
   background: rgb(71, 70, 70);
   padding: 20px;

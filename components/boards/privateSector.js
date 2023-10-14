@@ -29,7 +29,7 @@ export function setupPrivateSector(element) {
     div.setAttribute("title", title);
 
     div.innerHTML = `
-       <h3 style="padding:3px;">${title}</h3>
+       <h3  class="ellipsis-text">${title}</h3>
        <br/>
        <hr/>
 
