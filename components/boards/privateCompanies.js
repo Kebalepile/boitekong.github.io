@@ -23,6 +23,43 @@ export function setupPrivateCompanies(element) {
     const dialog = document.getElementById("dialog");
     div.addEventListener("click", (e) => {
       dialog.showModal();
+     
+      const article = document.getElementById("info");
+      article.innerHTML = `
+            <img src=${p.imgSrc} alt=${p.title} title=${title}/>
+          
+            <br/>
+            <hr/>
+            <br/>
+            ${
+              p.postedDate
+                ? `<p class="start-date" style="width:${
+                    p.postedDate.length + 13
+                  }ch; padding:3px;">posted date: ${p.postedDate}</p>`
+                : ""
+            }
+            <br/>
+            <section class="details">
+            ${
+              p.content.length
+                ? p.content.map((c) =>
+                    c.replaceAll(/\.(?=[A-Z0-9 ])/g, ".<br/><br/>")
+                  )
+                : p.iframe
+                ? ` <iframe id="documentFrame" src=${p.iframe} >
+                      <p>&#128542; sorry  Document won't load, you can access it directly here (<a href=${p.href} target="_blank">${p.href}</a>) or click the source button below.</p>
+                    </iframe>`
+                : `<p>&#128542; sorry  Document won't load, you can access it directly here (<a href=${p.href} target="_blank">${p.href}</a>) or click the source button below.</p>`
+            }
+            </section>
+            <br/>
+            <a href=${p.href} target="_blank">
+            <button class="source apply">
+              source
+            </button>
+            </a>
+            <br/>
+        `;
     });
     return div;
   });

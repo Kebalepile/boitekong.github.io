@@ -22,6 +22,7 @@ document.querySelector("#app").innerHTML = `
 
   <dialog id="dialog">
       <article id="info">
+     
       </article>
       <button id="close-dialog">Close</button>
   </dialog>
