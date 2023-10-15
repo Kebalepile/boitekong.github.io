@@ -121,7 +121,10 @@ export function setupPrivateSector(element) {
       <br/>
 
       <section class="details">${p.details.replaceAll(/\.(?=[A-Z0-9 ])/g, '.<br/><br/>')}</section>
-      
+      <br/>
+      <button id="share" class="source apply">
+        share job post
+      </button>
       <br/>
       <a href=${p.apply} target="_blank">
        <button class="apply">
@@ -130,7 +133,21 @@ export function setupPrivateSector(element) {
       </a>
        <br/>
       `;
-    });
+    
+    const shareBtn = article.querySelector("#share");
+        shareBtn.addEventListener("click", async () => {
+          const shareData = {
+            title,
+            text: "available job vacancy, might be suitable for you!",
+            url: p.href
+          };
+          try {
+            await navigator.share(shareData);
+          } catch (err) {
+            console.error(err);
+          }
+        });
+      });
     return div;
   });
 

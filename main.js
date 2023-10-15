@@ -21,8 +21,7 @@ document.querySelector("#app").innerHTML = `
   <div id="pvt-job-board"></div>
 
   <dialog id="dialog">
-      <article id="info">
-     
+      <article id="info"> 
       </article>
       <button id="close-dialog">Close</button>
   </dialog>

@@ -53,13 +53,30 @@ export function setupPubliDepartments(element) {
       }
       </section>
       <br/>
+      <button id="share" class="source apply">
+        share job post
+      </button>
+      <br/>
       <a href=${p.href} target="_blank">
-       <button class="source apply">
-         source
-       </button>
+      <button class="source apply">
+        source
+      </button>
       </a>
-       <br/>
+      <br/>
   `;
+      const shareBtn = article.querySelector("#share");
+      shareBtn.addEventListener("click", async () => {
+        const shareData = {
+          title,
+          text: "available job vacancy, might be suitable for you!",
+          url: p.href
+        };
+        try {
+          await navigator.share(shareData);
+        } catch (err) {
+          console.error(err);
+        }
+      });
     });
     return div;
   });

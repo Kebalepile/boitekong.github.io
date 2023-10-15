@@ -23,7 +23,7 @@ export function setupPrivateCompanies(element) {
     const dialog = document.getElementById("dialog");
     div.addEventListener("click", (e) => {
       dialog.showModal();
-     
+
       const article = document.getElementById("info");
       article.innerHTML = `
             <img src=${p.imgSrc} alt=${p.title} title=${title}/>
@@ -53,6 +53,14 @@ export function setupPrivateCompanies(element) {
             }
             </section>
             <br/>
+            <button id="share" class="source apply">
+              share job post
+            </button>
+            <br/>
+            <button id="share" class="source apply">
+              share job post
+            </button>
+            <br/>
             <a href=${p.href} target="_blank">
             <button class="source apply">
               source
@@ -60,8 +68,21 @@ export function setupPrivateCompanies(element) {
             </a>
             <br/>
         `;
-    });
-    return div;
+        const shareBtn = article.querySelector("#share");
+        shareBtn.addEventListener("click", async () => {
+          const shareData = {
+            title,
+            text: "available job vacancy, might be suitable for you!",
+            url: p.href
+          };
+          try {
+            await navigator.share(shareData);
+          } catch (err) {
+            console.error(err);
+          }
+        });
+      });
+      return div;
   });
 
   const privateSectorBoard = document.createElement("section");
