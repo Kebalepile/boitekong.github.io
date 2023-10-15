@@ -72,13 +72,11 @@ export function setupPrivateSector(element) {
       <h3  class="ellipsis-text">${title}</h3>
       <br/>
       <hr/>
-
       <br/>
-
       <p><strong class="job-field" style="padding:3px;" >${
         p["jobSpecFields"]
       }</strong></p>
-
+      <br/>
       ${
         p.province
           ? `<span><p class="province" style="padding:5px;">${p.province}</p></span>`
@@ -97,7 +95,7 @@ export function setupPrivateSector(element) {
           </span>`
           : ""
       }
-      
+      <br/>
       ${
         p.expiryDate
           ? `<p class="expiry-date" style="width:${p.expiryDate.length}ch; padding:3px;">${p.expiryDate}</p>`
@@ -111,7 +109,7 @@ export function setupPrivateSector(element) {
             }ch; padding:3px;">start date: ${p.startDate}</p>`
           : ""
       }
-
+      <br/>
 
       ${
         p.vacancyType
@@ -120,12 +118,9 @@ export function setupPrivateSector(element) {
             }ch; padding:3px;" >Vacancy type: ${p.vacancyType}</p>`
           : ""
       }
-       *   <br/>
+      <br/>
 
-      <section class="details">${p.details.replace(
-        /\. /gi,
-        ".<br/><br/>"
-      )}</section>
+      <section class="details">${p.details.replaceAll(/\.(?=[A-Z0-9 ])/g, '.<br/><br/>')}</section>
       
       <br/>
       <a href=${p.apply} target="_blank">
@@ -133,6 +128,7 @@ export function setupPrivateSector(element) {
          apply
        </button>
       </a>
+       <br/>
       `;
     });
     return div;
