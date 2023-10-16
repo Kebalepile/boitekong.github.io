@@ -145,7 +145,8 @@ func (s *Spider) posts(ctx context.Context) (posts []types.JobPost) {
 			jobSpecFields,
 			details,
 			province,
-			expiryDate
+			expiryDate,
+			iconLink: document.querySelector("link[rel='icon']").getAttribute('href')
 		} })`)
 
 	err := chromedp.Run(ctx,

@@ -36,13 +36,14 @@ type JobPost struct {
 	Details       string `json:"details"`
 	Province      string `json:"province"`
 	ExpiryDate    string `json:"expiryDate"`
+	IconLink      string `json:"iconLink"`
 }
 
 // Used in Heitha spider
 type HeithaJobs struct {
-	IconLink string `json:"iconLink"`
-	Title string    `json:"title"`
-	BlogPosts[]JobPost `json:"blogPosts"`
+	IconLink  string    `json:"iconLink"`
+	Title     string    `json:"title"`
+	BlogPosts []JobPost `json:"blogPosts"`
 }
 
 // Used in ProPersonnel spider
@@ -55,11 +56,12 @@ type ProJobPost struct {
 	Details       string            `json:"details"`
 	Contact       string            `json:"contact"`
 	Apply         string            `json:"apply"`
+	IconLink      string            `json:"iconLink"`
 }
 
 // Used in ProPersonnel spider
 type ProPersonnelJobs struct {
-	IconLink string `json:"iconLink"`
-	Title string       `json:"title"`
+	IconLink  string       `json:"iconLink"`
+	Title     string       `json:"title"`
 	BlogPosts []ProJobPost `json:"blogPosts"`
 }

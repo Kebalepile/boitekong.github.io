@@ -171,7 +171,7 @@ func (s *Spider) vacancies(url string, ctx context.Context) {
 								location,
 								details,
 								contact,
-								apply,
+								apply
 							};
 					})()`, id)
 
@@ -182,7 +182,8 @@ func (s *Spider) vacancies(url string, ctx context.Context) {
 						chromedp.ScrollIntoView(id),
 						chromedp.Evaluate(expression, &JobPost))
 					s.Error(err)
-
+					
+					JobPost.IconLink = s.Posts.IconLink
 					s.Posts.BlogPosts = append(s.Posts.BlogPosts, JobPost)
 
 				}
