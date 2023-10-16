@@ -68,24 +68,25 @@ export function setupPrivateCompanies(element) {
             </a>
             <br/>
         `;
-        const shareBtn = article.querySelector("#share");
-        shareBtn.addEventListener("click", async () => {
-          const shareData = {
-            title,
-            text: "available job vacancy, might be suitable for you!",
-            url: p.href
-          };
-          try {
-            await navigator.share(shareData);
-          } catch (err) {
-            console.error(err);
-          }
-        });
+      const shareBtn = article.querySelector("#share");
+      shareBtn.addEventListener("click", async () => {
+        const shareData = {
+          title,
+          text: "available job vacancy, might be suitable for you!",
+          url: p.href
+        };
+        try {
+          await navigator.share(shareData);
+        } catch (err) {
+          console.error(err);
+        }
       });
-      return div;
+    });
+    return div;
   });
 
   const privateSectorBoard = document.createElement("section");
+  privateSectorBoard.setAttribute("id", "private-companies");
   privateSectorBoard.classList.add("board");
   privateSectorBoard.appendChild(h);
 

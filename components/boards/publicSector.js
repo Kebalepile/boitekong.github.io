@@ -82,6 +82,7 @@ export function setupPubliDepartments(element) {
   });
 
   const privateSectorBoard = document.createElement("section");
+  privateSectorBoard.setAttribute("id", "public-sector");
   privateSectorBoard.classList.add("board");
   privateSectorBoard.appendChild(h);
 
