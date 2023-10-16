@@ -51,7 +51,21 @@ document.querySelector("#app").innerHTML = `
       <button id="close-dialog">Close</button>
   </dialog>
 
-  <footer id="contact">© 2023 K.T Motshoana</footer>
+  <footer id="contact">
+    © 2023 K.T Motshoana
+    <section>
+        <a
+        href="https://t.me/Kebalepile_1"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="https://t.me/Kebalepile_1"
+        ><i class="fa fa-telegram" style="font-size: 36px"></i
+      ></a>
+      <a href="mailto:kmotshoana@gmail.com" title="kmotshoana@gmail.com"
+        ><i class="fa fa-envelope" style="font-size: 36px"></i
+      ></a>
+    </section>
+  </footer>
 `;
 const shareSiteButon = document.getElementById("share-site");
 

@@ -271,17 +271,7 @@ li {
   justify-content: center;
   align-items: center;
 }
-footer {
-  background-color: #2e2d2d6c;
-  margin-top: 20px;
-  border-radius: 3px;
-  text-align: center;
-  font-size: 12px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 #dialog {
   background-color: #000000e0;
   border: none;
@@ -434,4 +424,22 @@ li > a >  img {
   justify-content: space-between;
   align-items: center;
   width:199px;
+}
+#contact{
+  display: flex;
+  flex-flow:column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2e2d2d6c;
+  margin-top: 20px;
+  padding:15px;
+  border-radius: 3px;
+  text-align: center;
+  font-size: 12px;
+}
+#contact > section {
+  margin-top:15px;
+}
+#contact a {
+  margin: 5px;
 }

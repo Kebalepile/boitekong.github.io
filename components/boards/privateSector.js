@@ -123,7 +123,7 @@ export function setupPrivateSector(element) {
       <section class="details">${p.details.replaceAll(/\.(?=[A-Z0-9 ])/g, '.<br/><br/>')}</section>
       <br/>
       <section class="options">
-          <button id="share" class="apply share">
+          <button id="share" class="apply share" title="share post with friends">
             <img class="share-button img-icon" src="assets/share.png" atl="share image"/>
           </button>
         
