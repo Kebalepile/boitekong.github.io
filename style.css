@@ -47,9 +47,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* place-items: center; */
-  /* min-width: 320px;
-  min-height: 100vh; */
   background-color: #1c1c1c;
 }
 
@@ -77,12 +74,31 @@ li {
   list-style: none;
   margin: 3px;
 }
+#logo{
+  margin-top:50px;
+  width:100px;
+  height:100px;
+  border-radius: 50%;
+}
+
+.call-to-action{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 #headline{
   background-color:rgb(54, 54, 54);
   border-radius: 2px;
   margin-bottom:30px;
-  padding:10px 6px 6px 6px;
- 
+  background-image: url("assets/icons/1.jpg");
+  background-repeat: no-repeat;
+  
+}
+#headline-message{
+  background-color:rgba(0, 0, 0, 0.233);
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px); 
 }
 #headline-job-info {
   display: flex;
@@ -314,4 +330,108 @@ footer {
   min-height: 700px;
   border:none;
   background-color:inherit;
+}
+nav{
+  position:absolute;
+  top:10px;
+  left:10px;
+  width:50%;
+  z-index:2;
+  border-radius: 5px;
+ 
+}
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+nav li {
+  float: left;
+}
+
+nav li a, nav li h5 {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+nav li a:hover {
+  background-color: #111;
+}
+
+nav li ul {
+  display: none;
+}
+
+#install-app {
+  background-color: #4caf4f11;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  height:50px;
+  width:80px;
+}
+
+#install-app > img {
+  width:50%;
+  height: 50%;
+}
+li:has(details) {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+details {
+  margin-top:20px;
+  width: 100px;
+  border: none;
+  background:inherit;
+}
+
+details > summary {
+  list-style: none;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+
+.share{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left:5px;
+  background-color:#0a95b8da;
+  width:80px;
+}
+.share > img{
+  width:30%;
+  height: 50%;
+ 
+}
+
+.img-icon{
+  filter: invert(1);
+}
+
+li > a >  img {
+  height:50px;
+  width:60px;
+}
+
+.options{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width:199px;
 }

@@ -53,19 +53,19 @@ export function setupPrivateCompanies(element) {
             }
             </section>
             <br/>
-            <button id="share" class="source apply">
-              share job post
-            </button>
-            <br/>
-            <button id="share" class="source apply">
-              share job post
-            </button>
-            <br/>
-            <a href=${p.href} target="_blank">
-            <button class="source apply">
-              source
-            </button>
-            </a>
+            
+           <section class="options">
+                <button id="share" class="apply share">
+                  <img class="share-button img-icon" src="assets/share.png" atl="share image"/>
+                </button>
+              
+                <a href=${p.href} target="_blank">
+                    <button class="source apply">
+                      source
+                    </button>
+              </a>
+           </section>
+            
             <br/>
         `;
       const shareBtn = article.querySelector("#share");

@@ -1,31 +1,30 @@
 export  function setupNavigation(element){
     element.innerHTML = `
-        <img src="#" alt="website logo" id="logo"/>
+        <img src="assets/icons/2.jpg" alt="website logo" id="logo"/>
         <nav>    
             <ul>
                 <li>
-                    <a href="#headline"> about </a>
+                    <a href="#headline" title="about"> about </a>
                 </li>
                 <li>
-                    <a href="#contact"> contact info</a>
+                    <a href="#contact" title="contact"> 
+                    <img class="img-icon" src="assets/contact.png" atl="contact image"/>
+                    </a>
                 </li>
                 <li>
-                    <h5>Types of Vacanies</h5>
-                    <ul>
-                        <li>
-                            <a href="#pvt-job-board"> private sector jobs </a>
-                        </li>
-                        <li>
-                            <a href="#private-companies"> private sector companies hiring </a>
-                        </li>
-                        <li>
-                            <a href="#public-sector"> public sector departments hiring </a>
-                        </li>
-                    </ul>
+                    <button id="install-app" title="install PWA">
+                    <img class="img-icon" src="assets/install.png" atl="install image"/>
+                    </button>
                 </li>
                 <li>
-                    <button id="install-app" class="apply"> install web app</button>
+                <details>
+                    <summary>Job Vacancies</summary>
+                    <a href="#pvt-job-board">Private</a>
+                    <a href="#private-companies">Companies</a>
+                    <a href="#public-sector">Public</a>
+                </details>
                 </li>
+                
             </ul>
         </nav>`;
         

@@ -10,8 +10,20 @@ document.querySelector("#app").innerHTML = `
   </header>
   <br/>
   <div id="headline">
-    <h1>Hello Mereko</h1>
+
     <div id="headline-message" class="card">
+    <h2> Boitekong Community Job Board</h2>
+    <br/>
+        <p>We're all about connecting you with job opportunities from various sectors. Our board features vacancies from:</p>
+        <ul>
+            <li><strong>Public sector departments and entities</strong> 🏛️</li>
+            <li><strong>Private sector companies</strong> 🏢</li>
+            <li><strong>Job posts from other job agencies</strong> 📑</li>
+        </ul>
+  
+        <p>Whether you're a fresh graduate 🎓 or an experienced professional 👩‍💼👨‍💼, we're here to help you navigate your career path. 
+          Dive in and explore the multitude of opportunities waiting for you! 🚀💼</p>
+       <br/>
        <h3>Looking for a job in the South African Market</h3>
        <br/>
        <h4>Start Here</h4>
@@ -19,7 +31,15 @@ document.querySelector("#app").innerHTML = `
        <br/>
         <ul id="headline-job-info"></ul>
         <br/> 
-        <button id="share-site" class="apply">share site</button>
+       <p class="call-to-action">
+          share site with friends
+       
+        
+          <button id="share-site" class="apply share">
+            <img class="share-button img-icon" src="assets/share.png" atl="share image"/>
+          </button>
+       
+       </span>
     </div>
   </div>
   <div id="job-board"></div>
@@ -31,7 +51,7 @@ document.querySelector("#app").innerHTML = `
       <button id="close-dialog">Close</button>
   </dialog>
 
-  <footer id="contact">© 2023 K.T MOTSHOANA</footer>
+  <footer id="contact">© 2023 K.T Motshoana</footer>
 `;
 const shareSiteButon = document.getElementById("share-site");
 
@@ -65,3 +85,4 @@ const installBtn = document.getElementById("install-app");
 installBtn.addEventListener('click', () => {
   console.log("install web app")
 })
+
