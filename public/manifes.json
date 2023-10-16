@@ -1,0 +1,32 @@
+{
+    "short_name": "B-Town  👨‍🏫  Job Board",
+    "name": "B-Town  👨‍🏫  Job Board",
+    "description": "Boitekong Job Board: Connecting you with diverse job opportunities in the public and private sectors. Explore your career path in the South African Market.",
+    "author": "K.T Motshoana",
+    "lang": "en-US",
+    "start_url": ".",
+    "background_color": "#252525",
+    "theme_color": "#252525",
+    "scope": "/",
+    "display": "standalone",
+    "icons": [
+      {
+        "src": "./public/assets/icons/144.png",
+        "type": "image/png",
+        "sizes": "144x144",
+        "purpose": " maskable any"
+      },
+      {
+        "src": "./public/assets/icons/192.png",
+        "type": "image/png",
+        "sizes": "192x192",
+        "purpose": " maskable any"
+      },
+      {
+        "src": "./public/assets/icons/512.png",
+        "type": "image/png",
+        "sizes": "512x512",
+        "purpose": " maskable any"
+      }
+    ]
+  }
