@@ -1,521 +1,384 @@
-export const data = {
-  iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png",
-  title: "heitha-stuffing-group",
-  blogPosts: [
+export const data  = {
+  "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg",
+  "title": "pro-personnel",
+  "blogPosts": [
     {
-      apply: "http://www.heitha.co.za/jobs/fitter-mining-maintenance-2-years",
-      jobTitle: " Fitter Mining Maintenance (2 Years)",
-      jobSpecFields: "Other",
-      details:
-        "Purpose The incumbent will work as part of a team, which is responsible for maintenance on the Underground Refrigeration plant, Bulk air coolers and Condenser spray systems.             Minimum requirements Qualified Fitter. Minimum of two years’ experience in fitting.  Minimum of two years’ experience in Refrigeration and Ventilation maintenance. R1 and R2 Certificates in refrigeration will be advantageous.             Main duties  Carrying out repairs and maintenance on all mechanical equipment including but not limited to York CYK chillers, pump down units, pumps, ventilation fans, overhead cranes, crawl beams, pipes and valves and distribution lines for air and water",
-      province: "Limpopo",
-      expiryDate: "Expiry Date: 2023-10-31 00:00:00",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
+      "jobTitle": "Front End Loader",
+      "startDate": "2023-10-16 - 2023-11-15",
+      "vacancyType": "Permanent",
+      "jobSpecFields": "Mining",
+      "location": {
+        "city": ", Rustenburg",
+        "region": "North West"
+      },
+      "details": "Skills and Experience Required\n\nValid Front End Loader Certificate\nValid Driver's License\n3 Years Experience\nNo Criminal Record\nContactable References from previous employer\n",
+      "contact": "Dianne",
+      "apply": "https://webapp.placementpartner.com/wi/application_form.php?id=propersonnel&amp;vacancy_ref=RTB002302-D",
+      "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg"
     },
     {
-      apply: "http://www.heitha.co.za/jobs/compliance-specialist-cmu",
-      jobTitle: " Compliance Specialist (CMU)",
-      jobSpecFields: "Government",
-      details:
-        "Provide guidance and direction on complex financial services, designated non-financial businesses and professions and related matters to Supervisory Bodies, regulated institutions and relevant stakeholders in the Financial Servicesand Non-Financial sector             A Relevant University degree and working towards post-graduate (e.g., LLB, BCOM or Information Systems)  Post graduate Compliance Management qualification. (CAMS certification preferred).             Respond to highly complex compliance queries where required. Present to stakeholders on highly complex matters e.g. JSE members, and provide expert input into written material. Provide expert advice on highly complex guidance products, including directive",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-10-31 06:00:00",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
+      "jobTitle": "Civil Supervisor",
+      "startDate": "2023-10-13 - 2023-11-12",
+      "vacancyType": "Permanent",
+      "jobSpecFields": "Construction",
+      "location": {
+        "city": ", Rustenburg",
+        "region": "North West"
+      },
+      "details": "Qualifications: To be a successful candidate, you should have:\n\nMatric with Tersiary Qualification\nProven experience as a Civil Supervisor with a strong emphasis on remining projects.\nIn-depth knowledge of civil engineering processes, standards, and best practices in remining.\nStrong leadership and communication skills.\nA commitment to safety and quality.\n",
+      "contact": "Rene",
+      "apply": "https://webapp.placementpartner.com/wi/application_form.php?id=propersonnel&amp;vacancy_ref=RTB002300-R",
+      "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg"
     },
     {
-      apply: "http://www.heitha.co.za/jobs/claims-controller-4-months",
-      jobTitle: " Claims Controller (4 Months)",
-      jobSpecFields: "Insurance",
-      details:
-        "Purpose  The Claims Controller will collate records and examine information to assist in determining claim settlements, within the governed framework to ensure compliance with the short term insurance regulations.             Minimum Requirements  Higher Certificate in Insurance (NQF5) is preferable. Tertiary education is preferable. 3 – 5 years experience in a Claims position of Short term Insurance company.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-10-31 00:00:00",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
+      "jobTitle": "Call out Inhouse Technician",
+      "startDate": "2023-10-13 - 2023-11-30",
+      "vacancyType": "Permanent",
+      "jobSpecFields": "Information Technology",
+      "location": {
+        "city": ", Rustenburg",
+        "region": "North West"
+      },
+      "details": "Package:* R15 000* 13th Cheque* Commission* 50% medical aid (Discovery) after 3 Months ProbationThe successful candidate must meet the following requirements:* Retail Experience will be an advantage* 3 - 5 Years Experience* A + &amp; N + Qualification* MCSE or MCP Qualified* Valid Drivers License&nbsp;* Own Vehicle&nbsp;* Must have an outgoing personality",
+      "contact": "Michelle",
+      "apply": "https://webapp.placementpartner.com/wi/application_form.php?id=propersonnel&amp;vacancy_ref=RTB002301-Du+To",
+      "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg"
     },
     {
-      apply: "http://www.heitha.co.za/jobs/office-manager-3-years",
-      jobTitle: " Office Manager (3 Years)",
-      jobSpecFields: "Government",
-      details:
-        "Purpose  The Officer Manager will be responsible for carrying out managerial, financial and administrative tasks.             Minimum Requirements  National Diploma or Degree in Management, Office Management & Technology, or relevant administrative qualification. 5 to 8 years of professional administrative experience in working with Executives or senior management.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-10-31 00:00:00",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
+      "jobTitle": "Office Admin - Interior Design",
+      "startDate": "2023-10-13 - 2023-11-12",
+      "vacancyType": "Permanent",
+      "jobSpecFields": "Other",
+      "location": {
+        "city": ", Rustenburg",
+        "region": "North West"
+      },
+      "details": "Relevant requirements are:&nbsp;Sound sales experience&nbsp;Strong administration skills&nbsp;Valid driver’s license&nbsp;Computer literate (MS Office Suite)&nbsp;Willingness to learn and develop within the companyTraining will be provided to candidateSalary will be discussed on interviewGeneral duties will include, but are not limited to:&nbsp;Visiting client’s houses for consultations and quotes on&nbsp;interior layout and design options&nbsp;Planning and overseeing workers with installation of&nbsp;blinds, curtains, wallpaper, including quality control&nbsp;Managing stock levels and ordering of material and stock&nbsp;Great people management skills to oversee production&nbsp;line and stock being made&nbsp;Overseeing workers in workshop&nbsp;Responsible to send info to website supplier for updating&nbsp;website, Social Media etc.",
+      "contact": "Rene",
+      "apply": "https://webapp.placementpartner.com/wi/application_form.php?id=propersonnel&amp;vacancy_ref=RTB002297-R",
+      "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg"
     },
     {
-      apply: "http://www.heitha.co.za/jobs/local-technical-support-engineer",
-      jobTitle: " Local Technical Support Engineer",
-      jobSpecFields: "Other",
-      details:
-        "Purpose  The Technical Help Desk is responsible for supporting dealers to diagnose and resolve issues to support vehicle repair.             Bachelor’s or equivalent Technical Qualification. 5 years’ relevant experience. Level 4 Technician Level would be advantageous.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-10-31 00:00:00",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
+      "jobTitle": "IT Project Manager",
+      "startDate": "2023-10-13 - 2023-11-12",
+      "vacancyType": "Permanent",
+      "jobSpecFields": "Information Technology",
+      "location": {
+        "city": ", Centurion",
+        "region": "Gauteng"
+      },
+      "details": "Required Qualifications\n\nTertiary degree, diploma or certificate in a related field (SAFE Agile, SCRUM Certification or Project Management)\nAgile Practitioner is preferred (or prepared to undertake certification soon after onboarding)\n\n&nbsp;Experience and Knowledge:\n\n6-8 years working experience in Programme or Project Management Position\nAdditional Experience in the Mining Industry or Banking Industry would be beneficial\nExperience in product lifecycle management\nSoftware Development Project Experience\nExperience in managing technology / data projects\nExperience in working with Project Management Office (PMO)\nAgile Project Delivery (Leading Tribes, Chapters, Feature Teams etc.)\n\n&nbsp;Key Responsibilities:\n\nCompiling business cases, business requirements and process maps\nCreating and Managing project schedules (including SOW, backlogs, task prioritisation and other)\nProject RAID management\nProject integration and change management\nBudget and cost management including procurement and reporting\nQuality management\nConflict management and negotiations\nCoordinate cross-functional / multi-disciplinary technical teams\nRelease and configuration Management\nSteering Committee Reporting\n\n&nbsp;Competencies:&nbsp;&nbsp;\n\nCritical Thinking: Using logic and reasoning to identify the strengths and weaknesses of alternative solutions, conclusions or approaches to problems\nActive Learning: Understanding the implications of new information for both current and future problem-solving and decision-making\nBusiness knowledge: Good understanding of the organization and the business domain or sector within which it operates\nSystems Analysis: Understanding how a system should work and how changes in conditions, operations, and the environment will affect outcomes\nComplex Problem Solving: Identifying complex problems and reviewing related information to develop and evaluate options and implement solutions\nDeductive Reasoning: The ability to apply general rules to specific problems to produce answers that make sense\nInductive Reasoning: The ability to combine pieces of information to form general rules or conclusions (includes finding a relationship among seemingly unrelated events)\nExcellent communication skills: Ability to engage with high-level stakeholders, both verbal and non-verbal\nFurther interpersonal skills needed include:\n\nFlexibility and adaptability (crucial to consulting environment)\nOrganizational and leadership abilities\nInfluencing and motivating\nDecision making\nBuilding trust and long-term relationships with stakeholders\n\n",
+      "contact": "Rene",
+      "apply": "https://webapp.placementpartner.com/wi/application_form.php?id=propersonnel&amp;vacancy_ref=RTB002298-R",
+      "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg"
     },
     {
-      apply: "http://www.heitha.co.za/?page=2jobs/data-analyst",
-      jobTitle: " Data Analyst",
-      jobSpecFields: "Other",
-      details:
-        "Purpose  The candidate will be required to oversee CRM data and systems integration, manage data flow and analyses (including predictive modelling, segmentation, forecasting and choice modelling), present results and complete ad hoc special projects.             Relevant qualification. At least 3 years data analytic experience. Data Analyst, with CRM data analysis experience. Demonstrated experience working with SQL Server Reporting Services (SSRS).",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-10-31 00:00:00",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
+      "jobTitle": "Sales Representative",
+      "startDate": "2023-10-13 - 2023-11-12",
+      "vacancyType": "Permanent",
+      "jobSpecFields": "Sales",
+      "location": {
+        "city": ", Rustenburg",
+        "region": "North West"
+      },
+      "details": "Requirements: To excel in this role, you should possess:\n\nA proven track record in the printing and signage industry.\nOutstanding communication and interpersonal skills.\nFamiliar with the Mining houses in and around Rustenburg.\nA history of achieving and surpassing sales objectives.\nSelf-motivation and a relentless drive to excel.\nA valid driver's license.\n\nWhat Our Client Offers:\n\nCompetitive compensation with performance-based incentives.\nOpportunities for professional growth and career advancement.\nA vibrant and supportive work environment within a respected organization.\n",
+      "contact": "Rene",
+      "apply": "https://webapp.placementpartner.com/wi/application_form.php?id=propersonnel&amp;vacancy_ref=RTB002299-R",
+      "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg"
     },
     {
-      apply: "http://www.heitha.co.za/?page=2jobs/technical-trainer",
-      jobTitle: " Technical Trainer",
-      jobSpecFields: "Other",
-      details:
-        "Purpose  Technical Training is required to facilitate the knowledge and skills transfer of technical expertise to the technical population within the client’s repair network,             Relevant qualification. A minimum of 5 years' experience as a training officer in the automotive industry.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-10-31 00:00:00",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
+      "jobTitle": "Creditors Clerk",
+      "startDate": "2023-10-11 - 2023-11-10",
+      "vacancyType": "Permanent",
+      "jobSpecFields": "Finance",
+      "location": {
+        "city": ", Rustenburg",
+        "region": "North West"
+      },
+      "details": "Role\n\nManagement of accounts payable process which includes all creditors and sub-contractors bill capturing, reconciliations, payment allocation and age analysis.\n\nQualification\n\nMatric with accounting and studying towards an account qualification.\nFinancial qualification – advantages\n\nExperience\n\n2 to 5 years experience in similar role\n\nCompetencies\n\nGood understanding of basic bookkeeping and accounting payable principles\nGood understanding of reconciliations\nAbility to calculate, post and manage accounting figures and financial records\nExperience in processing entries within accounting software\nAdvance excel, word and outlook\nMS Team and OneDrive\nEffective verbal, written and listening communications skills\nTime management skills\nGood planning and organisation skills\nExcellent attention to detail\nAbility to work in a fast paced, pressurised environment\n\nTasks\n\nCreate suppliers / review suppliers created (CIPC, VAT and BEE).\nCapture banking details / review of banking details captured (Bank confirmation letter).\nCreate requisitions and purchase orders as require (filing of documents in electronic format).\nCapture supplier invoices into accounting system (Bills). Ensure invoices are matched against requisitions, purchase orders and goods received note. Query and resolve any discrepancies with Procurement dept.\nConfirm VAT treatment.\nObtain and capture credit notes as and when required.\nPerform supplier, sub-contractor and inter-company reconciliations and follow up on queries until resolved.\nPrepare payment batches (payment loading to bank and approval will be performed by Accountant and FD).\nSend remittance advices to all paid. Follow up and resolve any queries.\nDownload and capture bank transactions into accounting system\nAllocate payments made to creditors and suppliers.\nAge analysis extraction, review and clearing of any allocation issues and/or errors. Check aging against supplier / sub-contractor statements. Filing statements in electronic format.\nReport to Accountant on daily basis on work performed and queries.\nAdhoc tasks as required within the finance department.\n\nSalary is R12k to R15k",
+      "contact": "Dianne",
+      "apply": "https://webapp.placementpartner.com/wi/application_form.php?id=propersonnel&amp;vacancy_ref=RTB002293-D",
+      "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg"
     },
     {
-      apply: "http://www.heitha.co.za/?page=2jobs/non-technical-trainer",
-      jobTitle: " Non-Technical Trainer",
-      jobSpecFields: "Other",
-      details:
-        "Purpose  To contribute to the development of training plans and schedules to achieve client targets.             Relevant qualification. A minimum of 5 years' experience as a training officer in the automotive industry.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-10-31 00:00:00",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
+      "jobTitle": "Portfolio Officer",
+      "startDate": "2023-10-09 - 2023-11-08",
+      "vacancyType": "Permanent",
+      "jobSpecFields": "Property &amp; Estates",
+      "location": {
+        "city": ", Port Elizabeth",
+        "region": "Eastern Cape"
+      },
+      "details": "Educational Requirements:\n\nA 3-year Property Management qualification or equivalent.\nRegistered with EAAB as an Estate Agent holding a valid FFC.\nPaddocksUCT or equivalent community schemes qualification.\n\nWork Experience, Skills &amp; Attributes:\n\nThree years of experience in a client services/marketing &amp; management environment.\nManaging third-party properties – rentals &amp; community schemes.\nCredit Control experience with a basic understanding of the National Credit Act.\nExperience in overseeing and managing staff.\nAdvanced MS Office and MDA skills.\nExceptional planning, problem-solving, and analytical skills.\nAccuracy &amp; Strategy planning.\nExcellent communication skills.\nExceptional attention to detail.\nLogical thinking &amp; information seeking.\nSelf-development orientation.\nCultural sensitivity.\nService orientation.\nExcellent people/interpersonal skills.\nPresentable and Professional.\nAbility to work unsupervised in a pressurized environment.\n\nKey Performance Areas: 1) Operational Requirements Execute daily tasks and work instructions according to relevant procedures. Prepare marketing plans and ensure implementation.&nbsp; Prepare, submit, and pursue management proposals to meet growth targets. Attend functions to promote management services. Co-ordinate and attend sponsored events. Ensure the successful take-on of new properties under effective marketing management.2) Landlord and Relationship Management - Landlord&nbsp; Ensure efficient and effective landlord administration and management. Manage landlord mandate to maximize revenue streams.&nbsp;Oversee the landlord payment process. Sign-off on monthly invoices and municipal accounts payments. Distribute monthly reports to landlords. Consult with landlords regarding maintenance &amp; expenditure. Oversee and ensure house visits by relevant staff. Oversee the implementation of rental increases.3) Relationship &amp; Property Management - Community Schemes Ensure efficient and effective administration and management of owner and Trustees relationships. Assist with the signing of debit order forms and levy recoveries. Ensure entities are registered with CSOS. Oversee the management and enforcement of house and conduct rules.4) Tenant &amp; Relationship Management Ensure efficient tenant administration and management. Oversee tenant management procedures to maximize revenue streams. Ensure vacancies negated in line with budgets and projections. Oversee tenant relationships through tracking customer service levels. Ensure lease agreement processes are managed in line with company procedures. Oversee the marketing of available units to optimize rental income.5) Rental/Levy Administration Generate levy statements for owners and rental statements for tenants. Bill tenants and owners' relevant collection/legal fees. Ensure accurate debit order collections.6) Credit Control Procedures Track arrear accounts and receipts. Implement credit control procedures. Make payment arrangements and follow-ups with owners and tenants.7) Legal Matters Draft summonses and judgments. Liaise with attorneys throughout the legal process.8) Compliance Ensure compliance with relevant legislation. Ensure FICA compliance of third-party files. Renew EAAB annual renewals.9) Report Writing Review monthly business unit results. Report on vacancies, mandates, and mutations. Prepare monthly progress reports.10) Staff Management Oversee and manage staff's daily activities. Ensure staff performance and development in line with company policies and procedures.11) Community Development Manage Corporate Social Investment activities. Engage with volunteers involved in CSI programs.12) Financial Ensure effective cost-saving and waste elimination. Assist with Annual Budgets and Quarterly Forecasts. Control and approve expenses in line with company approvals framework.13) Human Resources Promote diversity, equal opportunity, and fair treatment.&nbsp; Execute company EE plan and Workplace Skills Plan. Manage staff performance through the Company Performance Management program.14) Quality Compliance Comply with Quality requirements. Ensure high-quality standards of work.15) Safety, Health &amp; Environmental Adhere to Government regulations. Ensure SHE procedures &amp; regulations are followed.",
+      "contact": "Rene",
+      "apply": "https://webapp.placementpartner.com/wi/application_form.php?id=propersonnel&amp;vacancy_ref=RTB002292-R",
+      "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg"
     },
     {
-      apply: "http://www.heitha.co.za/?page=2jobs/senior-database-developer",
-      jobTitle: " Senior Database Developer",
-      jobSpecFields: "Government",
-      details:
-        "Purpose Design, develop and maintain high performance scalable and secure database solution in order to ensure successful and             efficient database solutions meeting the business requirements.             Minimum requirements, A relevant ICT degree or equivalent qualification. Requirements gathering - minimum five years' experience. Project management - minimum five years' experience.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-10-31 00:00:00",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
+      "jobTitle": "Safety Officer",
+      "startDate": "2023-10-05 - 2023-11-06",
+      "vacancyType": "Contractor",
+      "jobSpecFields": "SHEQ",
+      "location": {
+        "city": ", Rustenburg",
+        "region": "North West"
+      },
+      "details": "The candidate needs to have the following requirements:* ISO experience ESSENTIAL* Comsoc 1 &amp; 2* Mining &amp; Engineering experience essential* Candidate to start as soon as possible.* Valid drivers license",
+      "contact": "Yolanda Day-Garden",
+      "apply": "https://webapp.placementpartner.com/wi/application_form.php?id=propersonnel&amp;vacancy_ref=RTB002289-YDG",
+      "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg"
     },
     {
-      apply:
-        "http://www.heitha.co.za/?page=2jobs/human-capital-officer-6-months",
-      jobTitle: " Human Capital Officer (6 Months)",
-      jobSpecFields: "Government",
-      details:
-        "The Human Capital Officer’s role will, among other HCM functions, entail advertising and filling of positions.             Bachelor’s Degree in Human Resource qualifications or 3 – 5 years professional experience in recruitment or talent acquisition.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-10-31 00:00:00",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
+      "jobTitle": "ADT Operator ( Articulated Dump Truck)",
+      "startDate": "2023-10-05 - 2023-11-07",
+      "vacancyType": "Contractor",
+      "jobSpecFields": "Mining",
+      "location": {
+        "city": ", Rustenburg",
+        "region": "North West"
+      },
+      "details": "The candidate must have previous working experience as a ADT operator valid certificates.",
+      "contact": "Yolanda Day-Garden",
+      "apply": "https://webapp.placementpartner.com/wi/application_form.php?id=propersonnel&amp;vacancy_ref=RTB002290-YDG",
+      "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg"
     },
     {
-      apply:
-        "http://www.heitha.co.za/?page=3jobs/senior-manager-supply-chain-position-12-months",
-      jobTitle: " Senior Manager: Supply Chain (12 Months)",
-      jobSpecFields: "Government",
-      details:
-        "The Senior Manager Supply Chain plans, directs and manages supply chain and facilities functions within the Company through consistent delivery.             5 years relevant experience in managing, implementing and executing supply chain management strategies of which 3 years should have been at a senior management level.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-10-31 00:00:00",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
+      "jobTitle": "Portfolio Manager",
+      "startDate": "2023-10-03 - 2023-11-02",
+      "vacancyType": "Permanent",
+      "jobSpecFields": "Admin, Office &amp; Support",
+      "location": {
+        "city": ", Rustenburg",
+        "region": "North West"
+      },
+      "details": "The successful candidate must fulfill the following minimum requirements:&nbsp;Qualifications:\n\nGrade 12 with Math's or finance related experience&nbsp;\nNQF Level 4 Real Estate Qualification\n\nExperience, Skills, Knowledge&nbsp;\n\nExceptional computer literacy in Word, Excel, Email and Presentations&nbsp;\nHighly developed organizational and interpersonal skills as well as good professional communication skills&nbsp;\nAbility to multi task&nbsp;\nMature individual with strong independent initiative&nbsp;\nUnderstanding/knowledge of the Sectional Title Scheme Management Act&nbsp;\nExperience and knowledge of HOA and sectional Title Buildings&nbsp;\n",
+      "contact": "Rene",
+      "apply": "https://webapp.placementpartner.com/wi/application_form.php?id=propersonnel&amp;vacancy_ref=RTB002286-R",
+      "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg"
     },
     {
-      apply: "http://www.heitha.co.za/?page=3jobs/finance-operations-manager",
-      jobTitle: " Finance Operations Manager",
-      jobSpecFields: "Other",
-      details:
-        "The Finance Operations Manager role is to support the Chief Financial Officer in developing financial strategies, fixing operations (implementation of redefined processes and systems); dealing with day-to-day operational requests from business.             Minimum requirements   Bachelor’s degree in finance / accounting  5 years working experience in a finance department.  3 years in management level",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-10-18 06:29:00",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
+      "jobTitle": "Group CSI Officer",
+      "startDate": "2023-09-21 - 2023-10-21",
+      "vacancyType": "Permanent",
+      "jobSpecFields": "FMCG",
+      "location": {
+        "city": ", JHB - Central",
+        "region": "Gauteng"
+      },
+      "details": "Role looking after the community service initiatives for the business.Responsibilities:* Community driven projects are managed and also followed up, charity events, hospice clinic management and drive, managing the various charity organization donations and support functionsRequirements:* Person must have a suitable marketing qualification and or degree* Should be flexible and willing to travel* Must have a valid driver's license and own reliable transport.Reporting structure:* The role will be reporting to into the IT Directors as the function's leader within the Head Office function",
+      "contact": "Yolanda Day-Garden",
+      "apply": "https://webapp.placementpartner.com/wi/application_form.php?id=propersonnel&amp;vacancy_ref=RTB002279-YDG",
+      "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg"
     },
     {
-      apply: "http://www.heitha.co.za/?page=3jobs/senior-finance-manager",
-      jobTitle: " Senior Finance Manager",
-      jobSpecFields: "Insurance",
-      details:
-        "The Senior Finance Manager will be responsible for the general ledger accounting, taxation, reporting and ad hoc issues.             Minimum requirements:  B. Com Degree Honours in Accounting Must have CISA qualification. CA (SA)             Main Duties:   Strategic Alignment, Operational, Statutory Reporting, Budgeting and financial responsibilities.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-10-18 06:59:00",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
+      "jobTitle": "Senior Payroll Administrator",
+      "startDate": "2023-09-21 - 2023-10-21",
+      "vacancyType": "Permanent",
+      "jobSpecFields": "Finance",
+      "location": {
+        "city": ", JHB - Central",
+        "region": "Gauteng"
+      },
+      "details": "Key responsibilities:* Understand the importance of revenue, productively, chargeability and the employees pay and ensuring accuracy in processing of the payrolls with HR administrators and financial support.* Supervise and execute routine admin activities (monthly) with accurate data and payroll capturing workflow leave management, benefit admin, and other payroll related duties.* Process monthly and yearly calendar of payroll processing* Computer hours worked* Process all changes to payroll* Ensure all payments are completed* Provide new employees with nessecary training on the payroll system&nbsp;Technical Expertise:* Liaise with tax authorities* Use specific software programs (payroll system)Team based Responsibilities.* Inputting payroll onto system* Support tax officer&nbsp;* Assists senior team membersRequirements:* Person who is willing to get involved at the Store Level* Experience leading and coordinate a payroll function withing the FMCG organization* Understand the BCEA and LRA in relation to the sectoral determination Act 9, wholesale and retail sector, COIDA and Unemployment Act* Minimum 5-10 years working experience on a payroll system related to Psiber or sages HR Premier System* Excel skills is required* Must have reliable transport",
+      "contact": "Yolanda Day-Garden",
+      "apply": "https://webapp.placementpartner.com/wi/application_form.php?id=propersonnel&amp;vacancy_ref=RTB002280-YDG",
+      "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg"
     },
     {
-      apply:
-        "http://www.heitha.co.za/?page=3jobs/learning-and-development-officer-12-months",
-      jobTitle: " Learning and Development Officer (12 Months)",
-      jobSpecFields: "Government",
-      details:
-        "The Learning & Development Officer will be required to assist with Learning & Development functions, overall planning, monitoring and execution of the internship programme.             Minimum requirements  Bachelor Degree in Human Resources/Development/ Business Administration or related.3 – 5 years Learning and Development/ Talent Development experience             Main Duties  Assisting with the implementation and monitoring of internship and Work Integrated Learning (WIL) Programme.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-10-10 00:00:00",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
+      "jobTitle": "Procurement Superintendent – Commodities",
+      "startDate": "2023-09-21 - 2023-10-21",
+      "vacancyType": "Permanent",
+      "jobSpecFields": "Mining",
+      "location": {
+        "city": ", Sandton",
+        "region": "Gauteng"
+      },
+      "details": "Requirements:Minimum Qualifications:\n\nA degree or National Diploma in Commerce, Law, Engineering, or Supply Chain Management.\n\nExperience:\n\nA minimum of 6 years of relevant experience, with a preference for at least 2 years of managerial experience.\n\nResponsibilities:Safety, Health, Environment, and Quality (SHEQ):\n\nIdentify and assess risk exposures.\nApply risk mitigation and control measures.\nEnsure SHEQ compliance within the Section.\nUtilize the Integrated Management System (IMS) for SHEQ reporting.\n\nPeople Management:\n\nCultivate an enabling work culture.\nMaintain labor stability and minimize turnover.\nAlign labor complement with the budget.\nAchieve HDSA/Female targets.\nManage performance against targets and competencies.\nImplement Individual Development Plans (IDPs) linked to performance.\nConduct quarterly career discussions.\nEnforce discipline and address issues such as absenteeism and misconduct.\nProvide coaching and counseling to improve performance.\nConduct recruitment interviews.\n\nCustomer Relations:\n\nFoster and enhance relationships with key stakeholders.\nEnsure satisfaction among customers and suppliers.\nInteract with customers to understand operational concerns.\nEstablish and maintain effective communication channels between customers and suppliers.\nResolve customer queries and complaints.\n\nBusiness Processes:Category Management:\n\nManage all procurement-related activities within the assigned commodity category.\nImplement strategic sourcing initiatives to reduce Total Cost of Ownership.\nIdentify, implement, and maintain relevant commodity contracts.\nAchieve targeted cost savings through effective vendor negotiation.\nDevelop and maintain expert knowledge of supply markets, competitors, and innovations.\nFacilitate procurement change initiatives to enhance business performance.\n\nVendor Management:\n\nOversee vendor rationalization strategy within the assigned category.\nManage vendor selection, compliance, and performance.\n\nStakeholder Management:\n\nBuild strong relationships with both internal and external customers to enhance their experience.\n\nContract Management:\n\nManage all contracts within the assigned category throughout their lifecycle.\nHandle terminations, renewals, extensions, and re-assignments.\nIdentify and manage risks in collaboration with the cross-functional contracting team (Finance, Legal, Business Units, Maintenance Engineering).\n\nInnovation:\n\nIdentify innovative procurement solutions that drive efficiency within the organization.\n\nManagement Support:\n\nConduct procurement analyses and reporting to assist management in tracking and achieving departmental targets.\nProvide mentorship to Procurement Specialists and Contract Practitioners.\n\nGrowth:\n\nDrive continuous improvement through operational excellence.\nIdentify opportunities for improvements within the Procurement pipeline.\nIncrease BEE (Black Economic Empowerment) spend.\nInitiate Enterprise Development and Preferential Procurement opportunities.\n\nShareholder Value:\n\nManage the Section's costs.\nEnsure compliance with Financial Policies and Procedures.\nProtect company assets.\nReduce Total Cost of Ownership (TCO) and establish a competitive advantage through proactive procurement.\nDeliver auditable benefits.\n\nBehavioral Competencies:\n\nSafety Leadership\nInnovation\nLeadership\nPlanning, Organizing &amp; Control\nResults Orientation\nProblem Solving &amp; Decision Making\nAligning Performance for Success\nCommunication\nChange Leadership\nBuilding Strong Teams\nBusiness Acumen\n\nWorkplace Competencies:\n\nSkills: Proficiency in Microsoft programs and Systems like IMS, EBMS, SAP, COUPA, MES\nKnowledge: Understanding of legal contracts and Contract Management, market dynamics within the assigned commodity category, Supply Chain Management, Policies and Procedures, Systems Analysis, Mathematics, Mining Charter, B-BBEE Act, and the Code of Good Practice.\n",
+      "contact": "Rene",
+      "apply": "https://webapp.placementpartner.com/wi/application_form.php?id=propersonnel&amp;vacancy_ref=RTB002281-R",
+      "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg"
     },
     {
-      apply: "http://www.heitha.co.za/?page=3jobs/sales-consultant-kzn",
-      jobTitle: " Sales Consultant - KZN",
-      jobSpecFields: "Finance",
-      details:
-        "To promote and sell the bank's product bouquet to clients through sales activities in a responsible manner. responsible sourcing and developing new contacts/prospects and sales leads through the bank's internal leads campaigns and your own referrals.             NQF 4 recognised FSB qualification. 2 years sales and client service experience. Full rep in all product categories.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-10-06 07:29:11",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
+      "jobTitle": "Program Manager",
+      "startDate": "2023-09-21 - 2023-10-21",
+      "vacancyType": "Permanent",
+      "jobSpecFields": "Mining",
+      "location": {
+        "city": ", Rustenburg",
+        "region": "North West"
+      },
+      "details": "Required Qualifications:Relevant degree/diploma in Mechanical / Electrical Engineering/Technical/Construction discipline or equivalent.Project Management Qualification (i.e. PMP or similar).Working knowledge of Agile project management methodologies (such as Scrum, SAFe, Kanban, etc.) will be preferred.&nbsp;Experience and Knowledge:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10+ years’ experience in related field.5+ years’ experience in a Project Management Role.Minimum 5 years of experience in the following: Engineering / Production / Construction / Mining / Process Plant and related operations environment.Mining, Process Plant, Logistics, Infrastructure, Quantity Surveyor, Enterprise Project Management Systems, e.g. MS-Projects, Primavera P6, Prism, SAP.Communicate Effectively: Speak, listen and write in a clear, thorough and timely manner using appropriate and effective communication tools and techniques.Creativity/Innovation: Develop new and unique ways to improve operations of the organization and to create new opportunities.Foster Teamwork: Work cooperatively and effectively with others to set goals, resolve problem, and make decisions that enhance organizational effectiveness.The program manager must have strong practical experience in project management, which was gained through managing large and complex projects.Good knowledge and handling of project and program management methodology and techniques.&nbsp;Key Responsibilities:Daily program management throughout the program life cycle.Defining the program governance (controls).Planning the overall program and monitoring the progress.Managing the program’s budget.Managing risks and issues and taking corrective measurements.Coordinating the projects and their interdependencies.Managing and utilizing resources across projects.Managing stakeholders’ communication.Aligning the deliverables (outputs) to the program’s “outcome” with the aid of the business change manager.Managing the main program documentations such as the program initiation document.&nbsp;Competencies:&nbsp;Critical Thinking: Using logic and reasoning to identify the strengths and weaknesses of alternative solutions, conclusions or approaches to problemsActive Learning: Understanding the implications of new information for both current and future problem-solving and decision-makingBusiness knowledge: Good understanding of the organization and the business domain or sector within which it operatesComplex Problem Solving: Identifying complex problems and reviewing related information to develop and evaluate options and implement solutionsDeductive Reasoning: The ability to apply general rules to specific problems to produce answers that make senseInductive Reasoning: The ability to combine pieces of information to form general rules or conclusions (includes finding a relationship among seemingly unrelated events)Excellent communication skills: Ability to engage with high-level stakeholders, both verbal and non-verbalFlexibility and adaptability (crucial to consulting environment)Organizational and leadership abilitiesInfluencing and motivatingDecision makingBuilding trust and long-term relationships with stakeholders",
+      "contact": "Rene",
+      "apply": "https://webapp.placementpartner.com/wi/application_form.php?id=propersonnel&amp;vacancy_ref=RTB002282-R",
+      "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg"
     },
     {
-      apply: "http://www.heitha.co.za/?page=4jobs/chief-risk-officer",
-      jobTitle: " Chief Risk Officer",
-      jobSpecFields: "Government",
-      details:
-        "Lead and direct the following functions – enterprise risk, compliance, risk, environmental, social and governance. Assist the CEO in the development of organisation policies and goals that cover personnel and growth of the functions and/or business units.             10 + years of Comprehensive Risk Management in Financial Services, specifically in Development Finance.  Masters Degree in Commerce and/or Economics, CFA, MBA preferable in Corporate Finance, Accounting.             At least 10 years relevant financial or investment banking experience with emphasis on Credit Risk, Legal Risk, Enterprise Risk, ESG, Compliance and Post Investment Monitoring.",
-      province: "Kwazulula Natal",
-      expiryDate: "Expiry Date: 2023-09-29 14:05:31",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
+      "jobTitle": "Project Engineer",
+      "startDate": "2023-09-21 - 2023-10-21",
+      "vacancyType": "Permanent",
+      "jobSpecFields": "Engineering &amp; Technical",
+      "location": {
+        "city": ", Krugersdorp",
+        "region": "Gauteng"
+      },
+      "details": "Position: Project Engineer (Registered Candidate Engineer) Location: Various Project Sites (Flexibility to travel/work away from home)Availability: Immediatetly&nbsp;Key Responsibilities:\n\nProject Planning: Develop comprehensive project plans, timelines, and budgets.\nStructural Design: Oversee the structural design and engineering aspects of Tailings Storage Facilities.\nResource Management: Efficiently allocate resources, including labor and equipment.\nProject Management: Lead all project phases from initiation to completion.\nProcurement: Manage procurement processes and vendor relationships.\nReporting: Generate detailed project reports for stakeholders and management.\nSite Establishment: Ensure the effective setup and organization of project sites.\nClient Liaison: Act as the primary point of contact for clients, maintaining strong relationships.\nDirector and Service Provider Interaction: Collaborate with directors and service providers to meet project goals.\n\nRequirements:\n\nGraduate or Diplomat Engineer with relevant qualifications.\nRegistration as a Candidate Engineer with ECSA is essential.\nProficiency in Microsoft Office Suite.\nFamiliarity with Civil 3D, AutoCAD, and other relevant engineering software.\nStrong project management skills and experience.\nExcellent communication and interpersonal skills.\nWillingness to relocate to various project sites as required.\n\nMUST BE ABLE TO START EMPLOYMENT ON THE 01st of Oct 02023",
+      "contact": "Rene",
+      "apply": "https://webapp.placementpartner.com/wi/application_form.php?id=propersonnel&amp;vacancy_ref=RTB002283-R",
+      "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg"
     },
     {
-      apply:
-        "http://www.heitha.co.za/?page=4jobs/deputy-chief-party-quality-hivtb-services",
-      jobTitle: " Deputy Chief of Party: Quality HIV/TB Services",
-      jobSpecFields: "Other",
-      details:
-        "We are looking for a dynamic senior leader with a minimum of 10 years of experience working in the Public Health sector within HIV/TB/PMTCT programmes to join our team as a deputy chief of party: quality HIV/TB Care.             The incumbent will serve as the senior manager of technical program specialists, community HTS program and other special projects (Private Sector/ NHI).",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-09-29 13:38:21",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
+      "jobTitle": "Cook",
+      "startDate": "2023-09-20 - 2023-10-20",
+      "vacancyType": "Contractor",
+      "jobSpecFields": "Food and Beverage",
+      "location": {
+        "city": ", All Areas",
+        "region": "All Areas"
+      },
+      "details": "In order to apply for this position please make sure you meet all the requirements:Qualifications:* NQF 2 - Grade 10 National Vocational Certificate Level 2* At least 1 year experience withing a kitchen, catering environment* Must be medically fit to work in the specific business area* Clear security screening record* Clear credit record* Valid driver's license* Be computer literacy in MS Office &amp; Simplexity* Be able to work in a teamOngoing accountabilities:* Catering* Financial Management* Building a value based organizational culture* ESG Compliance* SHE Compliance* Focus on safe production &amp; operational excellence* People management",
+      "contact": "Yolanda Day-Garden",
+      "apply": "https://webapp.placementpartner.com/wi/application_form.php?id=propersonnel&amp;vacancy_ref=RTB002278-YDG",
+      "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg"
     },
     {
-      apply: "http://www.heitha.co.za/?page=4jobs/head-division",
-      jobTitle: " Head of Division",
-      jobSpecFields: "Other",
-      details:
-        "Responsible for overall management & oversight of the company programme in the City of Johannesburg.             Together with the District Programme Managers & their teams, the successful candidate will provide overall programme leadership, as well as develop & monitor various projects aimed at achieving set programme targets.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-09-29 13:25:17",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
+      "jobTitle": "Sales Rep",
+      "startDate": "2023-09-19 - 2023-10-31",
+      "vacancyType": "Permanent",
+      "jobSpecFields": "Sales",
+      "location": {
+        "city": ", Rustenburg",
+        "region": "North West"
+      },
+      "details": "The ideal candidate needs to have the following requirements in order to apply for this position:* Valid driver's license* Own reliable transport* Previous sales experience* Grade 12 certificate* Must know the Rustenburg and mining areas very well.",
+      "contact": "Yolanda Day-Garden",
+      "apply": "https://webapp.placementpartner.com/wi/application_form.php?id=propersonnel&amp;vacancy_ref=RTB002276-YDG",
+      "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg"
     },
     {
-      apply: "http://www.heitha.co.za/?page=4jobs/programme-manager",
-      jobTitle: " Programme Manager",
-      jobSpecFields: "Other",
-      details:
-        "The incumbent will assist the HOD with the development of annual programme activities and work plans with clear deliverables, indicators of success and timeframes in line with the funder’s strategy.             The Programme Manager will also be responsible for the management and implementation of the company's work plan activities in line with 909090 strategy and support District with 909090 DIP process and monitoring of performance.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-09-29 13:18:18",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
+      "jobTitle": "Receptionist / Admin Lady",
+      "startDate": "2023-09-13 - 2023-10-22",
+      "vacancyType": "Permanent",
+      "jobSpecFields": "Admin, Office &amp; Support",
+      "location": {
+        "city": ", Rustenburg",
+        "region": "North West"
+      },
+      "details": "The ideal candidate needs to have the following in order to apply for the position:* Must have at least 5-7 years working experience as a receptionist with a stable track record.* Previous working references essential.* Must have a valid grade 12 certificate* Computer literacy essential.* Valid driver's license with own reliable transport* Be willing to start immediately.",
+      "contact": "Yolanda Day-Garden",
+      "apply": "https://webapp.placementpartner.com/wi/application_form.php?id=propersonnel&amp;vacancy_ref=RTB002271-YDG",
+      "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg"
     },
     {
-      apply: "http://www.heitha.co.za/?page=4jobs/financial-accountant",
-      jobTitle: " Financial Accountant",
-      jobSpecFields: "Finance",
-      details:
-        "Assist in managing the relevant part of Finance Department, producing relevant financial information compliant with internal and external reporting requirements.             BCom (Accounting) and completed articles. 2-3 years relevant experience.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-09-29 12:46:04",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
+      "jobTitle": "Accountant",
+      "startDate": "2023-09-11 - 2023-10-31",
+      "vacancyType": "Permanent",
+      "jobSpecFields": "Finance",
+      "location": {
+        "city": ", Rustenburg",
+        "region": "North West"
+      },
+      "details": "The ideal candidate needs to have the following:* At least 5 - 10 years working experience as an Accountant* Must have a Financial Degree with SAIPA with completed articles.* Specifications:&nbsp;- Data processing up to trial balance- Preparing financial statements- SARS admissions* Computer knowledge in:- Pastel, Excel, Word and Draftworx",
+      "contact": "Yolanda Day-Garden",
+      "apply": "https://webapp.placementpartner.com/wi/application_form.php?id=propersonnel&amp;vacancy_ref=RTB002251-YDG",
+      "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg"
     },
     {
-      apply:
-        "http://www.heitha.co.za/?page=5jobs/manager-it-strategic-sourcing",
-      jobTitle: " Manager: IT Strategic Sourcing",
-      jobSpecFields: "Finance",
-      details:
-        "To develop and execute an effective sourcing strategy framework for IT Procurement and this involves overseeing the entire IT Procurement lifecycle.             Develop and implement Negotiation Plans ensuring that appropriate contracting methods and contractual relationships with suppliers are employed for all spend across IT Agreements.             Ensuring appropriate and auditable sourcing standards, controls and governance frameworks are in place. Spend and Data Analytics to ensure optimal management of the IT Procurement Category.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-09-29 10:13:13",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
+      "jobTitle": "Bookkeeper",
+      "startDate": "2023-09-11 - 2023-10-31",
+      "vacancyType": "Permanent",
+      "jobSpecFields": "Finance",
+      "location": {
+        "city": ", Brits",
+        "region": "North West"
+      },
+      "details": "Qualifications required:* Matric with Mathematics, C Symbol or higherExperience required:* 2-5 years related working experience.Computer Literacy:* MS Office - Excel advanced (will be tested on Excel)Responsibilities:* Process bank statements on a daily basis and update new sales, full payments and delivered sets on a stock sheet.* Prepare reports for management and sales department* Process invoices and ensure timely payments* Various reconciliations including VAT, bank, creditors* Preparing general journals and passing them* Communication with the bank* Loading of payments* Prepare documentation for foreign payments and sending it to the bank* General bookkeeping duties - preparing invoices, capturing the bank and invoices etc.* Intercompany transactions and reconciling intercompany loan accountsAttend to customer e-mails and queries",
+      "contact": "Yolanda Day-Garden",
+      "apply": "https://webapp.placementpartner.com/wi/application_form.php?id=propersonnel&amp;vacancy_ref=RTB002269-YDG",
+      "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg"
     },
     {
-      apply: "http://www.heitha.co.za/?page=5jobs/customer-experience-designer",
-      jobTitle: " Customer Experience: Designer",
-      jobSpecFields: "Finance",
-      details:
-        "Providing strategic thought leadership and tactical advice on a range of customer facing projects. Developing customer profiles and personas, and advising on all aspects of using customer insights data.             Using a variety of techniques to effectively engage with internal and external customers. Supporting stakeholders in process and system improvement initiatives focusing on behaviour change, reducing red tape and enhancing customer experience.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-09-29 10:03:17",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
+      "jobTitle": "Sales Rep",
+      "startDate": "2023-09-06 - 2023-10-27",
+      "vacancyType": "Permanent",
+      "jobSpecFields": "Sales",
+      "location": {
+        "city": ", Rustenburg",
+        "region": "North West"
+      },
+      "details": "The suitable candidate must have the following experience:* Valid driver's license.* Previous sales experience as a sales rep on the mines and surrounding areas* Must know the mining sites in and around the Rustenburg areas very well&nbsp;* No criminal recordMust be medically fit.",
+      "contact": "Yolanda Day-Garden",
+      "apply": "https://webapp.placementpartner.com/wi/application_form.php?id=propersonnel&amp;vacancy_ref=RTB002063-YDG",
+      "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg"
     },
     {
-      apply:
-        "http://www.heitha.co.za/?page=5jobs/financial-crime-surveillance-officer",
-      jobTitle: " Financial Crime Surveillance Officer",
-      jobSpecFields: "Finance",
-      details:
-        "The incumbent is primarily charged with the responsibility to identify suspicious and and/or unusual transactions through the automated transaction monitoring system.             Must also assist in identifying opportunities to develop new monitoring rules in conjunction with the AML/CFT Compliance Team, drive the implement of new rules and review the current monitoring rules to ensure their accuracy and effectiveness.             Degree in Law, Forensics Investigation. 3 years AML.CFT, Compliance, Investigations experience within the banking or financial services sector, liaison at Executive level.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-09-25 13:47:02",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
+      "jobTitle": "Generator Service / Technical Sales",
+      "startDate": "2023-09-06 - 2023-10-21",
+      "vacancyType": "Permanent",
+      "jobSpecFields": "Engineering &amp; Technical",
+      "location": {
+        "city": ", Lanseria",
+        "region": "Gauteng"
+      },
+      "details": "The position is based both in the Lanseria and Brits area.The following is needed to apply for the position:Qualifications required:* Matric with Mathematics C Symbol or Higher a MUST HAVE (must send through with CV)Experience Required:* 0-5 years related working experience within the field.* Solar, electrical, mechanical or technical interestComputer Literacy:* MS Office - EXCEL ADVANCED A MUST (will be tested)Responsibilities &amp; Duties:* Present and sell products using solid arguments to prospective and existing customers* Supplying customer with support when necessary* Establish, develop and maintain positive business and customer relationshipsPerform cost benefit and needs analysis of new existing customers* Develop strategies for more effective sales and products* Supply management with reports on customer needs, problems, interests, competitive activities and potential for new products and servicesMeet or exceed monthly sales targets.",
+      "contact": "Yolanda Day-Garden",
+      "apply": "https://webapp.placementpartner.com/wi/application_form.php?id=propersonnel&amp;vacancy_ref=RTB002240-YDG",
+      "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg"
     },
     {
-      apply: "http://www.heitha.co.za/?page=5jobs/production-supervisor",
-      jobTitle: " Production Supervisor",
-      jobSpecFields: "Other",
-      details:
-        "To supervise the employees, ensure that production targets are met, maintaining the necessary safety precautions and ensure that good quality parts are produced.             Qualification in engineering or diploma/ Certificate in Production Management and or Supervisory qualification. 3 to 5 years experience in a supervisory position in steel a (tube making) production environment.             Experience in Mills operating machines would be an advantage. Experience within the automotive will be an advantage. Working Shift and overtime.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-09-25 12:16:12",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
+      "jobTitle": "Senior Call Out Technician",
+      "startDate": "2023-09-05 - 2023-10-31",
+      "vacancyType": "Permanent",
+      "jobSpecFields": "Information Technology",
+      "location": {
+        "city": ", Rustenburg",
+        "region": "North West"
+      },
+      "details": "The suitable candidates must have the following:Qualifications / Certificates:* A+ Certificate* N+ Certificate* MCSE CertificateWorking experience:* At least 5 years working experience within the IT industry.* Previous knowledge and working experience within networking, installation of CCVT, cameras networks etc.Salary:* R 20 - 25 000.00 (Including comm, AA rates, medical aid &amp; Bonus)",
+      "contact": "Yolanda Day-Garden",
+      "apply": "https://webapp.placementpartner.com/wi/application_form.php?id=propersonnel&amp;vacancy_ref=RTB002117-YDG",
+      "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg"
     },
     {
-      apply: "http://www.heitha.co.za/?page=5jobs/compliance-officer",
-      jobTitle: " Compliance Officer",
-      jobSpecFields: "Government",
-      details:
-        "To provide administrative and functional support to the Senior Manager Risk Management in the performance of compliance related to legislation, policies and internal processes and procedures.             A minimum of a Bachelor’s degree or equivalent in Legal or Commerce.             Registration as a Compliance Practitioner (CPrac)/ Compliance Professional (CProf)/ Certified Fraud Examiner (CFE) will be an added advantage.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-09-25 08:39:43",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
+      "jobTitle": "Management Trainee",
+      "startDate": "2023-09-05 - 2023-10-31",
+      "vacancyType": "Permanent",
+      "jobSpecFields": "Engineering &amp; Technical",
+      "location": {
+        "city": ", Lanseria",
+        "region": "Gauteng"
+      },
+      "details": "Qualifications Required:* Matric with Mathematics C symbol or higherExperience required:* 0-5 years working experienceComputer Literacy:* MS Office* MS Excel (WILL BE TESTED IN EXCEL)",
+      "contact": "Yolanda Day-Garden",
+      "apply": "https://webapp.placementpartner.com/wi/application_form.php?id=propersonnel&amp;vacancy_ref=RTB002246-YDG",
+      "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg"
     },
     {
-      apply: "http://www.heitha.co.za/?page=6jobs/senior-management-accountant",
-      jobTitle: " Senior Management Accountant",
-      jobSpecFields: "Insurance",
-      details:
-        "To interpret financial data, to provide financial support, advice and reporting to the business that is aligned to the objectives of the organisation, aiding sound business decisions.             Relevant B degree qualification (BCom/ BAcc) specialising in: Accounting, Business, Finance, Management, Mathematics. 3 Years completed Articles.             5 years finance experience in a financial services.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-09-25 08:27:33",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
+      "jobTitle": "Shaft Timberman",
+      "startDate": "2023-08-25 - 2023-10-31",
+      "vacancyType": "Permanent",
+      "jobSpecFields": "Mining",
+      "location": {
+        "city": ", Rustenburg",
+        "region": "North West"
+      },
+      "details": "A local Platinum Mine around Rustenburg in the Northwest Province, is looking for a Shaft Timberman to join their team.&nbsp;Requirements:- Blasting Certificate- Onsetter/Banksman Certificate- Medically fitKindly send CV and Certificates to:lizelle@infopersonnel.co.za",
+      "contact": "Welma Helberg Nel",
+      "apply": "https://webapp.placementpartner.com/wi/application_form.php?id=propersonnel&amp;vacancy_ref=RTB002056-WHN",
+      "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg"
     },
     {
-      apply: "http://www.heitha.co.za/?page=6jobs/financial-accounting-manager",
-      jobTitle: " Financial Accounting Manager",
-      jobSpecFields: "Insurance",
-      details:
-        "The Financial Accounting Manager will provide financial accounting support to the business, ensuring that the financial strategy is implemented in line with company objectives and financial risk is properly mitigated by sound and proactive controls.             (Bcom/ BAcc) qualification. 3 years article experience. CA(SA). 3 years post article experience in a similar role in Financial Services. Preferrable non-life insurance experience.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-09-25 08:12:45",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
-    },
-    {
-      apply: "http://www.heitha.co.za/?page=6jobs/system-tester",
-      jobTitle: " System Tester",
-      jobSpecFields: "Finance",
-      details:
-        "Analysis of Credit Card processes on Production. Provide feedback and suggestions to system specialist.l Logging of change requests and operational incidents, and monitor and report on progress throughout entire process.             Assist with User Acceptance testing for specific Credit Card changes as required. Perform regression testing over Credit Card system during release cycle.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-09-22 10:25:29",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
-    },
-    {
-      apply:
-        "http://www.heitha.co.za/?page=6jobs/head-group-finance-shared-services",
-      jobTitle: " Head Group Finance Shared Services",
-      jobSpecFields: "Finance",
-      details:
-        "To oversee the efficient and effective delivery of finance related services and processes across the Group.             This role involves centralising and streamlining financial operations, transaction processing, reporting, and support functions to enhance operational excellence and contribute to the achievement of the Groups financial goals.             Develop and implement the strategic vision, goals, and objectives of the Finance Shared Services function in alignment with the overall Groups strategy.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-09-22 10:10:39",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
-    },
-    {
-      apply: "http://www.heitha.co.za/?page=6jobs/senior-systems-engineer",
-      jobTitle: " Senior Systems Engineer",
-      jobSpecFields: "Insurance",
-      details:
-        "The Senior Systems Engineer will install, manage and support LAN, WAN,CLOUD, VOIP infrastructure and workstations.             The Senior Systems Engineer will provide high level technical support for data and voice network systems, creates and maintains documentation, maintains hardware and software network standards.             Managing of projects as needed in order to upgrade to new and improved equipment and procedures. This job requires excellent problem management and customer service skills.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-09-13 08:27:33",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
-    },
-    {
-      apply: "http://www.heitha.co.za/?page=7jobs/test-analyst",
-      jobTitle: " Test Analyst",
-      jobSpecFields: "Finance",
-      details:
-        "The purpose of this role is to ensure that business change projects are tested efficiently within timescales and to a high quality to ensure that the change delivered meets the requirements.             It is also used to ensure that the business users of the system can carry out business processes without any unplanned disruption. Testing aim is to find defects in relation to the specified requirements.             The role does this by following structured testing techniques.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-09-13 08:24:56",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
-    },
-    {
-      apply: "http://www.heitha.co.za/?page=7jobs/solution-architect",
-      jobTitle: " Solution Architect",
-      jobSpecFields: "Government",
-      details:
-        "To design technology solutions for the organisation by defining integrated solution architectures that are aligned with IT strategies and architectures to meet and support the organisation’s goals.             Relevant postgraduate degree in Computer Science or equivalent  TOGAF Certification is a requirement. Knowledge of other frameworks (e.g., Zachman) would be an advantage.             Minimum ten years experience working in development and integration of large-scale solutions involving multiple technologies, functions, and interfaces across in-house and vendor supplied system.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-09-13 08:22:16",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
-    },
-    {
-      apply: "http://www.heitha.co.za/?page=7jobs/business-analyst-fintech",
-      jobTitle: " Business Analyst (FINTECH)",
-      jobSpecFields: "Finance",
-      details:
-        "The Business Analyst will enable Fintech Banking as a key subject matter expert in the onboarding of any new business, payments and or product lines.             Support the business and play a significant role in the analysis, design, development and testing of any new fintech partners.             Work closely with business and corporate customers, including internal value chain stakeholders, ensuring the successfully delivery of projects.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-09-13 06:23:46",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
-    },
-    {
-      apply:
-        "http://www.heitha.co.za/?page=7jobs/senior-manager-procurement-legal-risk-and-compliance",
-      jobTitle: " Senior Manager (Procurement Legal, Risk and Compliance)",
-      jobSpecFields: "Finance",
-      details:
-        "Act as a knowledgeable business partner by providing competent and effective legal, risk and compliance advice and support within procurement.             Work closely with all the company's risk groups and lines of business to assess both business needs and risks and assure that procurement contracts are in compliance with applicable laws and regulations.             Provide advice regarding regulatory compliance and legal requirements that pertain to procurement agreements, participate in procurement negotiations.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-09-12 07:35:05",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
-    },
-    {
-      apply: "http://www.heitha.co.za/?page=7jobs/bookkeeper",
-      jobTitle: " Bookkeeper",
-      jobSpecFields: "Finance",
-      details:
-        "The Bookkeeper is responsible for all daily and monthly duties within the company.             A minimum of a National Diploma or Bachelor’s Degree in Finance / Accounting.  Experience in the Corporate Finance space, with minimum 3-5 years’ work experience.  Very good experience with the Sage Pastel.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-09-15 08:25:49",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
-    },
-    {
-      apply:
-        "http://www.heitha.co.za/?page=8jobs/manager-data-systems-and-reporting",
-      jobTitle: " Manager: Data Systems and Reporting",
-      jobSpecFields: "Government",
-      details:
-        "Manage the engagement with external entities to implement, monitor and enhance the level of the company's compliance related to registration and reporting obligations.             Relevant Degree, BSc Computer Science or BCom Information Systems or equivalent is required. Postgraduate qualifications in anti-money laundering, forensic auditing or compliance management will be advantageous.             5 or more years technical experience and 3 years of proven managerial experience. Strong project management experience. Data management experience is a pre-requisite.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-09-13 08:00:55",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
-    },
-    {
-      apply: "http://www.heitha.co.za/?page=8jobs/project-accountant",
-      jobTitle: " Project Accountant",
-      jobSpecFields: "Other",
-      details:
-        "To monitor and report on financial progress of projects, undertake project financial reconciliations, approve expenses, and ensure that project invoices are issued to customers and payments collected.             Minimum of a Bachelor’s degree in Accounting or Finance.             Minimum of 6 years relevant work experience in financial management environment 3 of which should have been in financial and/or project accounting. Computer literate.",
-      province: "Eastern Cape",
-      expiryDate: "Expiry Date: 2023-09-15 10:10:59",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
-    },
-    {
-      apply:
-        "http://www.heitha.co.za/?page=8jobs/senior-project-technical-integration-manager",
-      jobTitle: " Senior Project & Technical Integration Manager",
-      jobSpecFields: "Finance",
-      details:
-        "Project manage various new business opportunities and products being onboarded by Fintech Banking; Play a leadership role and the technical integration between the Bank’s value chain and partners or 3rd parties.             Support the Head: Fintech Banking and Relationships in executing the approved strategy in expanding the core through Alliance Eco-systems.             Support management in establishing the business model blueprint, operating model and frameworks.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-09-15 09:49:55",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
-    },
-    {
-      apply:
-        "http://www.heitha.co.za/?page=8jobs/it-governance-risk-compliance-grc-specialist",
-      jobTitle: " IT Governance Risk & Compliance (GRC) Specialist",
-      jobSpecFields: "Insurance",
-      details:
-        "To drive the successful delivery of the IT Governance, Risk and Cyber Security, strategy implementation and the effective running of the Office of the CIO by ensuring the attainment of the company's objectives internally and externally.             Information Technology (IT) related Bachelor’s Degree at NQF level 7 as recognized by SAQA. Post Graduate Degree/Diploma (Advantageous). IT Governance certifications: ITIL, COBIT, ISO 27001/2.             Any one of the following international certificates: CRISC, CISA or CGEIT. Member of a professional body within ICT e.g., ISACA. Minimum 6 years of experience in IT Governance/ IT Risk/ IT Audit & Compliance/ Information Security Governance.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-09-15 09:45:50",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
-    },
-    {
-      apply: "http://www.heitha.co.za/?page=8jobs/supply-chain-administrator",
-      jobTitle: " Supply Chain Administrator",
-      jobSpecFields: "Other",
-      details:
-        "To provide office administration support services relating to filing, data capturing, records management, Reporting and other office/programme related basic administrative activities.             Minimum qualification, 3-year degree or BTech / diploma in administration, finance or related field. Microsoft Office Suite proficiency. 1 year experience, in admin or related role.",
-      province: "Kwazulula Natal",
-      expiryDate: "Expiry Date: 2023-09-01 13:30:00",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
-    },
-    {
-      apply:
-        "http://www.heitha.co.za/?page=9jobs/business-intelligence-developer",
-      jobTitle: " Business Intelligence Developer",
-      jobSpecFields: "Finance",
-      details:
-        "Designing, developing and maintaining BI and web solutions. Writing and executing queries upon request for data. Presenting information through reports and visualization.             BSc or B.Com(IT) qualification, or equivalent. Proven experience as a BI Developer; Industry experience 5yrs or more is preferred. C#, Windows development and asp.net web application development.             Experience in developing 3tier solutions. Experience in development practices like test-driven development, continuous integration, and continuous deployment.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-09-06 11:58:35",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
-    },
-    {
-      apply: "http://www.heitha.co.za/?page=9jobs/office-manager",
-      jobTitle: " Office Manager (Nelspruit)",
-      jobSpecFields: "Other",
-      details:
-        "As an Office Manager you will be required to offer secretarial service and support to the Principal Officer. Manage the administration of the Principal Officer’s office and Scheme’s Head Office.             A National Diploma in Office Administration. A degree in Business Administration or Business Management at an NQF Level 6 would be an added advantage. 2-3 years of experience in an office management role. 1-2 years Management experience.",
-      province: "Mpumalanga",
-      expiryDate: "Expiry Date: 2023-08-29 10:13:59",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
-    },
-    {
-      apply: "http://www.heitha.co.za/?page=9jobs/dialler-administrator",
-      jobTitle: " Dialler Administrator",
-      jobSpecFields: "Finance",
-      details:
-        "To manager and administer the dialler and telephony systems within the call centre to optimize call campaigns and agent productivity.             Matric. Relevant Diploma or Degree. 1 year working experience in Call Centre on Predictive diallers, Call Logging and Telephony systems.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-08-28 06:36:24",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
-    },
-    {
-      apply: "http://www.heitha.co.za/?page=9jobs/mining-engineer",
-      jobTitle: " Mining Engineer",
-      jobSpecFields: "Other",
-      details:
-        "The Mining Engineer will form part of a team responsible to lead and execute mining engineering activities in the technical role to support underground horizontal development, undercutting and drawbells.             The role will focus on mine design, planning, scheduling and data analysis, to enable better planning processes and give relevant feedback.             BTech/BSc. Degree in Mining Engineering. Blasting Certificate for Underground Metalliferous Mines/Mechanised mines. Mine Overseers Certificate of Competency will be an advantage.",
-      province: "Limpopo",
-      expiryDate: "Expiry Date: 2023-08-28 06:14:28",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
-    },
-    {
-      apply:
-        "http://www.heitha.co.za/?page=9jobs/assistant-company-secretary-and-statutory-liaison",
-      jobTitle: " Assistant Company Secretary and Statutory Liaison",
-      jobSpecFields: "Insurance",
-      details:
-        "Assist in the facilitation and administration of Company Secretary duties as outlined in the Companies Act and guided by PFMA regulations. Provide for the proper recording of minutes in relation to all Executive Committee and Board meetings.             Relevant Degree / Diploma in Law. Completed or Studying towards Chartered Governance Institute of South Africa (CGISA) qualification. 4 years experience in a Secretariat Environment.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-08-25 14:13:31",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
-    },
-    {
-      apply: "http://www.heitha.co.za/?page=10jobs/copywrite-specialist",
-      jobTitle: " Copywrite Specialist",
-      jobSpecFields: "Finance",
-      details:
-        "Responsible for producing engaging, clear text for different advertising channels such as website and print adverts. Researching keywords, producing interesting written content and proofreading work for accuracy and quality.             Degree in Marketing, Communications, Advertising or related field. 5 years copywrite experience.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-08-22 07:14:36",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
-    },
-    {
-      apply:
-        "http://www.heitha.co.za/?page=10jobs/practitioner-learning-projects",
-      jobTitle: " Practitioner: Learning Projects",
-      jobSpecFields: "Insurance",
-      details:
-        "To support the operational implementation of the organisational capability building programme through application of specialist learning and development skills.             The role will also translate Learning and Development (L&D) objectives into tangible programmes by way of implementation of initiatives to optimise the efficiency of L&D function.             Bachelor of Arts Human Resources/Development/ Business Administration or related. Skills Development Facilitator certification.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-08-21 14:21:13",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
-    },
-    {
-      apply: "http://www.heitha.co.za/?page=10jobs/junior-group-accountant",
-      jobTitle: " Junior Group Accountant",
-      jobSpecFields: "Other",
-      details:
-        "The role of the Junior Group Accountant is to capture, analyse, support and provide in-depth reporting of financial transactions across all the departments and business units in the group.             BSc/BCom/Ba in accounting, finance. Qualifications (ACA, ACCA or CIMA) is an advantage. Certification in Sage, SAP. Minimum 2 – 3 years’ experience in the Auditing, Tax and Cost Management.             Highly Proficient in Sage Accounting and Payroll. Exposure in Mining and/or Logistics.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-08-21 12:22:07",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
-    },
-    {
-      apply: "http://www.heitha.co.za/?page=10jobs/underwriter",
-      jobTitle: " Underwriter",
-      jobSpecFields: "Insurance",
-      details:
-        "To perform underwriting administration tasks and assist in the implementation of underwriting rules and regulations. Reviewing terms and conditions of products on an ongoing basis.             Minimum of an IISA qualification (or studying towards). RE 5. Tertiary qualification advantageous. Minimum of 4 years of experience in a similar role in a short-term insurance company.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-08-18 08:59:38",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
-    },
-    {
-      apply:
-        "http://www.heitha.co.za/?page=10jobs/company-secretary-internship",
-      jobTitle: " Company Secretary Internship",
-      jobSpecFields: "Government",
-      details:
-        "The following position is available to all unemployed LLB graduates. Applicants must be South African citizens with a valid South African ID book or card.             Must hold a valid South African Matric Certificate and completed LLB Degree/Diploma from recognized South African institution and residing in KwaZulu-Natal.  Applicants must not have been participated in an internship program.             Applicants must be unemployed and must not have previously had permanent employment.  Applicants must be between the age of 18 to 35 years old.",
-      province: "Gauteng",
-      expiryDate: "Expiry Date: 2023-08-18 06:47:36",
-      iconLink: "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
+      "jobTitle": "Shaft Timberman",
+      "startDate": "2023-08-25 - 2023-10-31",
+      "vacancyType": "Permanent",
+      "jobSpecFields": "Mining",
+      "location": {
+        "city": ", Rustenburg",
+        "region": "North West"
+      },
+      "details": "A local Platinum Mine around Rustenburg in the Northwest Province, is looking for a Shaft Timberman to join their team.&nbsp;Requirements:- Blasting Certificate- Onsetter/Banksman Certificate- Medically fitKindly send CV and Certificates to:lizelle@infopersonnel.co.za",
+      "contact": "Welma Helberg Nel",
+      "apply": "https://webapp.placementpartner.com/wi/application_form.php?id=propersonnel&amp;vacancy_ref=RTB002261-WHN",
+      "iconLink": "https://www.pro-personnel.co.za/wp-content/uploads/2021/05/cropped-Site-Icon-JPG-32x32.jpg"
     }
   ]
-};
+}
