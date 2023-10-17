@@ -15,7 +15,7 @@ export function setupPubliDepartments(element) {
 
     div.innerHTML = `
         <div class="company-logo">
-            <img src=${p["imgSrc"]} alt="company logo" />
+             <img loading="lazy" src=${p["imgSrc"]} alt="company logo" />
         </div>
         <p class="title">${title}</p>
         `;
@@ -26,7 +26,7 @@ export function setupPubliDepartments(element) {
 
       const article = document.getElementById("info");
       article.innerHTML = `
-  <img src=${p.imgSrc} alt=${p.title} title=${title}/>
+   <img loading="lazy" src=${p.imgSrc} alt=${p.title} title=${title}/>
  
       <br/>
       <hr/>
@@ -55,7 +55,7 @@ export function setupPubliDepartments(element) {
       <br/>
       <section class="options">
           <button id="share" class="apply share" title="share post with friends">
-            <img class="share-button img-icon" src="../../public/assets/share.png" atl="share image"/>
+             <img loading="lazy" class="share-button img-icon" src="../../public/assets/share.png" atl="share image"/>
           </button>
         
           <a href=${p.href} target="_blank">

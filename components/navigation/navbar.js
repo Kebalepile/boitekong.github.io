@@ -1,6 +1,6 @@
 export  function setupNavigation(element){
     element.innerHTML = `
-        <img src="../../../public/assets/icons/2.jpg" alt="website logo" id="logo"/>
+        <img  loading="lazy" src="../../../public/assets/icons/2.jpg" alt="website logo" id="logo"/>
         <nav>    
             <ul>
                 <li>
@@ -8,12 +8,12 @@ export  function setupNavigation(element){
                 </li>
                 <li>
                     <a href="#contact" title="contact"> 
-                    <img class="img-icon" src="../../../public/assets/contact.png" atl="contact image"/>
+                    <img class="img-icon"  loading="lazy" src="../../../public/assets/contact.png" atl="contact image"/>
                     </a>
                 </li>
                 <li>
                     <button id="install-app" title="install PWA">
-                    <img class="img-icon" src="../../../public/assets/install.png" atl="install image"/>
+                    <img class="img-icon"  loading="lazy" src="../../../public/assets/install.png" atl="install image"/>
                     </button>
                 </li>
                 <li>

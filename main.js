@@ -36,7 +36,7 @@ document.querySelector("#app").innerHTML = `
        
         
           <button id="share-site" class="apply share">
-            <img class="share-button img-icon" src="./public/assets/share.png" atl="share image"/>
+            <img class="share-button img-icon"  loading="lazy" src="./public/assets/share.png" atl="share image"/>
           </button>
        
        </span>
