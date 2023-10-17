@@ -133,7 +133,8 @@ class Spider:
                 pattern = rf"{fullDate}|{dayMonth}|{weekday}"
                 b:bool = re.search(pattern, text, re.IGNORECASE)
 
-                pattern = r"private property opportunities|private sector opportunities"
+                pattern = r"private property opportunities|private sector opportunities|public sector opportunities"
+
                 c: bool = re.search(pattern, text, re.IGNORECASE)
 
                 if a and not b and not c:

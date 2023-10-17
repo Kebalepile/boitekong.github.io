@@ -28,7 +28,7 @@ class Spider:
         ]
         # webdriver options
         opt = webdriver.FirefoxOptions()
-        opt.add_argument("--headless") # enable headless for production
+        opt.add_argument("--headless")  # enable headless for production
         self.driver = webdriver.Firefox(options=opt)
         # Set the window size to 768x1024 (tablet size)
         self.driver.set_window_size(768, 1024)
@@ -87,7 +87,7 @@ class Spider:
                 weekday = self.Weekday()
 
                 pattern = rf"{fullDate}|{dayMonth}|{weekday}"
-                yes:bool = re.search(pattern, text, re.IGNORECASE)
+                yes: bool = re.search(pattern, text, re.IGNORECASE)
 
                 if yes:
                     govPageLinks["title"] = self.Name
@@ -126,16 +126,13 @@ class Spider:
                 text: str = e.text.lower().lstrip()
                 href: str = e.get_attribute("href")
 
-                pattern = r"private property opportunities|private sector opportunities"
-
+                pattern = r"private property opportunities|private sector opportunities|public sector opportunities"
                 a = len(text) > 0
                 b: bool = re.search(pattern, text, re.IGNORECASE)
 
                 if a and b:
 
                     privateSectorURL = href
-
-            
 
             self.driver.get(privateSectorURL)
             self.driver.execute_script("""
@@ -149,7 +146,7 @@ class Spider:
                 By.CSS_SELECTOR, selector)
 
             if len(pvtElems) > 0:
-                numOfBusinesses:int = 0
+                numOfBusinesses: int = 0
                 for e in pvtElems:
 
                     text: str = e.text.lower().lstrip()
@@ -164,7 +161,7 @@ class Spider:
                             numOfBusinesses += 1
 
                 log.info(
-                f"{self.Name}, found {numOfBusinesses} private sector posts to scrape.")
+                    f"{self.Name}, found {numOfBusinesses} private sector posts to scrape.")
 
                 for k in govPageLinks["businesses"]:
                     blogpost = self.postContent(govPageLinks["businesses"][k])
@@ -240,8 +237,6 @@ class Spider:
     def Date(self) -> str:
         date = datetime.now()
         return date.strftime("%d %B %Y")
-
-
 
     def Emma(self, seconds: float):
 
