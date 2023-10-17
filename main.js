@@ -3,7 +3,7 @@ import { setupPrivateCompanies } from "./components/boards/privateCompanies.js";
 import { setupPubliDepartments } from "./components/boards/publicSector.js";
 import { setupPrivateSector } from "./components/boards/privateSector.js";
 import { setupNavigation } from "./components/navigation/navbar.js";
-
+import { setupInstallPrormpt } from "./components/pwa/prompt.js";
 document.querySelector("#app").innerHTML = `
   <header>
   
@@ -36,7 +36,7 @@ document.querySelector("#app").innerHTML = `
        
         
           <button id="share-site" class="apply share">
-            <img class="share-button img-icon" src="assets/share.png" atl="share image"/>
+            <img class="share-button img-icon" src="./public/assets/share.png" atl="share image"/>
           </button>
        
        </span>
@@ -94,9 +94,5 @@ setupPubliDepartments(document.querySelector("#job-board"));
 setupPrivateCompanies(document.querySelector("#job-board"));
 setupPrivateSector(document.querySelector("#pvt-job-board"));
 setupNavigation(document.querySelector("header"));
-
-const installBtn = document.getElementById("install-app");
-installBtn.addEventListener('click', () => {
-  console.log("install web app")
-})
+setupInstallPrormpt(document.querySelector("#install-app"));
 

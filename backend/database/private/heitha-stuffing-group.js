@@ -1,4 +1,4 @@
-{
+export const data = {
   "iconLink": "http://www.heitha.co.za/themes/heitha/assets/img/fav.png",
   "title": "heitha-stuffing-group",
   "blogPosts": [
@@ -453,4 +453,4 @@
       "iconLink": "http://www.heitha.co.za/themes/heitha/assets/img/fav.png"
     }
   ]
-}
+};

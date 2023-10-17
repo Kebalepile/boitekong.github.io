@@ -55,7 +55,7 @@ export function setupPubliDepartments(element) {
       <br/>
       <section class="options">
           <button id="share" class="apply share" title="share post with friends">
-            <img class="share-button img-icon" src="assets/share.png" atl="share image"/>
+            <img class="share-button img-icon" src="../../public/assets/share.png" atl="share image"/>
           </button>
         
           <a href=${p.href} target="_blank">

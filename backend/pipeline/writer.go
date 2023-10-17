@@ -37,7 +37,7 @@ func GovPageFile(data *types.Links) error {
 }
 
 // saves scraped data into a json file in database private folder
-func HeithaFile(data *types.HeithaJobs) error {
+func HeithaJsonFile(data *types.HeithaJobs) error {
 
 	buffer := &bytes.Buffer{}
 	encoder := json.NewEncoder(buffer)
@@ -60,8 +60,33 @@ func HeithaFile(data *types.HeithaJobs) error {
 	return nil
 }
 
+func HeithaFile(data *types.HeithaJobs) error {
+
+	buffer := &bytes.Buffer{}
+	buffer.WriteString("export const data = ")
+
+	encoder := json.NewEncoder(buffer)
+	encoder.SetEscapeHTML(false)
+	encoder.SetIndent("", "  ")
+
+	err := encoder.Encode(*data)
+	if err != nil {
+		return err
+	}
+	title := cleanStr(data.Title)
+	filePath := filepath.Join("database", "private", fmt.Sprintf("%s.js", title))
+
+	err = os.WriteFile(filePath, buffer.Bytes(), 0644)
+	if err != nil {
+		return err
+	}
+	log.Print(data.Title, " Saved at ", filePath)
+	return nil
+}
+
+
 // saves scraped data into a json file in database private folder
-func ProPersonnelFile(data *types.ProPersonnelJobs) error {
+func ProPersonnelJsonFile(data *types.ProPersonnelJobs) error {
 
 	buffer := &bytes.Buffer{}
 	encoder := json.NewEncoder(buffer)
@@ -75,6 +100,30 @@ func ProPersonnelFile(data *types.ProPersonnelJobs) error {
 	}
 	title := cleanStr(data.Title)
 	filePath := filepath.Join("database", "private", fmt.Sprintf("%s.json", title))
+
+	err = os.WriteFile(filePath, buffer.Bytes(), 0644)
+	if err != nil {
+		return err
+	}
+	log.Print(data.Title, " Saved at ", filePath)
+	return nil
+}
+
+func ProPersonnelFile(data *types.ProPersonnelJobs) error {
+
+	buffer := &bytes.Buffer{}
+	buffer.WriteString("export const data  = ")
+
+	encoder := json.NewEncoder(buffer)
+	encoder.SetEscapeHTML(false)
+	encoder.SetIndent("", "  ")
+
+	err := encoder.Encode(*data)
+	if err != nil {
+		return err
+	}
+	title := cleanStr(data.Title)
+	filePath := filepath.Join("database", "private", fmt.Sprintf("%s.js", title))
 
 	err = os.WriteFile(filePath, buffer.Bytes(), 0644)
 	if err != nil {
