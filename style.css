@@ -440,6 +440,9 @@ li > a > img {
 
 /* tablet screen */
 @media screen and (max-width: 729px) {
+  nav{
+    width:100%;
+  }
   .job-post-private {
     width: 230px;
     padding: 2px;
@@ -456,7 +459,23 @@ li > a > img {
     margin-top: 10px;
     width: 90%;
   }
+ 
+  #install-app{
+    height: 50px;
+    width: 60px;
+  }
+  
 }
+@media screen and (max-width: 650px){
+  nav * {
+    font-size:13px;
+  }
+  li > a > img {
+    height: 40px;
+    width: 40px;
+  }
+}
+
 @media screen and (max-width: 550px) {
   .job-post-private {
     width: 200px;
@@ -473,6 +492,7 @@ li > a > img {
     font-size: medium;
   }
 }
+
 @media screen and (max-width: 490px) {
   .job-post-private {
     width: 160px;
@@ -487,6 +507,7 @@ li > a > img {
     font-size: smaller;
   }
 }
+
 @media screen and (max-width: 411px) {
   .job-post-private {
     width: 150px;
@@ -526,7 +547,9 @@ li > a > img {
     overflow: hidden;
   }
 }
-@media screen and (max-width: 371px) {
+@media screen and (max-width: 372px) {
+
+  
   .job-post-private {
     width: 120px;
   }
