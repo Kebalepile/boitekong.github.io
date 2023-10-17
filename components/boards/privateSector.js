@@ -40,9 +40,9 @@ export function setupPrivateSector(element) {
 
        <br/>
 
-       <p><strong class="job-field" style="padding:3px;" >${
-         p["jobSpecFields"]
-       }</strong></p>
+       <p class="job-field" style="padding:3px;" title=${ p["jobSpecFields"]} >
+          ${ p["jobSpecFields"]}
+        </p>
 
        ${
          p.province

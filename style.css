@@ -19,7 +19,7 @@ button {
   cursor: pointer;
   border: none;
 }
-a{
+a {
   text-decoration: none;
 }
 /* Scrollbar Styles */
@@ -71,30 +71,33 @@ li {
   list-style: none;
   margin: 3px;
 }
-#logo{
-  margin-top:50px;
-  width:100px;
-  height:100px;
+#logo {
+  margin-top: 50px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
 }
 
-.call-to-action{
+.call-to-action {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-#headline{
-  background-color:rgb(54, 54, 54);
+#headline {
+  background-color: rgb(54, 54, 54);
   border-radius: 2px;
-  margin-bottom:30px;
+  margin-bottom: 30px;
   background-image: url("./public/assets/icons/1.jpg");
   background-repeat: no-repeat;
+  background-size: cover;
+  /* font-weight: bold; */
+  text-shadow: 0 0 10px black, 0 0 20px black, 0 0 30px black, 0 0 40px black;
 }
-#headline-message{
-  background-color:rgba(0, 0, 0, 0.233);
+#headline-message {
+  background-color: rgba(0, 0, 0, 0.233);
   border-radius: 4px;
   -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px); 
+  backdrop-filter: blur(5px);
 }
 #headline-job-info {
   display: flex;
@@ -105,7 +108,6 @@ li {
   height: 120px;
 }
 #job-board {
-  width: 90dvw;
   height: 50dvh;
   overflow-y: scroll;
 }
@@ -160,8 +162,6 @@ li {
   margin: 5px;
   border-radius: 5px;
   border-top: 10px outset #4fb4f7;
-
-  /* remove  this with for certain smaller screens */
   width: 300px;
   height: 205px;
   display: flex;
@@ -311,20 +311,19 @@ li {
   text-align: justify;
 }
 
-#documentFrame{
-  width:inherit;
+#documentFrame {
+  width: inherit;
   min-height: 700px;
-  border:none;
-  background-color:inherit;
+  border: none;
+  background-color: inherit;
 }
-nav{
-  position:absolute;
-  top:10px;
-  left:10px;
-  width:50%;
-  z-index:2;
+nav {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 50%;
+  z-index: 2;
   border-radius: 5px;
- 
 }
 nav ul {
   list-style-type: none;
@@ -337,7 +336,8 @@ nav li {
   float: left;
 }
 
-nav li a, nav li h5 {
+nav li a,
+nav li h5 {
   display: block;
   text-align: center;
   padding: 10px;
@@ -362,25 +362,25 @@ nav li ul {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  height:50px;
-  width:80px;
+  height: 50px;
+  width: 80px;
 }
 
 #install-app > img {
-  width:50%;
+  width: 50%;
   height: 50%;
 }
 li:has(details) {
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 }
 details {
-  margin-top:20px;
+  margin-top: 20px;
   width: 100px;
   border: none;
-  background:inherit;
+  background: inherit;
 }
 
 details > summary {
@@ -391,51 +391,163 @@ details > summary::-webkit-details-marker {
   display: none;
 }
 
-
-.share{
+.share {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left:5px;
-  background-color:#0a95b8da;
-  width:80px;
+  margin-left: 5px;
+  background-color: #0a95b8da;
+  width: 80px;
 }
-.share > img{
-  width:30%;
+.share > img {
+  width: 30%;
   height: 50%;
- 
 }
 
-.img-icon{
+.img-icon {
   filter: invert(1);
 }
 
-li > a >  img {
-  height:50px;
-  width:60px;
+li > a > img {
+  height: 50px;
+  width: 60px;
 }
 
-.options{
+.options {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width:199px;
+  width: 199px;
 }
-#contact{
+#contact {
   display: flex;
-  flex-flow:column;
+  flex-flow: column;
   justify-content: space-between;
   align-items: center;
   background-color: #2e2d2d6c;
   margin-top: 20px;
-  padding:15px;
+  padding: 15px;
   border-radius: 3px;
   text-align: center;
   font-size: 12px;
 }
 #contact > section {
-  margin-top:15px;
+  margin-top: 15px;
 }
 #contact a {
   margin: 5px;
+}
+
+/* tablet screen */
+@media screen and (max-width: 729px) {
+  .job-post-private {
+    width: 230px;
+    padding: 2px;
+    height: 230px;
+    border-radius: 10%;
+  }
+  .job-post-private > *:not(hr) {
+    margin-top: 3px;
+  }
+  .job-post-private > hr {
+    margin: 0;
+  }
+  .job-post-private > h3 {
+    margin-top: 10px;
+    width: 90%;
+  }
+}
+@media screen and (max-width: 550px) {
+  .job-post-private {
+    width: 200px;
+    height: 230px;
+  }
+  .location {
+    float: none;
+    background-color: #0bd164;
+    border-radius: 3px;
+    text-align: center;
+    margin-right: 0;
+  }
+  .other-agencies {
+    font-size: medium;
+  }
+}
+@media screen and (max-width: 490px) {
+  .job-post-private {
+    width: 160px;
+    height: 210px;
+  }
+  .job-post-private * {
+    font-size: small;
+  }
+  .job-post {
+    width: 150px;
+    height: 150px;
+    font-size: smaller;
+  }
+}
+@media screen and (max-width: 411px) {
+  .job-post-private {
+    width: 150px;
+    height: 220px;
+  }
+  .job-field {
+    float: inline-end;
+
+    padding: 0;
+    max-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80%;
+  }
+  #headline *:not(h2) {
+    font-size: small;
+    font-weight: bold;
+    text-shadow: 0 0 10px black, 0 0 20px black, 0 0 30px black, 0 0 40px black;
+  }
+}
+
+@media screen and (max-width: 391px) {
+  .job-post-private {
+    width: 140px;
+  }
+  .job-post-private > h3 {
+    width: 80%;
+  }
+
+  .job-post {
+    width: 120px;
+    height: 120px;
+  }
+  .company-logo {
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+  }
+}
+@media screen and (max-width: 371px) {
+  .job-post-private {
+    width: 120px;
+  }
+}
+
+@media screen and (max-width: 331px) {
+  .job-post-private {
+    width: 114px;
+  }
+  .job-post {
+    width: 114px;
+    height: 114px;
+  }
+  .company-logo {
+    width: 114px;
+    height: 114px;
+    overflow: hidden;
+  }
+}
+@media screen and (max-width: 319px) {
+  .job-post-private {
+    width: 200px;
+  }
 }
