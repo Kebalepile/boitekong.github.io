@@ -284,7 +284,7 @@ li {
   height: 30px;
 }
 #info {
-  width: 50%;
+  width: 60%;
   margin: auto;
   display: flex;
   flex-flow: column nowrap;
@@ -302,7 +302,7 @@ li {
 
 #info > .details {
   max-height: 500px;
-  width: 60dvw;
+  width: 100%;
   overflow-y: auto;
   background: rgb(71, 70, 70);
   padding: 20px;
@@ -473,6 +473,10 @@ li > a > img {
     height: 40px;
     width: 40px;
   }
+
+  #info {
+    width: 80%;
+  }
 }
 
 @media screen and (max-width: 550px) {
@@ -508,6 +512,9 @@ li > a > img {
 }
 
 @media screen and (max-width: 411px) {
+  #info {
+    width: 90%;
+  }
   .job-post-private {
     width: 150px;
     height: 220px;
@@ -553,6 +560,11 @@ li > a > img {
 }
 
 @media screen and (max-width: 331px) {
+  #info > img {
+    max-width: 250px;
+    max-height: 125px;
+    border-radius: 4px;
+  }
   .job-post-private {
     width: 114px;
   }

@@ -64,14 +64,13 @@ export function setupPrivateSector(element) {
        }
        <button class="more">more</button>
        `;
-    /**
-     *
-     * **/
-
+   
     const dialog = document.getElementById("dialog");
     const btn = div.querySelector(".more");
     btn.addEventListener("click", () => {
+      
       dialog.showModal();
+
       const article = document.getElementById("info");
       article.innerHTML = `
       <h3  class="ellipsis-text">${title}</h3>
