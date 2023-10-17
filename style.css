@@ -440,8 +440,8 @@ li > a > img {
 
 /* tablet screen */
 @media screen and (max-width: 729px) {
-  nav{
-    width:100%;
+  nav {
+    width: 100%;
   }
   .job-post-private {
     width: 230px;
@@ -459,16 +459,15 @@ li > a > img {
     margin-top: 10px;
     width: 90%;
   }
- 
-  #install-app{
+
+  #install-app {
     height: 50px;
     width: 60px;
   }
-  
 }
-@media screen and (max-width: 650px){
+@media screen and (max-width: 650px) {
   nav * {
-    font-size:13px;
+    font-size: 13px;
   }
   li > a > img {
     height: 40px;
@@ -548,8 +547,6 @@ li > a > img {
   }
 }
 @media screen and (max-width: 372px) {
-
-  
   .job-post-private {
     width: 120px;
   }
