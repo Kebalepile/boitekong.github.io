@@ -28,6 +28,11 @@ export function setupPrivateSector(element) {
     div.classList.add("job-post-private");
     div.setAttribute("title", title);
 
+    const search = `http://www.heitha.co.za/jobs/${title
+      .trim()
+      .toLowerCase()
+      .replaceAll(" ", "-")}`;
+
     div.innerHTML = `
        <h3  class="ellipsis-text">${title}</h3>
        <br/>
@@ -120,36 +125,41 @@ export function setupPrivateSector(element) {
       }
       <br/>
 
-      <section class="details">${p.details.replaceAll(/\.(?=[A-Z0-9 ])/g, '.<br/><br/>')}</section>
+      <section class="details">${p.details.replaceAll(
+        /\.(?=[A-Z0-9 ])/g,
+        ".<br/><br/>"
+      )}</section>
       <br/>
       <section class="options">
           <button id="share" class="apply share" title="share post with friends">
              <img loading="lazy" class="share-button img-icon" src="../../public/assets/share.png" atl="share image"/>
           </button>
         
-          <a href=${p.href} target="_blank">
+          <a href=${
+            p.apply.includes("heitha") ? search : p.apply
+          } target="_blank">
               <button class="source apply">
-                source
+                apply
               </button>
          </a>
       </section>
        <br/>
       `;
-    
-    const shareBtn = article.querySelector("#share");
-        shareBtn.addEventListener("click", async () => {
-          const shareData = {
-            title,
-            text: "available job vacancy, might be suitable for you!",
-            url: p.href
-          };
-          try {
-            await navigator.share(shareData);
-          } catch (err) {
-            console.error(err);
-          }
-        });
+
+      const shareBtn = article.querySelector("#share");
+      shareBtn.addEventListener("click", async () => {
+        const shareData = {
+          title,
+          text: "available job vacancy, might be suitable for you!",
+          url: p.href
+        };
+        try {
+          await navigator.share(shareData);
+        } catch (err) {
+          console.error(err);
+        }
       });
+    });
     return div;
   });
 
