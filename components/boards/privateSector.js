@@ -40,8 +40,8 @@ export function setupPrivateSector(element) {
 
        <br/>
 
-       <p class="job-field" style="padding:3px;" title=${ p["jobSpecFields"]} >
-          ${ p["jobSpecFields"]}
+       <p class="job-field" style="padding:3px;" title=${p["jobSpecFields"]} >
+          ${p["jobSpecFields"]}
         </p>
 
        ${
@@ -64,11 +64,10 @@ export function setupPrivateSector(element) {
        }
        <button class="more">more</button>
        `;
-   
+
     const dialog = document.getElementById("dialog");
     const btn = div.querySelector(".more");
     btn.addEventListener("click", () => {
-      
       dialog.showModal();
 
       const article = document.getElementById("info");
@@ -77,13 +76,13 @@ export function setupPrivateSector(element) {
       <br/>
       <hr/>
       <br/>
-      <p><strong class="job-field" style="padding:3px;" >${
+      <p><strong class="job-field f" style="padding:3px;" >${
         p["jobSpecFields"]
       }</strong></p>
       <br/>
       ${
         p.province
-          ? `<span><p class="province" style="padding:5px;">${p.province}</p></span>`
+          ? `<span><p class="province f" style="padding:5px;">${p.province}</p></span>`
           : ""
       }
 
@@ -102,13 +101,13 @@ export function setupPrivateSector(element) {
       <br/>
       ${
         p.expiryDate
-          ? `<p class="expiry-date" style="width:${p.expiryDate.length}ch; padding:3px;">${p.expiryDate}</p>`
+          ? `<p class="expiry-date f" style="width:${p.expiryDate.length}ch; padding:3px;">${p.expiryDate}</p>`
           : ""
       }
 
       ${
         p.startDate
-          ? `<p class="start-date" style="width:${
+          ? `<p class="start-date f" style="width:${
               p.startDate.length + 13
             }ch; padding:3px;">start date: ${p.startDate}</p>`
           : ""

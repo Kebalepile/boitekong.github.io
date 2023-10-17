@@ -519,14 +519,17 @@ li > a > img {
     width: 150px;
     height: 220px;
   }
+
   .job-field {
     float: inline-end;
-
     padding: 0;
     max-height: 20px;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 80%;
+  }
+  .f {
+    max-width: 319px;
   }
   #headline *:not(h2) {
     font-size: small;
