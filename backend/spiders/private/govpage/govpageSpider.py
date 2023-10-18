@@ -120,7 +120,7 @@ class Spider:
             By.CSS_SELECTOR, selector)
 
         if len(elems) > 0:
-            privateSectorURL: str
+            privateSectorURL: (str|None) = None
             for e in elems:
 
                 text: str = e.text.lower().lstrip()
@@ -133,6 +133,11 @@ class Spider:
                 if a and b:
 
                     privateSectorURL = href
+
+            if privateSectorURL is None:
+
+                log.warning(f"{self.Name}, Sorry, No Government Job Posts for today")
+                self.driver.close()
 
             self.driver.get(privateSectorURL)
             self.driver.execute_script("""

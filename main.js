@@ -61,7 +61,7 @@ document.querySelector("#app").innerHTML = `
         title="https://t.me/Kebalepile_1"
         ><i class="fa fa-telegram" style="font-size: 36px"></i
       ></a>
-      <a href="mailto:kmotshoana@gmail.com" title="kmotshoana@gmail.com"
+      <a href="mailto:boitkongcommunity@gmail.com" title="boitkongcommunity@gmail.com"
         ><i class="fa fa-envelope" style="font-size: 36px"></i
       ></a>
     </section>
