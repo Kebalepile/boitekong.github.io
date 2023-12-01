@@ -14,7 +14,7 @@ Whether you're a fresh graduate 🎓 or an experienced professional 👩‍💼�
 
 ## How to use
 
-To use our job board, simply visit our [website](^1^) and browse through the available listings. You can filter by sector, location, salary, or keyword. You can also create an account and upload your resume to apply for jobs online. You will also receive notifications when new jobs matching your preferences are posted.
+To use our job board, simply visit our [website](boitekong.github.io) and browse through the available listings. You can filter by sector, location, salary, or keyword. You can also create an account and upload your resume to apply for jobs online. You will also receive notifications when new jobs matching your preferences are posted.
 
 ## How to contribute
 
